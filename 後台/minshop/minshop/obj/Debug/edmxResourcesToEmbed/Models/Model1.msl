@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mineshopModelStoreContainer" CdmEntityContainer="mineshopEntities">
+    <EntitySetMapping Name="activity">
+      <EntityTypeMapping TypeName="mineshopModel.activity">
+        <MappingFragment StoreEntitySet="activity">
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="imgs" ColumnName="imgs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="level1Class">
+      <EntityTypeMapping TypeName="mineshopModel.level1Class">
+        <MappingFragment StoreEntitySet="level1Class">
+          <ScalarProperty Name="level1Class1" ColumnName="level1Class" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="level2Class">
+      <EntityTypeMapping TypeName="mineshopModel.level2Class">
+        <MappingFragment StoreEntitySet="level2Class">
+          <ScalarProperty Name="level1Class" ColumnName="level1Class" />
+          <ScalarProperty Name="level2Class1" ColumnName="level2Class" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="level3Class">
+      <EntityTypeMapping TypeName="mineshopModel.level3Class">
+        <MappingFragment StoreEntitySet="level3Class">
+          <ScalarProperty Name="level1Class" ColumnName="level1Class" />
+          <ScalarProperty Name="level2Class" ColumnName="level2Class" />
+          <ScalarProperty Name="level3Class1" ColumnName="level3Class" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="member">
+      <EntityTypeMapping TypeName="mineshopModel.member">
+        <MappingFragment StoreEntitySet="member">
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="account" ColumnName="account" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="companyNumbers" ColumnName="companyNumbers" />
+          <ScalarProperty Name="company" ColumnName="company" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="message">
+      <EntityTypeMapping TypeName="mineshopModel.message">
+        <MappingFragment StoreEntitySet="message">
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+          <ScalarProperty Name="messageId" ColumnName="messageId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="responder" ColumnName="responder" />
+          <ScalarProperty Name="messageContent" ColumnName="messageContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order">
+      <EntityTypeMapping TypeName="mineshopModel.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+          <ScalarProperty Name="cartId" ColumnName="cartId" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="paymentClass" ColumnName="paymentClass" />
+          <ScalarProperty Name="creditCard" ColumnName="creditCard" />
+          <ScalarProperty Name="sendOption" ColumnName="sendOption" />
+          <ScalarProperty Name="reci" ColumnName="reci" />
+          <ScalarProperty Name="reciPhone" ColumnName="reciPhone" />
+          <ScalarProperty Name="reciAddress" ColumnName="reciAddress" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="ps" ColumnName="ps" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paymentClass">
+      <EntityTypeMapping TypeName="mineshopModel.paymentClass">
+        <MappingFragment StoreEntitySet="paymentClass">
+          <ScalarProperty Name="paymentClass1" ColumnName="paymentClass" />
+          <ScalarProperty Name="method" ColumnName="method" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pickingDetail">
+      <EntityTypeMapping TypeName="mineshopModel.pickingDetail">
+        <MappingFragment StoreEntitySet="pickingDetail">
+          <ScalarProperty Name="pickingListId" ColumnName="pickingListId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="orderQuantity" ColumnName="orderQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pickingList">
+      <EntityTypeMapping TypeName="mineshopModel.pickingList">
+        <MappingFragment StoreEntitySet="pickingList">
+          <ScalarProperty Name="pickingListId" ColumnName="pickingListId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="quotation">
+      <EntityTypeMapping TypeName="mineshopModel.quotation">
+        <MappingFragment StoreEntitySet="quotation">
+          <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="saleInvoice">
+      <EntityTypeMapping TypeName="mineshopModel.saleInvoice">
+        <MappingFragment StoreEntitySet="saleInvoice">
+          <ScalarProperty Name="invoiceId" ColumnName="invoiceId" />
+          <ScalarProperty Name="shipId" ColumnName="shipId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ship">
+      <EntityTypeMapping TypeName="mineshopModel.ship">
+        <MappingFragment StoreEntitySet="ship">
+          <ScalarProperty Name="shipId" ColumnName="shipId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="pickingListId" ColumnName="pickingListId" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shoppingCart">
+      <EntityTypeMapping TypeName="mineshopModel.shoppingCart">
+        <MappingFragment StoreEntitySet="shoppingCart">
+          <ScalarProperty Name="cartId" ColumnName="cartId" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="checkout" ColumnName="checkout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shoppingDetail">
+      <EntityTypeMapping TypeName="mineshopModel.shoppingDetail">
+        <MappingFragment StoreEntitySet="shoppingDetail">
+          <ScalarProperty Name="cartId" ColumnName="cartId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="putDate" ColumnName="putDate" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="mineshopModel.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="shipId" ColumnName="shipId" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="status1" ColumnName="status" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stock">
+      <EntityTypeMapping TypeName="mineshopModel.stock">
+        <MappingFragment StoreEntitySet="stock">
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="level1Class" ColumnName="level1Class" />
+          <ScalarProperty Name="level2Class" ColumnName="level2Class" />
+          <ScalarProperty Name="level3Class" ColumnName="level3Class" />
+          <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+          <ScalarProperty Name="removalDate" ColumnName="removalDate" />
+          <ScalarProperty Name="inventory" ColumnName="inventory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="supplier">
+      <EntityTypeMapping TypeName="mineshopModel.supplier">
+        <MappingFragment StoreEntitySet="supplier">
+          <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="mineshopModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

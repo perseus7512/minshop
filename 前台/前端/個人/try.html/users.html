@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinShop 分分購物_個人頁面</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend style="color: #ffffff;"><h1>編輯個人檔案</h1></legend>
+            <label for="memberId">會員編號:</h2></label>
+            <br />
+
+            <label for="memberId">帳號:</label>
+            <br />
+
+            <label for="memberId">密碼:</label>
+            <input class="form-control" type="Password" placeholder="Password 密碼" name="txtPassword" /><br />
+
+            <label for="memberId">領貨人姓名:</label>
+            <input class="form-control" type="name" placeholder="Username用戶名" name="txtname" /><br />
+
+            <label for="memberId">性別:</label>
+            <input class="sex" type="radio" name="sex" value="1"checked /><label class="a1">男</label><input class="sex" type="radio" name="sex" value="0"/><label class="a1">女</label><br />
+
+            <label for="memberId">生日:</label>
+            <input type="date" name="txtbirthday" /><br />
+
+            <label for="memberId">電話:</label>
+            <input class="form-control" type="phone" placeholder="PhoneNumber 電話號碼" id="txtphone" name="txtphone" pattern="[0][9][0-9]{8}" /><br />
+
+            <label for="memberId">地址:</label>
+            <input class="form-control"type="address" placeholder="Address 地址" name="txtaddress" /><br />
+
+            <label for="memberId">電子郵件:</label>
+            <input class="form-control"type="Email" placeholder="Email 地址郵件" id="txtEmail" name="txtEmail" /><br />
+
+        </fieldset>
+        <input type="submit" value="提交" class="btn">
+
+
+    </form>
+<script>
+    var btn=document.querySelector('.btn');
+    var phone=document.querySelector('#txtphone');
+    var email=document.querySelector('#txtEmail');
+    var pattern=phone.getAttribute('pattern');
+    var regex=new RegExp(pattern);
+    btn.addEventListener('click',function(){
+        var value=phone.value;
+        if(regex.test(value)){
+            return a1();
+        }else{
+            return;
+        }
+    })
+    function a1() {
+        if(email.value==true){
+            alert('修改成功');
+        }
+    }
+</script>
+</body>
+</html>
