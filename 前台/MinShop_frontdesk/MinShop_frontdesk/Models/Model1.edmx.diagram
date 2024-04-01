@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f74a2e0996b47528f0e337237d29ae7" Name="Diagram1">
+        <EntityTypeShape EntityType="mineshopModel.level1Class" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.level2Class" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.level3Class" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.member" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.message" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.order" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.paymentClass" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.pickingDetail" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.pickingList" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.quotation" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.saleInvoice" Width="1.5" PointX="8.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.ship" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.shoppingCart" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.shoppingDetail" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.stock" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.supplier" Width="1.5" PointX="6" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.status" Width="1.5" PointX="7.5" PointY="23.375" IsExpanded="true" />
+        <AssociationConnector Association="mineshopModel.FK_level2Class_level1Class" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_stock_level1Class" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_level2Class_stock" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_level3Class_stock" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_saleInvoice_member" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_shoppingCart_member" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_order_paymentClass" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_order_shoppingCart" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_pickingDetail_pickingList" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_pickingDetail_stock" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_ship_pickingList" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_quotation_stock" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_quotation_supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_saleInvoice_ship" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_status_ship" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_shoppingDetail_shoppingCart" ManuallyRouted="false" />
+        <AssociationConnector Association="mineshopModel.FK_shoppingDetail_stock" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -43,10 +43,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -88,19 +96,221 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\bedding\banner1.jpg" />
+    <Content Include="images\bedding\banner2.jpg" />
+    <Content Include="images\bedding\banner3.jpg" />
+    <Content Include="images\bedding\bedding_autumn_migratory_bird.jpg" />
+    <Content Include="images\bedding\bedding_blue_sea.jpg" />
+    <Content Include="images\bedding\bedding_desert_camel.jpg" />
+    <Content Include="images\bedding\bedding_long_island_iced_tea.jpg" />
+    <Content Include="images\bedding\bedding_moonlit_forest.jpg" />
+    <Content Include="images\bedding\bedding_nova_geo.jpg" />
+    <Content Include="images\bedding\bedding_single_blue_stripe.jpg" />
+    <Content Include="images\bedding\bedding_single_gray.jpg" />
+    <Content Include="images\bedding\bedding_single_white_stripe.jpg" />
+    <Content Include="images\bedding\blanket_graphene_tree.jpg" />
+    <Content Include="images\bedding\blanket_printed_elephant.jpg" />
+    <Content Include="images\bedding\blanket_printed_flower.jpg" />
+    <Content Include="images\bedding\pillowcase_gray.jpg" />
+    <Content Include="images\bedding\pillow_graphene_snore.jpg" />
+    <Content Include="images\bedding\pillow_graphene_washable.jpg" />
+    <Content Include="images\bedding\pillow_memory_standard.jpg" />
+    <Content Include="images\bedding\pillow_washable_taiwan.jpg" />
+    <Content Include="images\bedding\thin_blanket_penguin.jpg" />
+    <Content Include="images\bedding\thin_blanket_printed_savanna_animals_milktea.jpg" />
+    <Content Include="images\bedding\thin_blanket_stars.jpg" />
+    <Content Include="images\Layout\icon_cart.png" />
+    <Content Include="images\Layout\icon_history.png" />
+    <Content Include="images\Layout\icon_user.png" />
+    <Content Include="images\Layout\logo01.png" />
+    <Content Include="images\Layout\logo02.png" />
+    <Content Include="images\lipgloss\1028_orange.jpg" />
+    <Content Include="images\lipgloss\1028_strawberry.jpg" />
+    <Content Include="images\lipgloss\2an_279707.jpg" />
+    <Content Include="images\lipgloss\2an_279713.jpg" />
+    <Content Include="images\lipgloss\babybright_bayberry.jpg" />
+    <Content Include="images\lipgloss\babybright_berrymacron.jpg" />
+    <Content Include="images\lipgloss\babybright_yuzutea.jpg" />
+    <Content Include="images\lipgloss\banner1.jpg" />
+    <Content Include="images\lipgloss\banner2.jpg" />
+    <Content Include="images\lipgloss\banner3.jpg" />
+    <Content Include="images\lipgloss\bbialeau_280919.jpg" />
+    <Content Include="images\lipgloss\bbialeau_280922.jpg" />
+    <Content Include="images\lipgloss\bbialeau_280923.jpg" />
+    <Content Include="images\lipgloss\bbialeau_286454.jpg" />
+    <Content Include="images\lipgloss\bbialeau_286455.jpg" />
+    <Content Include="images\lipgloss\bbia_233672.jpg" />
+    <Content Include="images\lipgloss\bbia_262655.jpg" />
+    <Content Include="images\lipgloss\bbia_273529.jpg" />
+    <Content Include="images\lipgloss\bom_252317.jpg" />
+    <Content Include="images\lipgloss\bom_252379.jpg" />
+    <Content Include="images\lipgloss\bom_252405.jpg" />
+    <Content Include="images\lipgloss\media_rd13.jpg" />
+    <Content Include="images\lipgloss\media_rs03.jpg" />
+    <Content Include="images\next.png" />
+    <Content Include="images\prev.png" />
+    <Content Include="images\tent\banner1.jpg" />
+    <Content Include="images\tent\banner2.jpg" />
+    <Content Include="images\tent\banner3.jpg" />
+    <Content Include="images\tent\besthot_16983.jpg" />
+    <Content Include="images\tent\coleman_16998.jpg" />
+    <Content Include="images\tent\dido_16607-1.jpg" />
+    <Content Include="images\tent\dido_16607.jpg" />
+    <Content Include="images\tent\horizon_17044.jpg" />
+    <Content Include="images\tent\kampa_17060.jpg" />
+    <Content Include="images\tent\kazmi_16642.jpg" />
+    <Content Include="images\tent\kazmi_17104.jpg" />
+    <Content Include="images\tent\kzm_16641.jpg" />
+    <Content Include="images\tent\kzm_17096.jpg" />
+    <Content Include="images\tent\mayshop _16546.jpg" />
+    <Content Include="images\tent\mayshop_15586.jpg" />
+    <Content Include="images\tent\mayshop_16546.jpg" />
+    <Content Include="images\tent\mayshop_16775.jpg" />
+    <Content Include="images\tent\mqqi_16880.jpg" />
+    <Content Include="images\tent\naturehike _16994.jpg" />
+    <Content Include="images\tent\push_15537.jpg" />
+    <Content Include="images\tent\qiaosen_16707.jpg" />
+    <Content Include="images\tent\suv_16833.jpg" />
+    <Content Include="images\tent\tentmark_16798.jpg" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\level1Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\level2Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\level3Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\member.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\message.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\order.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\paymentClass.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pickingDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pickingList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\quotation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\saleInvoice.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ship.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\shoppingCart.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\shoppingDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\status.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stock.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\supplier.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\home\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\home\ShoppingCar.cshtml" />
+    <Content Include="Views\home\Users.cshtml" />
+    <Content Include="Views\home\Tent.cshtml" />
+    <Content Include="Views\home\Order.cshtml" />
+    <Content Include="Views\home\Bedding.cshtml" />
+    <Content Include="Views\home\LipGloss.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,8 +320,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

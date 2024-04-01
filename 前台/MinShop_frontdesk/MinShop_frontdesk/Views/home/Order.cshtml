@@ -1,0 +1,98 @@
+﻿<style>
+    body {
+        margin-top: 20px;
+        padding: 0px;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        width: 80%;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    h1 {
+        text-align: center;
+        color: white;
+        background-color: #3f6c98;
+    }
+
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+        background-color: #6ca76f;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #3f6c98;
+        }
+</style>
+<div class="container">
+    <!-- 寄送資訊 -->
+    <h1>寄送資訊</h1>
+
+    <form class="infor" method="post">
+        <p>
+            請選擇配送方式:
+            <select id="send" name="send">
+                <option value="send1">宅配到府</option>
+                <option value="send2">超商取貨</option>
+            </select>
+        </p>
+
+    </form>
+    <form class="infor" method="post">
+        <p>
+            請選擇收貨地點:
+            <select id="take" name="take">
+                <option value="take1">7-11</option>
+                <option value="take2">全家</option>
+                <option value="take3">萊爾富</option>
+                <option value="take3">OK Mart</option>
+            </select>
+        </p>
+
+    </form>
+    <form class="infor" method="post">
+        <p>
+            請選擇支付方式:
+            <select id="pay" name="pay">
+                <option value="take1">匯款</option>
+                <option value="take2">貨到付款</option>
+                <option value="take3">信用卡支付</option>
+            </select>
+        </p>
+    </form>
+</div>
+
+<div class="container">
+    <!-- 訂單資訊 -->
+    <h1>訂單資訊</h1>
+    <form class="infor" method="post">
+        <p>小計:</p>
+        <p>運費:</p>
+        <p>合計:</p>
+    </form>
+    <input type="submit" value="下單">
+</div>
