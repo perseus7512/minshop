@@ -7,6 +7,9 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <style>
         .header {
             background-color: #ffffff;
@@ -213,7 +216,7 @@
         @RenderBody()
         <hr />
         <div class="container body-content">
-            
+
             <div class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
                 <a class="navbar-brand" href="#">合作廠商</a>
                 <a class="navbar-brand" href="#">合作廠商</a>
@@ -267,15 +270,22 @@
                 </div>
             </footer>
         </div>
+    </div>
         <script>
-        $('.dropdown-toggle').mouseenter(function () {
-            if (!$(this).hasClass('show')) {
-                $(this).dropdown('toggle');
-            }
-        });
+            $('.dropdown').mouseover(function () {
+                $(this).find('.dropdown-toggle').addClass('show');
+                $(this).find('.dropdown-menu').addClass('show');
+            });
+
+            $('.dropdown').mouseout(function () {
+                $(this).find('.dropdown-toggle').removeClass('show');
+                $(this).find('.dropdown-menu').removeClass('show');
+            });
+
+
+
         </script>
 
-        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
+
 </body>
 </html>

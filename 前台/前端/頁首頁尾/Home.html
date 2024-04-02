@@ -282,6 +282,11 @@
                 $(this).dropdown('toggle');
             }
         });
+        $('.dropdown-toggle').mouseleave(function () {
+            if ($(this).hasClass('show')) {
+                $(this).dropdown('hide');
+            }
+        });
     </script>
 </body>
 
