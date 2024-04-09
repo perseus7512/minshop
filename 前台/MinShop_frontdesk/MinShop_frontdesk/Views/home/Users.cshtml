@@ -1,62 +1,64 @@
 ﻿
-    <style>
-        body {
-            font-family: Roboto;
-            background-color: azure;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+    body {
+        font-family: Roboto;
+        background-color: azure;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
 
-        form {
-            width: 70%;
-            margin: 0;
-            padding: 0;
-            
-        }
+    form {
+        width: 70%;
+        margin: 0;
+        padding: 0;
+    }
 
-        fieldset {
-            border: 1px solid rgb(0, 0, 0);
-            padding: 10px;
-            margin: 0;
-            background-color: rgb(217, 232, 194);
-        }
+    fieldset {
+        border: 1px solid rgb(0, 0, 0);
+        padding: 10px;
+        margin: 0;
+        background-color: rgb(217, 232, 194);
+    }
 
-        legend {
-            background-color: rgb(41, 91, 93);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 1.2em;
-            width:40%;
-        }
+    legend {
+        background-color: rgb(41, 91, 93);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        width: 40%;
+    }
 
-        label {
-            width: 100%;
-            display: block;
-        }
+    label {
+        width: 100%;
+        display: block;
+    }
 
-        input {
-            width:450px;
-            height: 50px;
-            margin-bottom: 10px;
-            font-size: 1em;
-        }
-        .sex {
-            width: auto;
-            height:15px;
-        }
-        h2{
-            margin-top:5px;
-        }
-        select {
-            width: 20%;
-            height: 25px;
-            font-size: 1em;
-        }
-    </style>
+    input {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+
+    .sex {
+        width: auto;
+        height: 15px;
+    }
+
+    h2 {
+        margin-top: 5px;
+    }
+
+    select {
+        width: 20%;
+        height: 25px;
+        font-size: 1em;
+    }
+</style>
 @{
     string[] options = { "選擇縣市", "基隆市", "台北市", "高雄市", "花蓮縣", "新北市", "桃園市", "新竹市", "苗栗縣", "臺中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "臺東縣", "宜蘭縣", "澎湖縣", "金門縣", "連江縣" };
 }
@@ -70,37 +72,40 @@
                     <label for="memberId">會員編號:</label>
                     <label for="memberId">帳號:</label>
                     <label for="memberId">密碼:</label>
-                    <input class="form-control col-lg-6" type="Password" placeholder="Password 密碼" name="txtPassword" minlength="8" maxlength="16" />
+                    <input class="form-control col-lg-8" type="Password" placeholder="Password 密碼" name="txtPassword" minlength="8" maxlength="16" />
 
                     <label for="memberId">領貨人姓名:</label>
-                    <input class="form-control col-lg-6" type="text" placeholder="Username用戶名" name="txtname" />
+                    <input class="form-control col-lg-8" type="text" placeholder="Username用戶名" name="txtname" />
 
                     <label for="memberId">性別:</label>
                     <input class="sex" type="radio" name="sex" value="1" checked />&nbsp男&nbsp<input class="sex" type="radio" name="sex" value="0" />&nbsp女
 
                     <label for="memberId">生日:</label>
-                    <input type="date" name="txtbirthday" class="form-control col-lg-6" />
+                    <input type="date" name="txtbirthday" class="form-control col-lg-8" />
 
                     <label for="memberId">電話:</label>
-                    <input class="form-control col-lg-6" type="text" placeholder="PhoneNumber 電話號碼" id="txtphone" name="txtphone" pattern="[0][9][0-9]{8}" />
-                    
-                        <label for="memberId">地址:</label>
+                    <input class="form-control col-lg-8" type="text" placeholder="PhoneNumber 電話號碼" id="txtphone" name="txtphone" pattern="[0][9][0-9]{8}" />
+
+                    <label for="memberId">地址</label>
+                    <label for="memberId">
+                        縣市:
                         <select name="selectOption" id="selectOption">
                             @foreach (var option in options)
                             {
                                 <option value="@option">@option</option>
                             }
                         </select>
-
-                            <select name="selectOption2" id="selectOption2">
-                                <option value="">選擇地區</option>
-                            </select>
-
-                        <input class="form-control col-lg-6" type="text" placeholder="Address 地址" id="txtaddress" name="txtaddress" style="display:none;" />
-
-                        <label for="memberId">電子郵件:</label>
-                        <input class="form-control col-lg-6" type="Email" placeholder="Email 地址郵件" id="txtEmail" name="txtEmail" />
-                        <button type="submit" class="btn btn-primary" id="btn">提交</button>
+                    </label>
+                    <label for="memberId" id="area" style="display:none">
+                        地區:
+                        <select name="selectOption2" id="selectOption2">
+                            <option value="">選擇地區</option>
+                        </select>
+                    </label>
+                    <input class="form-control col-lg-8" type="text" placeholder="Address 地址" id="txtaddress" name="txtaddress" style="display:none;" />
+                    <label for="memberId">電子郵件:</label>
+                    <input class="form-control col-lg-8" type="Email" placeholder="Email 地址郵件" id="txtEmail" name="txtEmail" />
+                    <button type="submit" class="btn btn-primary" id="btn">提交</button>
                 </fieldset>
             </div>
         </form>
@@ -169,6 +174,8 @@
 
         // 獲取第二個下拉選擇框的元素
         var selectOption2 = $("#selectOption2");
+        var area=document.querySelector('#area');
+        area.style.display = 'none';
         selectOption2.hide();
         // 當第一個選擇框的值發生變化時
         $("#selectOption").change(function () {
@@ -188,9 +195,11 @@
                 });
 
                 // 显示第二个选择框
+                area.style.display = 'block';
                 selectOption2.show();
             } else {
                 // 否则，隐藏第二个选择框
+                area.style.display = 'none';
                 selectOption2.hide();
             }
         });
