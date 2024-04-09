@@ -15,7 +15,7 @@ namespace MinShop_Backstage.Models
     public partial class quotation
     {
         public string supplierId { get; set; }
-        public string productId { get; set; }
+        public int productId { get; set; }
         public string unit { get; set; }
         public System.DateTime date { get; set; }
         public int cost { get; set; }

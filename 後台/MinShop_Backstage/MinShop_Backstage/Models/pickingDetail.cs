@@ -15,7 +15,7 @@ namespace MinShop_Backstage.Models
     public partial class pickingDetail
     {
         public string pickingListId { get; set; }
-        public string productId { get; set; }
+        public int productId { get; set; }
         public int orderQuantity { get; set; }
     
         public virtual pickingList pickingList { get; set; }

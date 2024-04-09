@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 標題及按鈕欄位 */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+    text-align: center;
+    padding: 7px 50px; /* 調整內邊距以符合設計 */
+    border-bottom: solid #f0f0f0;
+    border-width: 3px;
+}
+
+.title {
+    padding-top: 10px;
+    color: #333333;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 5px 5px;
+    background-color: rgb(244, 244, 244);
+    border-radius: 5px;
+}
+
+.menu a:hover {
+    background-color: #cccccc;
+}
+
+.menu img {
+    width: 20px;
+    height: 20px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.buttons a:first-child {
+    margin-right: 10px; /* 調整按鈕之間的間距 */
+}
+
+/* 商品陳列區 */
+.product-container {
+    display: flex;
+    flex-wrap: nowrap; /* 不換行 */
+    overflow-x: hidden; /* 隱藏水平滾動條 */
+    padding-left: 20px; /* 增加左側內邊距 */
+    background-color: white;
+    width: auto;
+}
+
+.products-inner {
+    display: inline-flex; /* 横向排列 */
+    flex-wrap: nowrap; /* 不换行 */
+    transition: transform 0.8s ease; /* 添加動畫效果 */
+}
+
+.card {
+    transition: transform 0.8s ease; /* 添加動畫效果 */
+}
+
+/* 廣告區 */
+
+.advertise {
+    display: flex;
+    flex-wrap: nowrap; /* 不换行 */
+    width: auto;
+    padding: 30px 0px;
+}
+
+/* 熱門分類 */
+
+.popular {
+    background-color: white;
+
+}
+
+.list-group-item.list-group-item-action.active {
+    background-color: white !important;
+    color: #17A2B8 !important;
+}

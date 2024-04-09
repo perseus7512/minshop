@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MinShop_Backstage.Models.stock>
+    <h2>
+        商品管理
+    </h2>
+    <br />
+    <a href="~/home/release" class="btn btn-primary btn-lg">上架</a>&nbsp;&nbsp;&nbsp;
+    <div class="form-row" style="margin-top:10px">
+        <div class="form-group col-md-3">
+            <div class="dropdown">
+                <button class="btn btn-outline-primary btn-lg btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    商品類別
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item h3" href="#">服裝</a>
+                    <a class="dropdown-item h3" href="#">3C用品</a>
+                    <a class="dropdown-item h3" href="#">美妝用品</a>
+                    <a class="dropdown-item h3" href="#">居家生活</a>
+                    <a class="dropdown-item h3" href="#">戶外休閒</a>
+                    <a class="dropdown-item h3" href="#">圖書</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-5">
+            <input type="text" class="form-control-lg" id="name" placeholder="請輸入商品名">
+        </div>
+        <div class="form-group col-md-4">
+            <button type="submit" class="btn btn-info btn-lg btn-block">查詢</button>
+        </div>
+    </div>
+    <table class="table table-striped h3">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">商品編號</th>
+                <th scope="col">商品名稱</th>
+                <th scope="col">庫存量</th>
+                <th scope="col">定價</th>
+                <th scope="col">上架日</th>
+                <th scope="col">下架日</th>
+                <th scope="col">圖片</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td><input type="text" class="form-control" value="@item.productId"></td>
+                    <td><input type="text" class="form-control" value="@item.name"></td>
+                    <td><input type="text" class="form-control" value="@item.inventory"></td>
+                    <td><input type="text" class="form-control" value="@item.price"></td>
+                    <td><input type="text" class="form-control" value="@item.releaseDate"></td>
+                    <td><input type="text" class="form-control" value="@item.removalDate"></td>
+                    <td><input type="text" class="form-control" value="@item.image"></td>
+                    <td><a href="~/home/removal?productId=@item.productId" class="btn btn-danger btn-lg text-center">下架</a><a href="~/home/editProduct?productId=@item.productId" class="btn btn-success btn-lg text-center">修改</a></td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>

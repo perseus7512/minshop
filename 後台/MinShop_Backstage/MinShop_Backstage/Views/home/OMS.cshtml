@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MinShop_Backstage.Models.order>
+<h2>訂單管理</h2>
+
+<div class="form-row">
+    <div class="form-group col-md-2">
+        <button type="button" class="btn btn-info btn-lg btn-block" onclick="searchOrders('processing')">訂單處理中</button>
+    </div>
+    <div class="form-group col-md-2">
+        <button type="button" class="btn btn-info btn-lg btn-block" onclick="searchOrders('unpaid')">未付款</button>
+    </div>
+    <div class="form-group col-md-2">
+        <button type="button" class="btn btn-info btn-lg btn-block" onclick="searchOrders('cancelled')">訂單取消</button>
+    </div>
+    <div class="form-group col-md-2">
+        <input type="text" class="form-control-lg" id="orderNumber" placeholder="請輸入訂單編號">
+    </div>
+    <div class="form-group col-md-2">
+        <button type="submit" class="btn btn-info btn-lg btn-block" onclick="searchOrders('custom')">搜尋</button>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">訂單編號</th>
+            <th scope="col">訂單日期</th>
+            <th scope="col">客戶姓名</th>
+            <th scope="col">總金額</th>
+            <th scope="col">狀態</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.orderId</td>
+                    <td>
+                        <a href="~/orders/details?orderId=@order.orderId" class="btn btn-primary">查看</a>
+                        <a href="~/orders/edit?orderId=@order.orderId" class="btn btn-success">編輯</a>
+                        <a href="~/orders/delete?orderId=@order.orderId" class="btn btn-danger" onclick="return confirm('您確定要刪除此訂單嗎？')">刪除</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

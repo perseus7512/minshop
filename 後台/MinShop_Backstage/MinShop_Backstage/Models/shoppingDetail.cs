@@ -15,7 +15,7 @@ namespace MinShop_Backstage.Models
     public partial class shoppingDetail
     {
         public string cartId { get; set; }
-        public string productId { get; set; }
+        public int productId { get; set; }
         public System.DateTime putDate { get; set; }
         public int price { get; set; }
         public int quantity { get; set; }

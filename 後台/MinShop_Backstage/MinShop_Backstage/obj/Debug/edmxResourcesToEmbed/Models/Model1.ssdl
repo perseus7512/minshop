@@ -13,7 +13,7 @@
       <PropertyRef Name="level2Class" />
     </Key>
     <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="level2Class" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="level2Class" Type="int" Nullable="false" />
     <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="level3Class">
@@ -24,7 +24,7 @@
     </Key>
     <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="level2Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="level3Class" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="level3Class" Type="int" Nullable="false" />
     <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="member">
@@ -87,7 +87,7 @@
       <PropertyRef Name="productId" />
     </Key>
     <Property Name="pickingListId" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
     <Property Name="orderQuantity" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="pickingList">
@@ -105,7 +105,7 @@
       <PropertyRef Name="productId" />
     </Key>
     <Property Name="supplierId" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
     <Property Name="unit" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="date" Type="datetime" Nullable="false" />
     <Property Name="cost" Type="int" Nullable="false" />
@@ -144,7 +144,7 @@
       <PropertyRef Name="productId" />
     </Key>
     <Property Name="cartId" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
     <Property Name="putDate" Type="datetime" Nullable="false" />
     <Property Name="price" Type="int" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
@@ -169,16 +169,16 @@
     <Key>
       <PropertyRef Name="productId" />
     </Key>
-    <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="price" Type="int" Nullable="false" />
-    <Property Name="image" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="level2Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="level3Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="releaseDate" Type="datetime" Nullable="false" />
-    <Property Name="removalDate" Type="datetime" Nullable="false" />
-    <Property Name="inventory" Type="int" Nullable="false" />
+    <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="10" />
+    <Property Name="price" Type="int" />
+    <Property Name="image" Type="nchar" MaxLength="10" />
+    <Property Name="level1Class" Type="nchar" MaxLength="10" />
+    <Property Name="level2Class" Type="nchar" MaxLength="10" />
+    <Property Name="level3Class" Type="nchar" MaxLength="10" />
+    <Property Name="releaseDate" Type="datetime" />
+    <Property Name="removalDate" Type="datetime" />
+    <Property Name="inventory" Type="int" />
   </EntityType>
   <EntityType Name="supplier">
     <Key>
@@ -393,7 +393,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_stock_level1Class">
-    <End Role="level1Class" Type="Self.level1Class" Multiplicity="1" />
+    <End Role="level1Class" Type="Self.level1Class" Multiplicity="0..1" />
     <End Role="stock" Type="Self.stock" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="level1Class">

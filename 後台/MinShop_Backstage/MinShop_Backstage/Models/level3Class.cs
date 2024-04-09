@@ -16,7 +16,7 @@ namespace MinShop_Backstage.Models
     {
         public string level1Class { get; set; }
         public string level2Class { get; set; }
-        public string level3Class1 { get; set; }
+        public int level3Class1 { get; set; }
         public string name { get; set; }
     
         public virtual stock stock { get; set; }

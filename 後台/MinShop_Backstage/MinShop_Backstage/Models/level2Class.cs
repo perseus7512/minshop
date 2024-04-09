@@ -15,7 +15,7 @@ namespace MinShop_Backstage.Models
     public partial class level2Class
     {
         public string level1Class { get; set; }
-        public string level2Class1 { get; set; }
+        public int level2Class1 { get; set; }
         public string name { get; set; }
     
         public virtual level1Class level1Class1 { get; set; }

@@ -4,7 +4,7 @@
 <form class="h2">
     <div class="form-row">
         <div class="form-group col-md-3">
-            <label for="name">名子:</label>
+            <label for="name">名字:</label>
             <input type="text" class="form-control" id="name">
         </div>
         <div class="form-group col-md-3">
@@ -61,12 +61,11 @@
         <button type="submit" class="btn btn-info btn-lg">查詢</button>
     </div>
 </form>
-<h2><a href="~/home/create" class="btn btn-primary btn-lg">會員新增</a></h2>
 <table class="table table-striped">
     <thead class="h3">
         <tr>
             <th scope="col">會員編號</th>
-            <th scope="col">名子</th>
+            <th scope="col">名字</th>
             <th scope="col">帳號</th>
             <th scope="col">密碼</th>
             <th scope="col">性別</th>
@@ -97,7 +96,7 @@
                     <td>@item.email</td>
                     <td>@item.companyNumbers</td>
                     <td>@item.company</td>
-                    <td><a href="~/home/delete?memberId=@item.memberId" onclick="return confirm('你確定要刪除嗎')" class="btn btn-danger btn-lg text-center">刪除</a><a href="~/home/edit?memberId=@item.memberId" target="_self" class="btn btn-success btn-lg text-center" onclick="edit()">修改</a></td>
+                    <td><a href="~/home/DeleteMember?memberId=@item.memberId" onclick="return confirm('你確定要刪除嗎')" class="btn btn-danger btn-lg text-center">刪除</a><a href="~/home/edit?memberId=@item.memberId" target="_self" class="btn btn-success btn-lg text-center" onclick="edit()">修改</a></td>
                 </tr>
             }
         }
