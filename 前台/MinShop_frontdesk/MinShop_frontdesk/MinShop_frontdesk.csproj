@@ -103,7 +103,11 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\styleforlogin.css" />
+    <Content Include="Content\styleforregister.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\bedding\banner1.jpg" />
@@ -157,6 +161,7 @@
     <Content Include="images\lipgloss\bom_252405.jpg" />
     <Content Include="images\lipgloss\media_rd13.jpg" />
     <Content Include="images\lipgloss\media_rs03.jpg" />
+    <Content Include="images\login.jpg" />
     <Content Include="images\next.png" />
     <Content Include="images\prev.png" />
     <Content Include="images\tent\banner1.jpg" />
@@ -315,6 +320,7 @@
     <Content Include="Views\home\Order.cshtml" />
     <Content Include="Views\home\Bedding.cshtml" />
     <Content Include="Views\home\LipGloss.cshtml" />
+    <Content Include="Views\home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
