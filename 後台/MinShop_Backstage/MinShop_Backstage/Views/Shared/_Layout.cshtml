@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>minshop</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container body-content mb-5 h2">
+        <a href="~/home/CMS" class="btn btn-secondary btn-lg">客戶管理</a>
+        <a href="~/home/PMS" class="btn btn-secondary btn-lg">商品管理</a>
+        <a href="~/home/create" class="btn btn-secondary btn-lg">訂單管理</a>
+        <a href="~/home/create" class="btn btn-secondary btn-lg">活動管理</a>
+        <a href="~/home/create" class="btn btn-secondary btn-lg">客服管理</a>
+        <a href="~/home/create" class="btn btn-secondary btn-lg">倉儲管理</a>
+        <a href="~/home/create" class="btn btn-secondary btn-lg">物流管理</a>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

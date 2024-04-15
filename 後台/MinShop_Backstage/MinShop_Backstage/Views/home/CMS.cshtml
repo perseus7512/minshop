@@ -1,0 +1,106 @@
+﻿@model IEnumerable<MinShop_Backstage.Models.member>
+<h1>客戶管理</h1>
+
+<form class="h2">
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="name">名子:</label>
+            <input type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="memberId">會員編號:</label>
+            <input type="text" class="form-control" id="memberId">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="phone">電話:</label>
+            <input type="text" class="form-control" id="phone">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="company">公司名稱:</label>
+            <input type="text" class="form-control" id="company">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group  col-md-3">
+            <label for="sex">性別:</label>
+            <input type="text" class="form-control" id="sex">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="date">入會日:</label>
+            <input type="text" class="form-control" id="date">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="birthday">生日:</label>
+            <input type="text" class="form-control" id="birthday">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="address">地址:</label>
+            <input type="text" class="form-control" id="address">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="account">帳號:</label>
+            <input type="text" class="form-control" id="account">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="password">密碼:</label>
+            <input type="text" class="form-control" id="password">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="email">電子郵件:</label>
+            <input type="text" class="form-control" id="email">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="companyNumbers">統編:</label>
+            <input type="text" class="form-control" id="companyNumbers">
+        </div>
+    </div>
+    <div align="center">
+        <button type="submit" class="btn btn-secondary btn-lg" id="sub">確認</button>
+        <button type="submit" class="btn btn-info btn-lg">查詢</button>
+    </div>
+</form>
+<h2><a href="~/home/create" class="btn btn-primary btn-lg">會員新增</a></h2>
+<table class="table table-striped">
+    <thead class="h3">
+        <tr>
+            <th scope="col">會員編號</th>
+            <th scope="col">名子</th>
+            <th scope="col">帳號</th>
+            <th scope="col">密碼</th>
+            <th scope="col">性別</th>
+            <th scope="col">入會日</th>
+            <th scope="col">生日</th>
+            <th scope="col">電話</th>
+            <th scope="col">地址</th>
+            <th scope="col">電子郵件</th>
+            <th scope="col">統編</th>
+            <th scope="col">公司名稱</th>
+        </tr>
+    </thead>
+    <tbody class="h4">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.memberId</td>
+                    <td>@item.name</td>
+                    <td>@item.account</td>
+                    <td>@item.password</td>
+                    <td>@item.sex</td>
+                    <td>@item.date</td>
+                    <td>@item.birthday</td>
+                    <td>@item.phone</td>
+                    <td>@item.address</td>
+                    <td>@item.email</td>
+                    <td>@item.companyNumbers</td>
+                    <td>@item.company</td>
+                    <td><a href="~/home/delete?memberId=@item.memberId" onclick="return confirm('你確定要刪除嗎')" class="btn btn-danger btn-lg text-center">刪除</a><a href="~/home/edit?memberId=@item.memberId" target="_self" class="btn btn-success btn-lg text-center" onclick="edit()">修改</a></td>
+                </tr>
+            }
+        }
+        
+    </tbody>
+</table>

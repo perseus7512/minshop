@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mineshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="level1Class">
+    <Key>
+      <PropertyRef Name="level1Class1" />
+    </Key>
+    <Property Name="level1Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="level2Class" Relationship="Self.FK_level2Class_level1Class" FromRole="level1Class" ToRole="level2Class" />
+    <NavigationProperty Name="stock" Relationship="Self.FK_stock_level1Class" FromRole="level1Class" ToRole="stock" />
+  </EntityType>
+  <EntityType Name="level2Class">
+    <Key>
+      <PropertyRef Name="level1Class" />
+      <PropertyRef Name="level2Class1" />
+    </Key>
+    <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="level2Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="level1Class1" Relationship="Self.FK_level2Class_level1Class" FromRole="level2Class" ToRole="level1Class" />
+    <NavigationProperty Name="stock" Relationship="Self.FK_level2Class_stock" FromRole="level2Class" ToRole="stock" />
+  </EntityType>
+  <EntityType Name="level3Class">
+    <Key>
+      <PropertyRef Name="level1Class" />
+      <PropertyRef Name="level2Class" />
+      <PropertyRef Name="level3Class1" />
+    </Key>
+    <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="level2Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="level3Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="stock" Relationship="Self.FK_level3Class_stock" FromRole="level3Class" ToRole="stock" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="memberId" />
+    </Key>
+    <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="account" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="sex" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="companyNumbers" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+    <Property Name="company" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="saleInvoice" Relationship="Self.FK_saleInvoice_member" FromRole="member" ToRole="saleInvoice" />
+    <NavigationProperty Name="shoppingCart" Relationship="Self.FK_shoppingCart_member" FromRole="member" ToRole="shoppingCart" />
+  </EntityType>
+  <EntityType Name="message">
+    <Key>
+      <PropertyRef Name="orderId" />
+      <PropertyRef Name="memberId" />
+      <PropertyRef Name="messageId" />
+    </Key>
+    <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="messageId" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="responder" Type="Int32" Nullable="false" />
+    <Property Name="messageContent" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="total" Type="Int32" Nullable="false" />
+    <Property Name="paymentClass" Type="Int32" Nullable="false" />
+    <Property Name="creditCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="sendOption" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="reci" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="reciPhone" Type="Int32" Nullable="false" />
+    <Property Name="reciAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ps" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="paymentClass1" Relationship="Self.FK_order_paymentClass" FromRole="order" ToRole="paymentClass" />
+    <NavigationProperty Name="shoppingCart" Relationship="Self.FK_order_shoppingCart" FromRole="order" ToRole="shoppingCart" />
+  </EntityType>
+  <EntityType Name="paymentClass">
+    <Key>
+      <PropertyRef Name="paymentClass1" />
+    </Key>
+    <Property Name="paymentClass1" Type="Int32" Nullable="false" />
+    <Property Name="method" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="order" Relationship="Self.FK_order_paymentClass" FromRole="paymentClass" ToRole="order" />
+  </EntityType>
+  <EntityType Name="pickingDetail">
+    <Key>
+      <PropertyRef Name="pickingListId" />
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="pickingListId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="orderQuantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="pickingList" Relationship="Self.FK_pickingDetail_pickingList" FromRole="pickingDetail" ToRole="pickingList" />
+    <NavigationProperty Name="stock" Relationship="Self.FK_pickingDetail_stock" FromRole="pickingDetail" ToRole="stock" />
+  </EntityType>
+  <EntityType Name="pickingList">
+    <Key>
+      <PropertyRef Name="pickingListId" />
+    </Key>
+    <Property Name="pickingListId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="pickingDetail" Relationship="Self.FK_pickingDetail_pickingList" FromRole="pickingList" ToRole="pickingDetail" />
+    <NavigationProperty Name="ship" Relationship="Self.FK_ship_pickingList" FromRole="pickingList" ToRole="ship" />
+  </EntityType>
+  <EntityType Name="quotation">
+    <Key>
+      <PropertyRef Name="supplierId" />
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="supplierId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="unit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="cost" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="stock" Relationship="Self.FK_quotation_stock" FromRole="quotation" ToRole="stock" />
+    <NavigationProperty Name="supplier" Relationship="Self.FK_quotation_supplier" FromRole="quotation" ToRole="supplier" />
+  </EntityType>
+  <EntityType Name="saleInvoice">
+    <Key>
+      <PropertyRef Name="invoiceId" />
+    </Key>
+    <Property Name="invoiceId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="shipId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="member" Relationship="Self.FK_saleInvoice_member" FromRole="saleInvoice" ToRole="member" />
+    <NavigationProperty Name="ship" Relationship="Self.FK_saleInvoice_ship" FromRole="saleInvoice" ToRole="ship" />
+  </EntityType>
+  <EntityType Name="ship">
+    <Key>
+      <PropertyRef Name="shipId" />
+    </Key>
+    <Property Name="shipId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="pickingListId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="pickingList" Relationship="Self.FK_ship_pickingList" FromRole="ship" ToRole="pickingList" />
+    <NavigationProperty Name="saleInvoice" Relationship="Self.FK_saleInvoice_ship" FromRole="ship" ToRole="saleInvoice" />
+    <NavigationProperty Name="status" Relationship="Self.FK_status_ship" FromRole="ship" ToRole="status" />
+  </EntityType>
+  <EntityType Name="shoppingCart">
+    <Key>
+      <PropertyRef Name="cartId" />
+    </Key>
+    <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="checkout" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="member" Relationship="Self.FK_shoppingCart_member" FromRole="shoppingCart" ToRole="member" />
+    <NavigationProperty Name="order" Relationship="Self.FK_order_shoppingCart" FromRole="shoppingCart" ToRole="order" />
+    <NavigationProperty Name="shoppingDetail" Relationship="Self.FK_shoppingDetail_shoppingCart" FromRole="shoppingCart" ToRole="shoppingDetail" />
+  </EntityType>
+  <EntityType Name="shoppingDetail">
+    <Key>
+      <PropertyRef Name="cartId" />
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="putDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="shoppingCart" Relationship="Self.FK_shoppingDetail_shoppingCart" FromRole="shoppingDetail" ToRole="shoppingCart" />
+    <NavigationProperty Name="stock" Relationship="Self.FK_shoppingDetail_stock" FromRole="shoppingDetail" ToRole="stock" />
+  </EntityType>
+  <EntityType Name="stock">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="level2Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="level3Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="releaseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="removalDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="inventory" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="level1Class1" Relationship="Self.FK_stock_level1Class" FromRole="stock" ToRole="level1Class" />
+    <NavigationProperty Name="level2Class1" Relationship="Self.FK_level2Class_stock" FromRole="stock" ToRole="level2Class" />
+    <NavigationProperty Name="level3Class1" Relationship="Self.FK_level3Class_stock" FromRole="stock" ToRole="level3Class" />
+    <NavigationProperty Name="pickingDetail" Relationship="Self.FK_pickingDetail_stock" FromRole="stock" ToRole="pickingDetail" />
+    <NavigationProperty Name="quotation" Relationship="Self.FK_quotation_stock" FromRole="stock" ToRole="quotation" />
+    <NavigationProperty Name="shoppingDetail" Relationship="Self.FK_shoppingDetail_stock" FromRole="stock" ToRole="shoppingDetail" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="supplierId" />
+    </Key>
+    <Property Name="supplierId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="company" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="quotation" Relationship="Self.FK_quotation_supplier" FromRole="supplier" ToRole="quotation" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="shipId" />
+      <PropertyRef Name="orderId" />
+      <PropertyRef Name="status1" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="address" />
+    </Key>
+    <Property Name="shipId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="status1" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ship" Relationship="Self.FK_status_ship" FromRole="status" ToRole="ship" />
+  </EntityType>
+  <Association Name="FK_level2Class_level1Class">
+    <End Role="level1Class" Type="Self.level1Class" Multiplicity="1" />
+    <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="level1Class">
+        <PropertyRef Name="level1Class1" />
+      </Principal>
+      <Dependent Role="level2Class">
+        <PropertyRef Name="level1Class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stock_level1Class">
+    <End Role="level1Class" Type="Self.level1Class" Multiplicity="1" />
+    <End Role="stock" Type="Self.stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="level1Class">
+        <PropertyRef Name="level1Class1" />
+      </Principal>
+      <Dependent Role="stock">
+        <PropertyRef Name="level1Class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_level2Class_stock">
+    <End Role="stock" Type="Self.stock" Multiplicity="1" />
+    <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stock">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="level2Class">
+        <PropertyRef Name="level2Class1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_level3Class_stock">
+    <End Role="stock" Type="Self.stock" Multiplicity="1" />
+    <End Role="level3Class" Type="Self.level3Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stock">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="level3Class">
+        <PropertyRef Name="level3Class1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_saleInvoice_member">
+    <End Role="member" Type="Self.member" Multiplicity="1" />
+    <End Role="saleInvoice" Type="Self.saleInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="member">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="saleInvoice">
+        <PropertyRef Name="memberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_shoppingCart_member">
+    <End Role="member" Type="Self.member" Multiplicity="1" />
+    <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="member">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="shoppingCart">
+        <PropertyRef Name="memberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_paymentClass">
+    <End Role="paymentClass" Type="Self.paymentClass" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paymentClass">
+        <PropertyRef Name="paymentClass1" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="paymentClass" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_shoppingCart">
+    <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shoppingCart">
+        <PropertyRef Name="cartId" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="cartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pickingDetail_pickingList">
+    <End Role="pickingList" Type="Self.pickingList" Multiplicity="1" />
+    <End Role="pickingDetail" Type="Self.pickingDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pickingList">
+        <PropertyRef Name="pickingListId" />
+      </Principal>
+      <Dependent Role="pickingDetail">
+        <PropertyRef Name="pickingListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pickingDetail_stock">
+    <End Role="stock" Type="Self.stock" Multiplicity="1" />
+    <End Role="pickingDetail" Type="Self.pickingDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stock">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="pickingDetail">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ship_pickingList">
+    <End Role="pickingList" Type="Self.pickingList" Multiplicity="1" />
+    <End Role="ship" Type="Self.ship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pickingList">
+        <PropertyRef Name="pickingListId" />
+      </Principal>
+      <Dependent Role="ship">
+        <PropertyRef Name="pickingListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_quotation_stock">
+    <End Role="stock" Type="Self.stock" Multiplicity="1" />
+    <End Role="quotation" Type="Self.quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stock">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="quotation">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_quotation_supplier">
+    <End Role="supplier" Type="Self.supplier" Multiplicity="1" />
+    <End Role="quotation" Type="Self.quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="supplierId" />
+      </Principal>
+      <Dependent Role="quotation">
+        <PropertyRef Name="supplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_saleInvoice_ship">
+    <End Role="ship" Type="Self.ship" Multiplicity="1" />
+    <End Role="saleInvoice" Type="Self.saleInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ship">
+        <PropertyRef Name="shipId" />
+      </Principal>
+      <Dependent Role="saleInvoice">
+        <PropertyRef Name="shipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_status_ship">
+    <End Role="ship" Type="Self.ship" Multiplicity="1" />
+    <End Role="status" Type="Self.status" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ship">
+        <PropertyRef Name="shipId" />
+      </Principal>
+      <Dependent Role="status">
+        <PropertyRef Name="shipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_shoppingDetail_shoppingCart">
+    <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="1" />
+    <End Role="shoppingDetail" Type="Self.shoppingDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shoppingCart">
+        <PropertyRef Name="cartId" />
+      </Principal>
+      <Dependent Role="shoppingDetail">
+        <PropertyRef Name="cartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_shoppingDetail_stock">
+    <End Role="stock" Type="Self.stock" Multiplicity="1" />
+    <End Role="shoppingDetail" Type="Self.shoppingDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stock">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="shoppingDetail">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="mineshopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="level1Class" EntityType="Self.level1Class" />
+    <EntitySet Name="level2Class" EntityType="Self.level2Class" />
+    <EntitySet Name="level3Class" EntityType="Self.level3Class" />
+    <EntitySet Name="member" EntityType="Self.member" />
+    <EntitySet Name="message" EntityType="Self.message" />
+    <EntitySet Name="order" EntityType="Self.order" />
+    <EntitySet Name="paymentClass" EntityType="Self.paymentClass" />
+    <EntitySet Name="pickingDetail" EntityType="Self.pickingDetail" />
+    <EntitySet Name="pickingList" EntityType="Self.pickingList" />
+    <EntitySet Name="quotation" EntityType="Self.quotation" />
+    <EntitySet Name="saleInvoice" EntityType="Self.saleInvoice" />
+    <EntitySet Name="ship" EntityType="Self.ship" />
+    <EntitySet Name="shoppingCart" EntityType="Self.shoppingCart" />
+    <EntitySet Name="shoppingDetail" EntityType="Self.shoppingDetail" />
+    <EntitySet Name="stock" EntityType="Self.stock" />
+    <EntitySet Name="supplier" EntityType="Self.supplier" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="status" EntityType="Self.status" />
+    <AssociationSet Name="FK_level2Class_level1Class" Association="Self.FK_level2Class_level1Class">
+      <End Role="level1Class" EntitySet="level1Class" />
+      <End Role="level2Class" EntitySet="level2Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stock_level1Class" Association="Self.FK_stock_level1Class">
+      <End Role="level1Class" EntitySet="level1Class" />
+      <End Role="stock" EntitySet="stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_level2Class_stock" Association="Self.FK_level2Class_stock">
+      <End Role="stock" EntitySet="stock" />
+      <End Role="level2Class" EntitySet="level2Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_level3Class_stock" Association="Self.FK_level3Class_stock">
+      <End Role="stock" EntitySet="stock" />
+      <End Role="level3Class" EntitySet="level3Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_saleInvoice_member" Association="Self.FK_saleInvoice_member">
+      <End Role="member" EntitySet="member" />
+      <End Role="saleInvoice" EntitySet="saleInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_shoppingCart_member" Association="Self.FK_shoppingCart_member">
+      <End Role="member" EntitySet="member" />
+      <End Role="shoppingCart" EntitySet="shoppingCart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_paymentClass" Association="Self.FK_order_paymentClass">
+      <End Role="paymentClass" EntitySet="paymentClass" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_shoppingCart" Association="Self.FK_order_shoppingCart">
+      <End Role="shoppingCart" EntitySet="shoppingCart" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pickingDetail_pickingList" Association="Self.FK_pickingDetail_pickingList">
+      <End Role="pickingList" EntitySet="pickingList" />
+      <End Role="pickingDetail" EntitySet="pickingDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pickingDetail_stock" Association="Self.FK_pickingDetail_stock">
+      <End Role="stock" EntitySet="stock" />
+      <End Role="pickingDetail" EntitySet="pickingDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ship_pickingList" Association="Self.FK_ship_pickingList">
+      <End Role="pickingList" EntitySet="pickingList" />
+      <End Role="ship" EntitySet="ship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_quotation_stock" Association="Self.FK_quotation_stock">
+      <End Role="stock" EntitySet="stock" />
+      <End Role="quotation" EntitySet="quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_quotation_supplier" Association="Self.FK_quotation_supplier">
+      <End Role="supplier" EntitySet="supplier" />
+      <End Role="quotation" EntitySet="quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_saleInvoice_ship" Association="Self.FK_saleInvoice_ship">
+      <End Role="ship" EntitySet="ship" />
+      <End Role="saleInvoice" EntitySet="saleInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_status_ship" Association="Self.FK_status_ship">
+      <End Role="ship" EntitySet="ship" />
+      <End Role="status" EntitySet="status" />
+    </AssociationSet>
+    <AssociationSet Name="FK_shoppingDetail_shoppingCart" Association="Self.FK_shoppingDetail_shoppingCart">
+      <End Role="shoppingCart" EntitySet="shoppingCart" />
+      <End Role="shoppingDetail" EntitySet="shoppingDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_shoppingDetail_stock" Association="Self.FK_shoppingDetail_stock">
+      <End Role="stock" EntitySet="stock" />
+      <End Role="shoppingDetail" EntitySet="shoppingDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
