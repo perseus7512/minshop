@@ -43,5 +43,9 @@ namespace MinShop_frontdesk.Controllers
         {
             return View();
         }
+        public ActionResult register()
+        {
+            return View();
+        }
     }
 }
