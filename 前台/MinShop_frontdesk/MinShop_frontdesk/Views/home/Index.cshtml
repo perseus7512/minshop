@@ -70,6 +70,9 @@
         transition: transform 0.8s ease; /* 添加動畫效果 */
     }
 
+        .card img {
+            height: auto;
+        }
     /* 廣告區 */
 
     .advertise {
@@ -100,9 +103,15 @@
     }
 
     nav {
-        width: 200px;
+        width: auto;
     }
 
+    /* 自定義 Carousel 內容的高度 */
+    .carousel-inner {
+        height: 100%; /* 調整輪播內容的高度 */
+    }
+
+<<<<<<< Updated upstream
     /* 自定義 Carousel 內容的高度 */
     .carousel-inner {
         height: 100%; /* 調整輪播內容的高度 */
@@ -111,6 +120,18 @@
     .carousel {
         height: 100%; /* 調整輪播的高度，這裡設定為 400px */
         background-color: lightgray; /* 可選：設定輪播背景顏色 */
+=======
+    .carousel {
+        height: 100%; /* 調整輪播的高度，這裡設定為 400px */
+        background-color: lightgray; /* 可選：設定輪播背景顏色 */
+    }
+
+    /* 可選：設定輪播圖片的高度 */
+    .carousel-item img {
+        height: 100%; /* 調整輪播圖片的高度 */
+        width: 100%; /* 保持圖片寬度自適應 */
+        object-fit: cover; /* 圖片填滿整個輪播框 */
+>>>>>>> Stashed changes
     }
 
     /* 可選：設定輪播圖片的高度 */
@@ -133,7 +154,11 @@
                 <a class="btn btn-outline-success my-2 my-sm-0" href="#">店家資訊</a>
             </nav>
         </div>
+<<<<<<< Updated upstream
         <div class="col-sm-9 ml-5 justify-content-center align-items-center">
+=======
+        <div class="col-sm-9 justify-content-center align-items-center">
+>>>>>>> Stashed changes
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -188,7 +213,6 @@
                         <a href="#" class="btn btn-outline-info">加入購物車</a>
                     </div>
                 </div>
-
                 <div class="card m-2" style="width: 13rem; height: 23rem;">
                     <img src="~/images/bedding/bedding_blue_sea.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -197,7 +221,6 @@
                         <a href="#" class="btn btn-outline-info">加入購物車</a>
                     </div>
                 </div>
-
                 <div class="card m-2" style="width: 13rem; height: 23rem;">
                     <img src="~/images/bedding/bedding_desert_camel.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -206,7 +229,6 @@
                         <a href="#" class="btn btn-outline-info">加入購物車</a>
                     </div>
                 </div>
-
                 <div class="card m-2" style="width: 13rem; height: 23rem;">
                     <img src="~/images/bedding/bedding_long_island_iced_tea.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -215,7 +237,6 @@
                         <a href="#" class="btn btn-outline-info">加入購物車</a>
                     </div>
                 </div>
-
                 <div class="card m-2" style="width: 13rem; height: 23rem;">
                     <img src="~/images/bedding/bedding_moonlit_forest.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -224,7 +245,6 @@
                         <a href="#" class="btn btn-outline-info">加入購物車</a>
                     </div>
                 </div>
-
                 <div class="card m-2" style="width: 13rem; height: 23rem;">
                     <img src="~/images/bedding/bedding_nova_geo.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -233,7 +253,6 @@
                         <a href="#" class="btn btn-outline-info">加入購物車</a>
                     </div>
                 </div>
-
                 <div class="card m-2" style="width: 13rem; height: 23rem;">
                     <img src="~/images/bedding/bedding_single_blue_stripe.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -242,7 +261,6 @@
                         <a href="#" class="btn btn-outline-info">加入購物車</a>
                     </div>
                 </div>
-
                 <div class="card m-2" style="width: 13rem; height: 23rem;">
                     <img src="~/images/bedding/thin_blanket_printed_savanna_animals_milktea.jpg" class="card-img-top"
                          alt="...">
@@ -252,7 +270,6 @@
                         <a href="#" class="btn btn-outline-info">加入購物車</a>
                     </div>
                 </div>
-
                 <div class="card m-2" style="width: 13rem; height: 23rem;">
                     <img src="~/images/bedding/blanket_graphene_tree.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -268,7 +285,6 @@
     <!-- ===================================== 新品上架 END ===================================== -->
     <!-- ======================================= 廣告區域 ======================================= -->
     <div class="advertise">
-
         <div class="col-md-4 col-sm-4" style="padding-right: 10px;">
             <div>
                 <a href="#"><img class="img-fluid rounded" src="~/images/banner/home-banner1.jpg" alt=""></a>
@@ -284,7 +300,6 @@
                 <a href="#"><img class="img-fluid rounded" src="~/images/banner/home-banner3.jpg" alt=""></a>
             </div>
         </div>
-
     </div>
     <!-- ===================================== 廣告區域 END ===================================== -->
     <!-- ======================================= 熱門分類 ======================================= -->
@@ -313,7 +328,6 @@
                        href="#list-tent" role="tab" aria-controls="tent">
                         <i class="fa-solid fa-tent"></i>&nbsp;帳篷
                     </a>
-
                     <!-- =============================== 尚無功能 =============================== -->
                     <li class="list-group-item"><i class="fa-solid fa-utensils"></i>&nbsp;餐廚用品</li>
                     <li class="list-group-item"><i class="fa-solid fa-tv"></i>&nbsp;電視</li>
@@ -339,7 +353,6 @@
                                     <a href="#" class="btn btn-outline-info">加入購物車</a>
                                 </div>
                             </div>
-
                             <div class="card m-2" style="width: 13rem; height: 23rem;">
                                 <img src="~/images/lipgloss/2an_279707.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -348,7 +361,6 @@
                                     <a href="#" class="btn btn-outline-info">加入購物車</a>
                                 </div>
                             </div>
-
                             <div class="card m-2" style="width: 13rem; height: 23rem;">
                                 <img src="~/images/lipgloss/babybright_bayberry.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -375,7 +387,6 @@
                                     <a href="#" class="btn btn-outline-info">加入購物車</a>
                                 </div>
                             </div>
-
                             <div class="card m-2" style="width: 13rem; height: 23rem;">
                                 <img src="~/images/bedding/pillow_graphene_washable.jpg" class="card-img-top"
                                      alt="...">
@@ -385,7 +396,6 @@
                                     <a href="#" class="btn btn-outline-info">加入購物車</a>
                                 </div>
                             </div>
-
                             <div class="card m-2" style="width: 13rem; height: 23rem;">
                                 <img src="~/images/bedding/bedding_moonlit_forest.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -410,7 +420,6 @@
                                     <a href="#" class="btn btn-outline-info">加入購物車</a>
                                 </div>
                             </div>
-
                             <div class="card m-2" style="width: 13rem; height: 23rem;">
                                 <img src="~/images/tent/kzm_16641.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -419,7 +428,6 @@
                                     <a href="#" class="btn btn-outline-info">加入購物車</a>
                                 </div>
                             </div>
-
                             <div class="card m-2" style="width: 13rem; height: 23rem;">
                                 <img src="~/images/tent/horizon_17044.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -456,55 +464,55 @@
     </div>
     <!-- ===================================== 廣告區域 END ===================================== -->
 </div>
-</div>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const productsInner = document.querySelector('.products-inner');
-    const productsContainer = document.querySelector('.product-container');
-    const productCards = document.querySelectorAll('.card');
-    let visibleCards = calculateVisibleCards(); // 計算可視卡片數量
-    let currentPage = 0;
+    document.addEventListener("DOMContentLoaded", function () {
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const productsInner = document.querySelector('.products-inner');
+        const productsContainer = document.querySelector('.product-container');
+        const productCards = document.querySelectorAll('.card');
+        let visibleCards = calculateVisibleCards(); // 計算可視卡片數量
+        let currentPage = 0;
 
-    function calculateVisibleCards() {
-        const containerWidth = productsContainer.offsetWidth - 40; // 減去左右內邊距
-        const cardWidth = productCards[0].offsetWidth;
-        const totalWidth = productCards.length * cardWidth;
-        return Math.floor(containerWidth / cardWidth);
-    }
-
-    function goToPrevPage() {
-        if (currentPage > 0) {
-            currentPage--;
-            scrollToPage(currentPage);
+        function calculateVisibleCards() {
+            const containerWidth = productsContainer.offsetWidth - 40; // 減去左右內邊距
+            const cardWidth = productCards[0].offsetWidth;
+            const totalWidth = productCards.length * cardWidth;
+            return Math.floor(containerWidth / cardWidth);
         }
-    }
 
-    function goToNextPage() {
-        const totalPages = Math.ceil(productCards.length / visibleCards);
-        if (currentPage < totalPages - 1) {
-            currentPage++;
-            scrollToPage(currentPage);
+        function goToPrevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                scrollToPage(currentPage);
+            }
         }
-    }
 
-    function scrollToPage(pageIndex) {
-        const cardWidth = productsContainer.offsetWidth / visibleCards;
-        const scrollX = pageIndex * (cardWidth * visibleCards);
-        productsInner.style.transform = `translateX(-${scrollX}px)`;
-    }
+        function goToNextPage() {
+            const totalPages = Math.ceil(productCards.length / visibleCards);
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                scrollToPage(currentPage);
+            }
+        }
 
-    prevBtn.addEventListener('click', goToPrevPage);
-    nextBtn.addEventListener('click', goToNextPage);
+        function scrollToPage(pageIndex) {
+            const cardWidth = productsContainer.offsetWidth / visibleCards;
+            const scrollX = pageIndex * (cardWidth * visibleCards);
+            productsInner.style.transform = `translateX(-${scrollX}px)`;
+        }
 
-    // 調整視窗大小時重新計算可視卡片數量
-    window.addEventListener('resize', function() {
-        visibleCards = calculateVisibleCards();
-        scrollToPage(currentPage);
+        prevBtn.addEventListener('click', goToPrevPage);
+        nextBtn.addEventListener('click', goToNextPage);
+
+        // 調整視窗大小時重新計算可視卡片數量
+        window.addEventListener('resize', function () {
+            visibleCards = calculateVisibleCards();
+            scrollToPage(currentPage);
+        });
+
+        // 調整商品卡片容器的寬度
+        productsInner.style.width = `${productCards.length * 100}%`;
     });
-
-    // 調整商品卡片容器的寬度
-    productsInner.style.width = `${productCards.length * 100}%`;
-});
 </script>

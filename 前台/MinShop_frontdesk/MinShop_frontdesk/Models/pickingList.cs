@@ -22,7 +22,7 @@ namespace MinShop_frontdesk.Models
         }
     
         public string pickingListId { get; set; }
-        public System.DateTime date { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
         public string name { get; set; }
         public string orderId { get; set; }
     

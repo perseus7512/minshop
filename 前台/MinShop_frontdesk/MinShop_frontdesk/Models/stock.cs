@@ -26,14 +26,15 @@ namespace MinShop_frontdesk.Models
     
         public string productId { get; set; }
         public string name { get; set; }
-        public int price { get; set; }
+        public Nullable<int> price { get; set; }
         public string image { get; set; }
         public string level1Class { get; set; }
         public string level2Class { get; set; }
         public string level3Class { get; set; }
-        public System.DateTime releaseDate { get; set; }
-        public System.DateTime removalDate { get; set; }
-        public int inventory { get; set; }
+        public Nullable<System.DateTime> releaseDate { get; set; }
+        public Nullable<System.DateTime> removalDate { get; set; }
+        public Nullable<int> inventory { get; set; }
+        public Nullable<int> remove { get; set; }
     
         public virtual level1Class level1Class1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

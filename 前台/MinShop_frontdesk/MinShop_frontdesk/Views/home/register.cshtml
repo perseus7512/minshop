@@ -48,16 +48,41 @@
     }
 </style>
 <div class="container d-flex justify-content-center align-items-center">
-    <form action="" class="register">
+    <form method="post" action="~/home/register" class="register">
         <h1>註冊</h1>
         <i class="fa fa-user-circle-o"></i>
+        <h2>姓名</h2>
+        <input type="text" placeholder="請輸入姓名" name="name" id="name">
         <h2>電子郵件</h2>
-        <input type="text" placeholder="請輸入電子郵件">
+        <input type="email" placeholder="請輸入電子郵件" name="email" id="email">
         <h2>密碼</h2>
-        <input type="password1" placeholder="請輸入密碼">
+        <input type="password" placeholder="請輸入密碼" name="pass1" id="pass1" minlength="8" maxlength="16">
         <h2>確認密碼</h2>
-        <input type="password2" placeholder="請再次輸入密碼">
-        <button type="submit1" onclick="location.href=('登入頁面.html')">取消</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <button type="submit2" onclick='location.href=("登入頁面.html")'>確認</button>
+        <input type="password" placeholder="請再次輸入密碼" name="pass2" id="pass2" minlength="8" maxlength="16">
+        <button type="submit" onclick="location.href=('~/home/Login')">取消</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <button type="submit">確認</button>
     </form>
-</div>>
+</div>
+<script>
+    var pass1 = document.querySelector('#pass1');
+    var pass2 = document.querySelector('#pass2');
+    var btn = document.querySelector('#btn');
+    btn.addEventListener('click', function(event) { // 传递事件对象
+        var email = document.querySelector('#email');
+        if (!email.checkValidity()) { // 如果邮箱格式不正确
+            alert('电子邮件格式不正确');
+            event.preventDefault(); // 阻止表单提交
+            return; // 退出函数
+        }
+        if(pass1.value.length < 8 || pass1.value.length > 16) { // 使用正确的比较运算符
+            alert('密碼不可少於8,也不可大於16');
+            event.preventDefault();
+        }else{    
+            if (pass1.value != pass2.value) {
+                alert('密碼不相同,請重新輸入');
+                event.preventDefault();
+            }
+        }
+    });
+</script>
+

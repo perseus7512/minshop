@@ -16,8 +16,8 @@ namespace MinShop_frontdesk.Models
     {
         public string shipId { get; set; }
         public string orderId { get; set; }
-        public int status1 { get; set; }
-        public System.DateTime date { get; set; }
+        public Nullable<int> status1 { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
         public string address { get; set; }
     
         public virtual ship ship { get; set; }

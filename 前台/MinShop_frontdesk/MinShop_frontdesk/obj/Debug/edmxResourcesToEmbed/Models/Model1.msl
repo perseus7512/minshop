@@ -169,6 +169,7 @@
           <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
           <ScalarProperty Name="removalDate" ColumnName="removalDate" />
           <ScalarProperty Name="inventory" ColumnName="inventory" />
+          <ScalarProperty Name="remove" ColumnName="remove" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

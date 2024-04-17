@@ -16,7 +16,7 @@ namespace MinShop_frontdesk.Models
     {
         public string pickingListId { get; set; }
         public string productId { get; set; }
-        public int orderQuantity { get; set; }
+        public Nullable<int> orderQuantity { get; set; }
     
         public virtual pickingList pickingList { get; set; }
         public virtual stock stock { get; set; }

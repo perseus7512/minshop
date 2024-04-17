@@ -17,8 +17,8 @@ namespace MinShop_frontdesk.Models
         public string orderId { get; set; }
         public string memberId { get; set; }
         public int messageId { get; set; }
-        public System.DateTime date { get; set; }
-        public int responder { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+        public Nullable<int> responder { get; set; }
         public string messageContent { get; set; }
     }
 }

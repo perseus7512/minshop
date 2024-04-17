@@ -26,8 +26,8 @@ namespace MinShop_frontdesk.Models
         public string account { get; set; }
         public string password { get; set; }
         public string sex { get; set; }
-        public System.DateTime date { get; set; }
-        public System.DateTime birthday { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+        public Nullable<System.DateTime> birthday { get; set; }
         public string phone { get; set; }
         public string address { get; set; }
         public string email { get; set; }

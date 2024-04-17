@@ -23,8 +23,8 @@ namespace MinShop_frontdesk.Models
     
         public string cartId { get; set; }
         public string memberId { get; set; }
-        public System.DateTime date { get; set; }
-        public System.DateTime checkout { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+        public Nullable<System.DateTime> checkout { get; set; }
     
         public virtual member member { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

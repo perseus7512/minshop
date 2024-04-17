@@ -1,4 +1,4 @@
-﻿﻿
+﻿@model IEnumerable<MinShop_frontdesk.Models.member>
 <style>
     body {
         font-family: Roboto;
@@ -64,7 +64,7 @@
 }
 <body>
     <div class="container d-flex justify-content-center align-items-center">
-        <form>
+        <form method="post" action="~/home/Users">
             <div class="mb-3">
                 <fieldset>
                     <legend><h2>編輯個人檔案</h2></legend>
