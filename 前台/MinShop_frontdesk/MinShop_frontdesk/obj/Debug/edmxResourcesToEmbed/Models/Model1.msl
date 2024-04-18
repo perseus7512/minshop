@@ -33,7 +33,6 @@
         <MappingFragment StoreEntitySet="member">
           <ScalarProperty Name="memberId" ColumnName="memberId" />
           <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="account" ColumnName="account" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="sex" ColumnName="sex" />
           <ScalarProperty Name="date" ColumnName="date" />
@@ -42,7 +41,6 @@
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="companyNumbers" ColumnName="companyNumbers" />
-          <ScalarProperty Name="company" ColumnName="company" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

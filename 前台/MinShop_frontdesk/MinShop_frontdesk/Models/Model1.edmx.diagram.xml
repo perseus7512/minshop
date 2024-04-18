@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1020ba2d2e0b4cf5b44cfb65f28745ff" Name="Diagram1">
+      <Diagram DiagramId="4ce22162cdfa4e11afb9de404dd0688d" Name="Diagram1">
         <EntityTypeShape EntityType="mineshopModel.level1Class" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="mineshopModel.level2Class" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="mineshopModel.level3Class" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="mineshopModel.member" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mineshopModel.member" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mineshopModel.message" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="mineshopModel.order" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mineshopModel.paymentClass" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />

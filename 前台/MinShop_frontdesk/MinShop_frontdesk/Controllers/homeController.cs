@@ -28,9 +28,11 @@ namespace MinShop_frontdesk.Controllers
         {
             return View();
         }
-        public ActionResult Users()
+        public ActionResult Users(string email)
         {
-            return View();
+            email = Session["MemberEmail"].ToString();
+            var user = db.member.Where(m=>m.email==email).FirstOrDefault();
+            return View(user);
         }
         public ActionResult Tent()
         {
@@ -65,6 +67,7 @@ namespace MinShop_frontdesk.Controllers
             {
                 Session["Member"] = me;
                 Session["MemberName"] = me.name;
+                Session["MemberEmail"] = me.email;
                 Session["Welcome"] = me.name + "-歡迎光臨";
                 return RedirectToAction("index");
             }
@@ -74,26 +77,59 @@ namespace MinShop_frontdesk.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult register(string name, string email, string pass1)
+        public ActionResult register(string name, string email, string pass1,string sex,DateTime birthday,string phone,string address,string companyNumbers)
         {
             member m = new member();
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < 1; i++)
             {
                 m.memberId = GenerateSerialNumber();
             }
             m.name = name;
             m.email = email;
             m.password = pass1;
+            m.sex = sex;
+            m.date = DateTime.Now;
+            m.birthday = birthday;
+            m.phone = phone;
+            m.address = address;
+            m.companyNumbers = companyNumbers;
             db.member.Add(m);
-            db.SaveChanges();
+            try
+            {
+                // 嘗試儲存更改至資料庫
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // 處理驗證失敗的例外
+                foreach (var entityErrors in ex.EntityValidationErrors)
+                {
+                    // 獲取驗證失敗的實體
+                    var entity = entityErrors.Entry.Entity.GetType().Name;
+
+                    // 獲取驗證失敗的屬性
+                    foreach (var error in entityErrors.ValidationErrors)
+                    {
+                        var propertyName = error.PropertyName;
+                        var errorMessage = error.ErrorMessage;
+
+                        // 處理驗證失敗的屬性
+                        // 例如，記錄錯誤、向使用者顯示錯誤等
+                    }
+                }
+            }
             return RedirectToAction("Login");
         }
 
         public static string GenerateSerialNumber()
         {
-            int counter = 0;
-            counter++;
-            return "M" + counter.ToString().PadLeft(6, '0'); // 假设流水号以SN开头，后跟递增的数字，且总长度为8位
+            using(var db=new mineshopEntities())
+            {
+                var max = db.member.Max(m => m.memberId);
+                int counter = Convert.ToInt32(max.Substring(1));
+                counter++;
+                return "M" + counter.ToString().PadLeft(6, '0'); // 假设流水号以SN开头，后跟递增的数字，且总长度为8位
+            }
         }
     }
 }

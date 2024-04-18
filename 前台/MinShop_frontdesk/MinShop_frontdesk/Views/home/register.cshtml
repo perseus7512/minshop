@@ -1,88 +1,154 @@
 ﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<sty>
 
-<style>
-    body {
-        padding: 0;
-        margin: 0;
-    }
-
-    .register {
-        background: rgba(0,0,0, 0.5);
-        text-align: center;
-        color: #fff;
-        font-family: "微軟正黑體",sans-serif;
-        border-radius: 10px;
-        padding: 30px;
-        width: 60%;
-    }
-
-        .register i {
-            font-size: 100px;
-            margin: 20px auto;
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
         }
 
-    input {
-        font-size: 16px;
-        font-family: "微軟正黑體",sans-serif;
-        padding: 5px;
-        border-radius: 4px;
-        margin: 0 auto;
-        display: block;
-        width: 100%;
-    }
-
-    button {
-        border: 0;
-        padding: 6px 12px;
-        margin: 20px auto;
-        font-size: 18px;
-        font-family: "微軟正黑體",sans-serif;
-        background: #fff;
-        color: #000;
-    }
-
-    @@media (max-width:450px) {
         .register {
-            width: 70%;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-family: "微軟正黑體", sans-serif;
+            border-radius: 10px;
+            padding: 30px;
+            width: 60%;
+            text-align: center; /* 将文本居中对齐 */
         }
-    }
-</style>
-<div class="container d-flex justify-content-center align-items-center">
-    <form method="post" action="~/home/register" class="register">
-        <h1>註冊</h1>
-        <i class="fa fa-user-circle-o"></i>
-        <h2>姓名</h2>
-        <input type="text" placeholder="請輸入姓名" name="name" id="name">
-        <h2>電子郵件</h2>
-        <input type="email" placeholder="請輸入電子郵件" name="email" id="email">
-        <h2>密碼</h2>
-        <input type="password" placeholder="請輸入密碼" name="pass1" id="pass1" minlength="8" maxlength="16">
-        <h2>確認密碼</h2>
-        <input type="password" placeholder="請再次輸入密碼" name="pass2" id="pass2" minlength="8" maxlength="16">
-        <button type="submit" onclick="location.href=('~/home/Login')">取消</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <button type="submit">確認</button>
-    </form>
-</div>
-<script>
-    var pass1 = document.querySelector('#pass1');
-    var pass2 = document.querySelector('#pass2');
-    var btn = document.querySelector('#btn');
-    btn.addEventListener('click', function(event) { // 传递事件对象
-        var email = document.querySelector('#email');
-        if (!email.checkValidity()) { // 如果邮箱格式不正确
-            alert('电子邮件格式不正确');
-            event.preventDefault(); // 阻止表单提交
-            return; // 退出函数
+
+            .register i {
+                font-size: 100px;
+                margin: 20px auto;
+            }
+
+        input {
+            font-size: 16px;
+            font-family: "微軟正黑體", sans-serif;
+            padding: 5px;
+            border-radius: 4px;
+            margin: 0 auto;
+            display: block;
+            width: 100%;
         }
-        if(pass1.value.length < 8 || pass1.value.length > 16) { // 使用正确的比较运算符
-            alert('密碼不可少於8,也不可大於16');
-            event.preventDefault();
-        }else{    
-            if (pass1.value != pass2.value) {
-                alert('密碼不相同,請重新輸入');
-                event.preventDefault();
+
+        button {
+            border: 0;
+            padding: 6px 12px;
+            margin: 20px auto;
+            font-size: 18px;
+            font-family: "微軟正黑體", sans-serif;
+            background: #fff;
+            color: #000;
+        }
+
+        .custom-radio {
+            transform: scale(2);
+        }
+
+        @@media (max-width: 450px) {
+            .register {
+                width: 70%;
             }
         }
+    </style>
+    <div class="container d-flex justify-content-center align-items-center">
+        <form method="post" action="~/home/register" class="register">
+            <h1>註冊</h1>
+            <i class="fa fa-user-circle-o"></i><br>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-left"><h2>姓名:</h2></label>
+                <div class="col-sm-8">
+                    <input type="text" placeholder="請輸入姓名" name="name" id="name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-left"><h2>電子郵件:</h2></label>
+                <div class="col-sm-8">
+                    <input type="email" placeholder="請輸入電子郵件" name="email" id="email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-left"><h2>密碼:</h2></label>
+                <div class="col-sm-8">
+                    <input type="password" placeholder="請輸入密碼" name="pass1" id="pass1" minlength="8" maxlength="16">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-left"><h2>確認密碼:</h2></label>
+                <div class="col-sm-8">
+                    <input type="password" placeholder="請再次輸入密碼" name="pass2" id="pass2" minlength="8" maxlength="16">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="memberId" class="col-sm-5 col-form-label text-left"><h2>性別:</h2></label>
+                <div class="form-check form-check-inline col-sm-3" style="text-align:right">
+                    <input class="form-check-input custom-radio" type="radio" name="sex" id="sex" value="0">
+                    <label class="form-check-label" for="inlineRadio1" style="font-size:x-large">男</label>
+                </div>
+                <div class="form-check form-check-inline col-sm-3" style="text-align:right">
+                    <input class="form-check-input custom-radio" type="radio" name="sex" id="sex" value="1">
+                    <label class="form-check-label" for="inlineRadio2" style="font-size:x-large">女</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-left"><h2>生日:</h2></label>
+                <div class="col-sm-8">
+                    <input type="date" placeholder="請輸入生日" name="birthday" id="birthday">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-left"><h2>電話:</h2></label>
+                <div class="col-sm-8">
+                    <input type="text" placeholder="請輸入電話" name="phone" id="phone" pattern="[0][9][0-9]{8}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-left"><h2>地址:</h2></label>
+                <div class="col-sm-8">
+                    <input type="text" placeholder="請輸入地址" name="address" id="address">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label text-left"><h2>統編:</h2></label>
+                <div class="col-sm-8">
+                    <input type="text" placeholder="請輸入統編" name="companyNumbers" id="companyNumbers">
+                </div>
+            </div>
+            <a href="~/home/Login" class="btn btn-light">取消</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button type="submit" style="text-align:center;" id="btn">確認</button>
+        </form>
+    </div>
+    <script>
+    var btn = document.querySelector('#btn');
+    var phone = document.querySelector('#phone');
+    var email = document.querySelector('#email');
+    var pass1 = document.querySelector('#pass1');
+    var pass2 = document.querySelector('#pass2');
+    var pattern = phone.getAttribute('pattern');
+    var regex = new RegExp(pattern);
+    btn.addEventListener('click', function () {
+        var value = phone.value;
+        if (regex.test(value)) {
+            if (regex.test(value)) {
+                if (!email.checkValidity()) {
+                    alert('電子郵件格式不正確');
+                    event.preventDefault();
+                    return;
+                }
+                if(pass1.value.length < 8 || pass1.value.length > 16) {
+                    alert('密碼不符合要求,請輸入8到16个字符之間的密碼');
+                    event.preventDefault();
+                }
+                if (pass1.value !== pass2.value) {
+                    alert('密碼不相同,請重新輸入');
+                    event.preventDefault();
+                }
+            } else {
+                event.preventDefault();
+            }
+        } else {
+            return;
+        }
     });
-</script>
-
+    </script>

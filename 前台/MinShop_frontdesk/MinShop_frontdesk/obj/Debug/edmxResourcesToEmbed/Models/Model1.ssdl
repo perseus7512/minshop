@@ -33,7 +33,6 @@
     </Key>
     <Property Name="memberId" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="name" Type="nchar" MaxLength="10" />
-    <Property Name="account" Type="nchar" MaxLength="16" />
     <Property Name="password" Type="nchar" MaxLength="16" />
     <Property Name="sex" Type="nchar" MaxLength="5" />
     <Property Name="date" Type="date" />
@@ -42,7 +41,6 @@
     <Property Name="address" Type="nchar" MaxLength="50" />
     <Property Name="email" Type="nchar" MaxLength="50" />
     <Property Name="companyNumbers" Type="nchar" MaxLength="16" />
-    <Property Name="company" Type="nchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="message">
     <Key>
