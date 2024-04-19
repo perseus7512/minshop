@@ -17,7 +17,7 @@ namespace MinShop_frontdesk.Controllers
             var stocks = db.stock.ToList();
             if (Session["Member"] == null)
             {
-                return View("Index", "_Layout",stocks);
+                return View("Index", "_Layout", stocks);
             }
             else
             {
@@ -28,11 +28,71 @@ namespace MinShop_frontdesk.Controllers
         {
             return View();
         }
-        public ActionResult Users(string email)
+        public ActionResult AddCar(string productId)
         {
-            email = Session["MemberEmail"].ToString();
-            var user = db.member.Where(m=>m.email==email).FirstOrDefault();
+            var memberId = ((member)Session["Member"]).memberId;
+            var currenCar = db.shoppingDetail.Where(m => m.memberId == memberId && m.productId == productId && m.IsApproved == "否").FirstOrDefault();
+            if (currenCar == null)
+            {
+                var product = db.stock.Where(m => m.productId == productId).FirstOrDefault();
+                shoppingDetail sd = new shoppingDetail();
+                for (int i = 0; i < 1; i++)
+                {
+                    sd.cartId = ProductNumber();
+                }
+                sd.memberId = memberId;
+                sd.IsApproved = "否";
+                db.shoppingDetail.Add(sd);
+            }
+            else
+            {
+                currenCar.quantity += 1;
+            }
+            db.SaveChanges();
+            return RedirectToAction("ShoppingCar");
+        }
+        public ActionResult Users()
+        {
+            string email = Session["MemberEmail"].ToString();
+            var user = db.member.Where(m => m.email == email).FirstOrDefault();
             return View(user);
+        }
+        [HttpPost]
+        public ActionResult Users(string name, string email, string sex, DateTime birthday, string phone, string address, string companyNumbers)
+        {
+            var user = db.member.Where(m => m.email == email).FirstOrDefault();
+            user.name = name;
+            user.email = email;
+            user.sex = sex;
+            user.birthday = birthday;
+            user.phone = phone;
+            user.address = address;
+            user.companyNumbers = companyNumbers;
+            try
+            {
+                // 嘗試儲存更改至資料庫
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // 處理驗證失敗的例外
+                foreach (var entityErrors in ex.EntityValidationErrors)
+                {
+                    // 獲取驗證失敗的實體
+                    var entity = entityErrors.Entry.Entity.GetType().Name;
+
+                    // 獲取驗證失敗的屬性
+                    foreach (var error in entityErrors.ValidationErrors)
+                    {
+                        var propertyName = error.PropertyName;
+                        var errorMessage = error.ErrorMessage;
+
+                        // 處理驗證失敗的屬性
+                        // 例如，記錄錯誤、向使用者顯示錯誤等
+                    }
+                }
+            }
+            return RedirectToAction("Users");
         }
         public ActionResult Tent()
         {
@@ -55,7 +115,7 @@ namespace MinShop_frontdesk.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string email,string pass)
+        public ActionResult Login(string email, string pass)
         {
             var me = db.member.Where(m => m.email == email && m.password == pass).FirstOrDefault();
             if (me == null)
@@ -77,12 +137,12 @@ namespace MinShop_frontdesk.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult register(string name, string email, string pass1,string sex,DateTime birthday,string phone,string address,string companyNumbers)
+        public ActionResult register(string name, string email, string pass1, string sex, DateTime birthday, string phone, string address, string companyNumbers)
         {
             member m = new member();
-            for(int i = 0; i < 1; i++)
+            for (int i = 0; i < 1; i++)
             {
-                m.memberId = GenerateSerialNumber();
+                m.memberId = memberNumber();
             }
             m.name = name;
             m.email = email;
@@ -121,14 +181,40 @@ namespace MinShop_frontdesk.Controllers
             return RedirectToAction("Login");
         }
 
-        public static string GenerateSerialNumber()
+        public static string memberNumber()
         {
-            using(var db=new mineshopEntities())
+            using (var db = new mineshopEntities())
             {
+                int counter;
                 var max = db.member.Max(m => m.memberId);
-                int counter = Convert.ToInt32(max.Substring(1));
+                if (max != null)
+                {
+                    counter = Convert.ToInt32(max.Substring(1));
+                }
+                else
+                {
+                    counter = 0;
+                }
                 counter++;
-                return "M" + counter.ToString().PadLeft(6, '0'); // 假设流水号以SN开头，后跟递增的数字，且总长度为8位
+                return "M" + counter.ToString().PadLeft(6, '0');
+            }
+        }
+        public static string ProductNumber()
+        {
+            using (var db = new mineshopEntities())
+            {
+                int counter;
+                var max = db.shoppingDetail.Max(m => m.cartId);
+                if (max != null)
+                {
+                    counter = Convert.ToInt32(max.Substring(1));
+                }
+                else
+                {
+                    counter = 0;
+                }
+                counter++;
+                return "P" + counter.ToString().PadLeft(6, '0');
             }
         }
     }

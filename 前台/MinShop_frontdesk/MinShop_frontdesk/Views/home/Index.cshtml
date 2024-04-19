@@ -1,4 +1,5 @@
-﻿<style>
+﻿@model IEnumerable<MinShop_frontdesk.Models.stock>
+<style>
     body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -107,7 +108,6 @@
     }
 
     .carousel {
-
         background-color: lightgray; /* 可選：設定輪播背景顏色 */
     }
 
@@ -117,8 +117,6 @@
         width: 100%; /* 保持圖片寬度自適應 */
         object-fit: cover; /* 圖片填滿整個輪播框 */
     }
-
-
 </style>
 <div class="container mt-3">
     <div class="row" id="nav">
@@ -179,79 +177,17 @@
         <!-- ================================ 商品陳列區域 ================================ -->
         <div class="product-container rounded-bottom">
             <div class="products-inner py-3">
-                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                    <img src="~/images/bedding/bedding_autumn_migratory_bird.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">商品名稱1</h5>
-                        <p class="card-text">價錢: $100</p>
-                        <a href="#" class="btn btn-outline-info">加入購物車</a>
+                @foreach(var item in Model)
+                {
+                    <div class="card m-2" style="width: 13rem; height: 23rem;">
+                        <img src="~/images/bedding/bedding_autumn_migratory_bird.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.name</h5>
+                            <p class="card-text">@item.price</p>
+                            <a href="~/home/AddCar?productId=@item.productId" class="btn btn-outline-info">加入購物車</a>
+                        </div>
                     </div>
-                </div>
-                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                    <img src="~/images/bedding/bedding_blue_sea.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">商品名稱2</h5>
-                        <p class="card-text">價錢: $100</p>
-                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                    </div>
-                </div>
-                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                    <img src="~/images/bedding/bedding_desert_camel.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">商品名稱1</h5>
-                        <p class="card-text">價錢: $100</p>
-                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                    </div>
-                </div>
-                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                    <img src="~/images/bedding/bedding_long_island_iced_tea.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">商品名稱2</h5>
-                        <p class="card-text">價錢: $100</p>
-                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                    </div>
-                </div>
-                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                    <img src="~/images/bedding/bedding_moonlit_forest.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">商品名稱1</h5>
-                        <p class="card-text">價錢: $100</p>
-                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                    </div>
-                </div>
-                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                    <img src="~/images/bedding/bedding_nova_geo.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">商品名稱2</h5>
-                        <p class="card-text">價錢: $100</p>
-                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                    </div>
-                </div>
-                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                    <img src="~/images/bedding/bedding_single_blue_stripe.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">商品名稱1</h5>
-                        <p class="card-text">價錢: $100</p>
-                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                    </div>
-                </div>
-                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                    <img src="~/images/bedding/thin_blanket_printed_savanna_animals_milktea.jpg" class="card-img-top"
-                         alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">商品名稱1</h5>
-                        <p class="card-text">價錢: $100</p>
-                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                    </div>
-                </div>
-                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                    <img src="~/images/bedding/blanket_graphene_tree.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">商品名稱1</h5>
-                        <p class="card-text">價錢: $100</p>
-                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
         <!-- =============================== 商品陳列區域 END =============================== -->
@@ -438,7 +374,6 @@
     </div>
     <!-- ===================================== 廣告區域 END ===================================== -->
 </div>
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const prevBtn = document.getElementById('prev');

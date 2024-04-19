@@ -53,76 +53,45 @@
         margin-top: 5px;
     }
 
-    select {
-        width: 20%;
-        height: 25px;
-        font-size: 1em;
+    .radio-button {
+        transform: scale(0.5); /* 調整大小，2 為放大倍數 */
     }
 </style>
 
 <body>
     @using (Html.BeginForm())
     {
-    @Html.AntiForgeryToken()
-    <fieldset>
-        <legend><h2>編輯個人檔案</h2></legend>
-        <label for="memberId">會員編號:@Model.memberId</label>
-        <label for="memberId">電子郵件:</label>
-        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-        <label for="memberId">密碼:</label>
-        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-        <label for="memberId">領貨人姓名:</label>
-        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-        <label for="memberId">性別:</label>
-        <input class="sex" type="radio" name="sex" value="0" @(Model.sex == "true" ? "checked" : "") />&nbsp男
-        <input class="sex" type="radio" name="sex" value="1" @(Model.sex == "false" ? "checked" : "") />&nbsp女
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend><h2>編輯個人檔案</h2></legend>
+            <label for="memberId">會員編號:@Model.memberId</label>
+            <label for="memberId">電子郵件:</label>
+            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            <label for="memberId">領貨人姓名:</label>
+            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            <label for="memberId">性別:</label>
+            <div class="form-check form-check-inline col-sm-3">
+                @Html.RadioButtonFor(model => model.sex, "男", Model.sex == "男" ? new { @checked = "checked" } : null)
+                <label for="male">男</label>
+            </div>
+            <div class="form-check form-check-inline col-sm-3">
+                @Html.RadioButtonFor(model => model.sex, "女", Model.sex == "女" ? new { @checked = "checked" } : null)
+                <label for="female">女</label>
+            </div>
 
-        <label for="memberId">生日:</label>
-        @Html.EditorFor(model => model.birthday, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
-        <label for="memberId">電話:</label>
-        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
-        <label for="memberId">地址</label>
-        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
-        <button type="submit" class="btn btn-primary" id="btn">提交</button>
-    </fieldset>
+            <label for="memberId">生日:</label>
+            @Html.EditorFor(model => model.birthday, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+            @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
+            <label for="memberId">電話:</label>
+            @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+            <label for="memberId">地址</label>
+            @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+            <button type="submit" class="btn btn-primary" id="btn">提交</button>
+        </fieldset>
     }
 </body>
 <script src="~/Scripts/jquery-3.6.0.min.js"></script>
-<script>
-    var btn = document.querySelector('#btn');
-    var phone = document.querySelector('#txtphone');
-    var email = document.querySelector('#txtEmail');
-    var pattern = phone.getAttribute('pattern');
-    var regex = new RegExp(pattern);
-    btn.addEventListener('click', function () {
-        var value = phone.value;
-        if (regex.test(value)) {
-            emailcheck(); // 调用 a1() 函数
-        } else {
-            return;
-        }
-    })
-    function emailcheck() {
-        var value = a1.value;
-        if (regex.test(value)) {
-            var email = document.querySelector('#a2'); // 修正了选择器
-            if (email.checkValidity()) { // 使用 checkValidity() 方法验证电子邮件的有效性
-                alert('<big>成功</big>');
-            } else {
-                alert('电子邮件格式不正确');
-                event.preventDefault(); // 阻止表单提交
-            }
-        } else {
-            // 如果电话号码格式不正确，你也可以在这里给出相应的提示
-            alert('电话号码格式不正确');
-            event.preventDefault(); // 阻止表单提交
-        }
-    }
-    });
-</script>

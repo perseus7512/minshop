@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="mineshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="mineshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="level1Class">
           <Key>
             <PropertyRef Name="level1Class" />
@@ -148,9 +148,11 @@
           </Key>
           <Property Name="cartId" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="memberId" Type="nchar" MaxLength="10" />
           <Property Name="putDate" Type="datetime" />
           <Property Name="price" Type="int" />
           <Property Name="quantity" Type="int" />
+          <Property Name="IsApproved" Type="nchar" MaxLength="10" />
         </EntityType>
         <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'mineshop.dbo.status' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
@@ -500,8 +502,7 @@
             <End Role="stock" EntitySet="stock" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mineshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -677,6 +678,8 @@
           <Property Name="quantity" Type="Int32" />
           <NavigationProperty Name="shoppingCart" Relationship="Self.FK_shoppingDetail_shoppingCart" FromRole="shoppingDetail" ToRole="shoppingCart" />
           <NavigationProperty Name="stock" Relationship="Self.FK_shoppingDetail_stock" FromRole="shoppingDetail" ToRole="stock" />
+          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IsApproved" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="stock">
           <Key>
@@ -1175,6 +1178,8 @@
           <EntitySetMapping Name="shoppingDetail">
             <EntityTypeMapping TypeName="mineshopModel.shoppingDetail">
               <MappingFragment StoreEntitySet="shoppingDetail">
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
                 <ScalarProperty Name="cartId" ColumnName="cartId" />
                 <ScalarProperty Name="productId" ColumnName="productId" />
                 <ScalarProperty Name="putDate" ColumnName="putDate" />

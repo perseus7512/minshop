@@ -172,6 +172,8 @@
     <Property Name="quantity" Type="Int32" />
     <NavigationProperty Name="shoppingCart" Relationship="Self.FK_shoppingDetail_shoppingCart" FromRole="shoppingDetail" ToRole="shoppingCart" />
     <NavigationProperty Name="stock" Relationship="Self.FK_shoppingDetail_stock" FromRole="shoppingDetail" ToRole="stock" />
+    <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IsApproved" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="stock">
     <Key>
