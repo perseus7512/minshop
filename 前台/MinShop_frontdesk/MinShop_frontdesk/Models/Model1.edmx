@@ -138,6 +138,10 @@
           </Key>
           <Property Name="cartId" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="memberId" Type="nchar" MaxLength="10" />
+          <Property Name="productId" Type="nchar" MaxLength="10" />
+          <Property Name="name" Type="nchar" MaxLength="255" />
+          <Property Name="price" Type="int" />
+          <Property Name="quantity" Type="int" />
           <Property Name="date" Type="datetime" />
           <Property Name="checkout" Type="datetime" />
         </EntityType>
@@ -152,7 +156,6 @@
           <Property Name="putDate" Type="datetime" />
           <Property Name="price" Type="int" />
           <Property Name="quantity" Type="int" />
-          <Property Name="IsApproved" Type="nchar" MaxLength="10" />
         </EntityType>
         <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'mineshop.dbo.status' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
@@ -660,6 +663,10 @@
           </Key>
           <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="checkout" Type="DateTime" Precision="3" />
           <NavigationProperty Name="member" Relationship="Self.FK_shoppingCart_member" FromRole="shoppingCart" ToRole="member" />
@@ -673,13 +680,12 @@
           </Key>
           <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="putDate" Type="DateTime" Precision="3" />
           <Property Name="price" Type="Int32" />
           <Property Name="quantity" Type="Int32" />
           <NavigationProperty Name="shoppingCart" Relationship="Self.FK_shoppingDetail_shoppingCart" FromRole="shoppingDetail" ToRole="shoppingCart" />
           <NavigationProperty Name="stock" Relationship="Self.FK_shoppingDetail_stock" FromRole="shoppingDetail" ToRole="stock" />
-          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="IsApproved" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="stock">
           <Key>
@@ -1170,6 +1176,10 @@
               <MappingFragment StoreEntitySet="shoppingCart">
                 <ScalarProperty Name="cartId" ColumnName="cartId" />
                 <ScalarProperty Name="memberId" ColumnName="memberId" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="checkout" ColumnName="checkout" />
               </MappingFragment>
@@ -1178,10 +1188,9 @@
           <EntitySetMapping Name="shoppingDetail">
             <EntityTypeMapping TypeName="mineshopModel.shoppingDetail">
               <MappingFragment StoreEntitySet="shoppingDetail">
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="memberId" ColumnName="memberId" />
                 <ScalarProperty Name="cartId" ColumnName="cartId" />
                 <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
                 <ScalarProperty Name="putDate" ColumnName="putDate" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />

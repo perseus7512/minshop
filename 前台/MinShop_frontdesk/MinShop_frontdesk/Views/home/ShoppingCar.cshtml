@@ -1,31 +1,50 @@
-﻿<div class="container">
+﻿@model IEnumerable<MinShop_frontdesk.Models.shoppingCart>
+<div class="container">
     <h2 style="text-align: center;">購物車</h2>
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">商品資料</th>
+                <th scope="col">商品名稱</th>
                 <th scope="col">單件價格</th>
                 <th scope="col">數量</th>
                 <th scope="col">小計（每樣商品）</th>
+                <th scope="col">編輯</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.name</td>
+                        <td>@item.price</td>
+                        <td>@item.quantity</td>
+                        <td>@(item.price * item.quantity)</td>
+                        <td>
+                            @Html.ActionLink("刪除商品", "DeleteCar", new { productId = item.productId }, new { @class = "btn btn-danger" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("修改商品", "UpdateCar", new { productId = item.productId }, new { @class = "btn btn-info" })
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
     <h2 style="text-align: center;">訂單資訊</h2>
     <table class="table table-sm" style="width: 20%;">
         <tbody>
-            <tr>
-                <th>小計</th>
-                <td></td>
-            </tr>
+            @if (Model != null && Model.Any())
+            {
+                var total = Model.Sum(item => item.price * item.quantity);
+                <tr>
+                    <th>小計</th>
+                    <td>@total</td>
+                </tr>
+            }
         </tbody>
     </table>
-    <a href="" class="btn btn-primary">前往結帳</a>
+
+    <a href="~/home/Order" class="btn btn-primary">前往結帳</a>
 </div>

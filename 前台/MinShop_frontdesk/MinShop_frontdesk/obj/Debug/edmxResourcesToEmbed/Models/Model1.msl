@@ -138,6 +138,10 @@
         <MappingFragment StoreEntitySet="shoppingCart">
           <ScalarProperty Name="cartId" ColumnName="cartId" />
           <ScalarProperty Name="memberId" ColumnName="memberId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="checkout" ColumnName="checkout" />
         </MappingFragment>
@@ -146,10 +150,9 @@
     <EntitySetMapping Name="shoppingDetail">
       <EntityTypeMapping TypeName="mineshopModel.shoppingDetail">
         <MappingFragment StoreEntitySet="shoppingDetail">
-          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-          <ScalarProperty Name="memberId" ColumnName="memberId" />
           <ScalarProperty Name="cartId" ColumnName="cartId" />
           <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
           <ScalarProperty Name="putDate" ColumnName="putDate" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />

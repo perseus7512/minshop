@@ -324,6 +324,7 @@
     <Content Include="Views\home\Login.cshtml" />
     <Content Include="Views\home\register.cshtml" />
     <Content Include="Views\Shared\_Layout_Login.cshtml" />
+    <Content Include="Views\home\UpdateCar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

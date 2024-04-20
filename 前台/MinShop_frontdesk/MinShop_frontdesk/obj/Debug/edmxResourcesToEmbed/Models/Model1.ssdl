@@ -133,6 +133,10 @@
     </Key>
     <Property Name="cartId" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="memberId" Type="nchar" MaxLength="10" />
+    <Property Name="productId" Type="nchar" MaxLength="10" />
+    <Property Name="name" Type="nchar" MaxLength="255" />
+    <Property Name="price" Type="int" />
+    <Property Name="quantity" Type="int" />
     <Property Name="date" Type="datetime" />
     <Property Name="checkout" Type="datetime" />
   </EntityType>
@@ -147,7 +151,6 @@
     <Property Name="putDate" Type="datetime" />
     <Property Name="price" Type="int" />
     <Property Name="quantity" Type="int" />
-    <Property Name="IsApproved" Type="nchar" MaxLength="10" />
   </EntityType>
   <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'mineshop.dbo.status' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
