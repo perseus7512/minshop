@@ -186,7 +186,7 @@
                             <p class="card-text">@item.price</p>
                             @if (Session["Member"] != null)
                             {
-                                <a href="~/home/AddCar?fPId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                                <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
                             }
                         </div>
                     </div>

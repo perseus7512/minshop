@@ -11,7 +11,8 @@ namespace MinShop_frontdesk.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class member
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,6 +27,7 @@ namespace MinShop_frontdesk.Models
         public string password { get; set; }
         public string sex { get; set; }
         public Nullable<System.DateTime> date { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> birthday { get; set; }
         public string phone { get; set; }
         public string address { get; set; }

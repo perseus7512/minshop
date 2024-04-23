@@ -26,8 +26,9 @@ namespace MinShop_frontdesk.Controllers
         }
         public ActionResult ShoppingCar()
         {
-            var shopping = db.shoppingCart.ToList();
-            return View(shopping);
+            var memberId = ((member)Session["Member"]).memberId;
+            var shopping = db.shoppingCart.Where(m=>m.memberId==memberId).ToList();
+            return View("ShoppingCar", "_Layout_Login",shopping);
         }
         public ActionResult AddCar(string productId)
         {
@@ -39,7 +40,7 @@ namespace MinShop_frontdesk.Controllers
                 shoppingCart sc = new shoppingCart();
                 for (int i = 0; i < 1; i++)
                 {
-                    sc.cartId = ProductNumber();
+                    sc.cartId = ShoppingNumber();
                 }
                 sc.memberId = memberId;
                 sc.productId = product.productId;
@@ -53,6 +54,7 @@ namespace MinShop_frontdesk.Controllers
             {
                 currenCar.quantity += 1;
             }
+            // 嘗試儲存更改至資料庫
             db.SaveChanges();
             return RedirectToAction("ShoppingCar");
         }
@@ -78,9 +80,10 @@ namespace MinShop_frontdesk.Controllers
         }
         public ActionResult Users()
         {
+            var memberId = ((member)Session["Member"]).memberId;
             string email = Session["MemberEmail"].ToString();
             var user = db.member.Where(m => m.email == email).FirstOrDefault();
-            return View(user);
+            return View("Users", "_Layout_Login", user);
         }
         [HttpPost]
         public ActionResult Users(string name, string email, string sex, DateTime birthday, string phone, string address, string companyNumbers)
@@ -133,6 +136,11 @@ namespace MinShop_frontdesk.Controllers
                 Session["Welcome"] = me.name + "-歡迎光臨";
                 return RedirectToAction("index");
             }
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("index");
         }
         public ActionResult register()
         {
@@ -201,7 +209,7 @@ namespace MinShop_frontdesk.Controllers
                 return "M" + counter.ToString().PadLeft(6, '0');
             }
         }
-        public static string ProductNumber()
+        public static string ShoppingNumber()
         {
             using (var db = new mineshopEntities())
             {
@@ -216,7 +224,7 @@ namespace MinShop_frontdesk.Controllers
                     counter = 0;
                 }
                 counter++;
-                return "P" + counter.ToString().PadLeft(6, '0');
+                return "S" + counter.ToString().PadLeft(6, '0');
             }
         }
     }
