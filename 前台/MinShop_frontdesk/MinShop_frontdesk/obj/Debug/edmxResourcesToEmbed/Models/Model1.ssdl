@@ -63,7 +63,6 @@
     <Property Name="memberId" Type="nchar" MaxLength="10" />
     <Property Name="cartId" Type="nchar" MaxLength="10" />
     <Property Name="total" Type="int" />
-    <Property Name="paymentClass" Type="int" />
     <Property Name="creditCard" Type="nchar" MaxLength="10" />
     <Property Name="sendOption" Type="nchar" MaxLength="10" />
     <Property Name="reci" Type="nchar" MaxLength="10" />
@@ -233,18 +232,6 @@
       </Principal>
       <Dependent Role="level3Class">
         <PropertyRef Name="level3Class" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_order_paymentClass">
-    <End Role="paymentClass" Type="Self.paymentClass" Multiplicity="0..1" />
-    <End Role="order" Type="Self.order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="paymentClass">
-        <PropertyRef Name="paymentClass" />
-      </Principal>
-      <Dependent Role="order">
-        <PropertyRef Name="paymentClass" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -442,10 +429,6 @@
     <AssociationSet Name="FK_level3Class_stock" Association="Self.FK_level3Class_stock">
       <End Role="stock" EntitySet="stock" />
       <End Role="level3Class" EntitySet="level3Class" />
-    </AssociationSet>
-    <AssociationSet Name="FK_order_paymentClass" Association="Self.FK_order_paymentClass">
-      <End Role="paymentClass" EntitySet="paymentClass" />
-      <End Role="order" EntitySet="order" />
     </AssociationSet>
     <AssociationSet Name="FK_order_shoppingCart" Association="Self.FK_order_shoppingCart">
       <End Role="shoppingCart" EntitySet="shoppingCart" />

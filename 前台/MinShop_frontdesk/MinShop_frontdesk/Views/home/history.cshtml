@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MinShop_frontdesk.Models.order>
+
+
+<h2>歷史訂單</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.orderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sendOption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reci)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reciPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reciAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ps)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shoppingCart.memberId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.creditCard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sendOption)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reci)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reciPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reciAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ps)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.shoppingCart.memberId)
+        </td>
+    </tr>
+}
+
+</table>

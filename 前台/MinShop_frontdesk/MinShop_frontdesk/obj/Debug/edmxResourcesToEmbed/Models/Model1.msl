@@ -63,7 +63,6 @@
           <ScalarProperty Name="memberId" ColumnName="memberId" />
           <ScalarProperty Name="cartId" ColumnName="cartId" />
           <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="paymentClass" ColumnName="paymentClass" />
           <ScalarProperty Name="creditCard" ColumnName="creditCard" />
           <ScalarProperty Name="sendOption" ColumnName="sendOption" />
           <ScalarProperty Name="reci" ColumnName="reci" />

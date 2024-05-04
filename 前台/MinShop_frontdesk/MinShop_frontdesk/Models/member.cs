@@ -27,7 +27,7 @@ namespace MinShop_frontdesk.Models
         public string password { get; set; }
         public string sex { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> birthday { get; set; }
         public string phone { get; set; }
         public string address { get; set; }

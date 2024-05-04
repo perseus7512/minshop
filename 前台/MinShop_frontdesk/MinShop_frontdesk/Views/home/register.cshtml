@@ -117,17 +117,23 @@
             </div>
             <a href="~/home/Login" class="btn btn-light">取消</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <button type="submit" style="text-align:center;" id="btn">確認</button>
+            <h3 class="text-info text-lg-center">@ViewBag.Message</h3>
         </form>
     </div>
     <script>
     var btn = document.querySelector('#btn');
+    var birthday = document.querySelector('#birthday');
     var phone = document.querySelector('#phone');
     var email = document.querySelector('#email');
     var pass1 = document.querySelector('#pass1');
     var pass2 = document.querySelector('#pass2');
     var pattern = phone.getAttribute('pattern');
     var regex = new RegExp(pattern);
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function (event) {
+        if (!birthday.value) {
+        alert('生日不能为空');
+        event.preventDefault(); // 阻止表单提交
+    }
         var value = phone.value;
         if (regex.test(value)) {
             if (regex.test(value)) {

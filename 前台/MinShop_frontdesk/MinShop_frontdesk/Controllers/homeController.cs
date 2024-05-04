@@ -27,8 +27,8 @@ namespace MinShop_frontdesk.Controllers
         public ActionResult ShoppingCar()
         {
             var memberId = ((member)Session["Member"]).memberId;
-            var shopping = db.shoppingCart.Where(m=>m.memberId==memberId).ToList();
-            return View("ShoppingCar", "_Layout_Login",shopping);
+            var shopping = db.shoppingCart.Where(m => m.memberId == memberId&&m.checkout==null).ToList();
+            return View("ShoppingCar", "_Layout_Login", shopping);
         }
         public ActionResult AddCar(string productId)
         {
@@ -113,7 +113,62 @@ namespace MinShop_frontdesk.Controllers
         }
         public ActionResult Order()
         {
-            return View();
+            var memberId = ((member)Session["Member"]).memberId;
+            var order = db.shoppingCart.Where(m => m.memberId == memberId).ToList();
+            return View("Order", "_Layout_Login", order);
+        }
+        [HttpPost]
+        public ActionResult Order(string name, int phone, string address, string send,string ps,int totalAmount)
+        {
+            var memberId = ((member)Session["Member"]).memberId;
+            order o = new order();
+            var shopping = db.shoppingCart.Where(m => m.memberId == memberId).FirstOrDefault();
+            for (int i = 0; i < 10; i++)
+            {
+                o.orderId = OrderNumber();
+            }
+            o.memberId = memberId;
+            o.cartId = shopping.cartId;
+            o.reci = name;
+            o.reciPhone = phone;
+            o.reciAddress = address;
+            o.total = totalAmount;
+            o.sendOption = send;
+            o.ps = ps;
+            o.date = DateTime.Now;
+            db.order.Add(o);
+            shopping.checkout = DateTime.Now;
+            try
+            {
+                // 嘗試儲存更改至資料庫
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // 處理驗證失敗的例外
+                foreach (var entityErrors in ex.EntityValidationErrors)
+                {
+                    // 獲取驗證失敗的實體
+                    var entity = entityErrors.Entry.Entity.GetType().Name;
+
+                    // 獲取驗證失敗的屬性
+                    foreach (var error in entityErrors.ValidationErrors)
+                    {
+                        var propertyName = error.PropertyName;
+                        var errorMessage = error.ErrorMessage;
+
+                        // 處理驗證失敗的屬性
+                        // 例如，記錄錯誤、向使用者顯示錯誤等
+                    }
+                }
+            }
+            return RedirectToAction("index");
+        }
+        public ActionResult history()
+        {
+            var memberId = ((member)Session["Member"]).memberId;
+            var orders = db.order.Where(m => m.memberId == memberId).ToList();
+            return View("history", "_Layout_Login", orders);
         }
         public ActionResult Login()
         {
@@ -149,46 +204,56 @@ namespace MinShop_frontdesk.Controllers
         [HttpPost]
         public ActionResult register(string name, string email, string pass1, string sex, DateTime birthday, string phone, string address, string companyNumbers)
         {
-            member m = new member();
-            for (int i = 0; i < 1; i++)
+            var me = db.member.Where(m => m.email == email).FirstOrDefault();
+            member mem = new member();
+            if (me == null)
             {
-                m.memberId = memberNumber();
-            }
-            m.name = name;
-            m.email = email;
-            m.password = pass1;
-            m.sex = sex;
-            m.date = DateTime.Now;
-            m.birthday = birthday;
-            m.phone = phone;
-            m.address = address;
-            m.companyNumbers = companyNumbers;
-            db.member.Add(m);
-            try
-            {
-                // 嘗試儲存更改至資料庫
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                // 處理驗證失敗的例外
-                foreach (var entityErrors in ex.EntityValidationErrors)
+
+                for (int i = 0; i < 1; i++)
                 {
-                    // 獲取驗證失敗的實體
-                    var entity = entityErrors.Entry.Entity.GetType().Name;
-
-                    // 獲取驗證失敗的屬性
-                    foreach (var error in entityErrors.ValidationErrors)
+                    mem.memberId = memberNumber();
+                }
+                mem.name = name;
+                mem.email = email;
+                mem.password = pass1;
+                mem.sex = sex;
+                mem.date = DateTime.Now;
+                mem.birthday = birthday;
+                mem.phone = phone;
+                mem.address = address;
+                mem.companyNumbers = companyNumbers;
+                db.member.Add(mem);
+                try
+                {
+                    // 嘗試儲存更改至資料庫
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    // 處理驗證失敗的例外
+                    foreach (var entityErrors in ex.EntityValidationErrors)
                     {
-                        var propertyName = error.PropertyName;
-                        var errorMessage = error.ErrorMessage;
+                        // 獲取驗證失敗的實體
+                        var entity = entityErrors.Entry.Entity.GetType().Name;
 
-                        // 處理驗證失敗的屬性
-                        // 例如，記錄錯誤、向使用者顯示錯誤等
+                        // 獲取驗證失敗的屬性
+                        foreach (var error in entityErrors.ValidationErrors)
+                        {
+                            var propertyName = error.PropertyName;
+                            var errorMessage = error.ErrorMessage;
+
+                            // 處理驗證失敗的屬性
+                            // 例如，記錄錯誤、向使用者顯示錯誤等
+                        }
                     }
                 }
+                return RedirectToAction("Login");
             }
-            return RedirectToAction("Login");
+            else
+            {
+                ViewBag.Message = "帳號已存在,註冊失敗";
+                return View();
+            }
         }
 
         public static string memberNumber()
@@ -225,6 +290,24 @@ namespace MinShop_frontdesk.Controllers
                 }
                 counter++;
                 return "S" + counter.ToString().PadLeft(6, '0');
+            }
+        }
+        public static string OrderNumber()
+        {
+            using (var db = new mineshopEntities())
+            {
+                int counter;
+                var max = db.order.Max(m => m.orderId);
+                if (max != null)
+                {
+                    counter = Convert.ToInt32(max.Substring(1));
+                }
+                else
+                {
+                    counter = 0;
+                }
+                counter++;
+                return "O" + counter.ToString().PadLeft(6, '0');
             }
         }
     }

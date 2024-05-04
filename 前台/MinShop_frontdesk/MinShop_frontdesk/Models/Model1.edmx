@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="mineshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="mineshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="level1Class">
           <Key>
             <PropertyRef Name="level1Class" />
@@ -68,7 +68,6 @@
           <Property Name="memberId" Type="nchar" MaxLength="10" />
           <Property Name="cartId" Type="nchar" MaxLength="10" />
           <Property Name="total" Type="int" />
-          <Property Name="paymentClass" Type="int" />
           <Property Name="creditCard" Type="nchar" MaxLength="10" />
           <Property Name="sendOption" Type="nchar" MaxLength="10" />
           <Property Name="reci" Type="nchar" MaxLength="10" />
@@ -238,18 +237,6 @@
             </Principal>
             <Dependent Role="level3Class">
               <PropertyRef Name="level3Class" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_order_paymentClass">
-          <End Role="paymentClass" Type="Self.paymentClass" Multiplicity="0..1" />
-          <End Role="order" Type="Self.order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="paymentClass">
-              <PropertyRef Name="paymentClass" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="paymentClass" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -448,10 +435,6 @@
             <End Role="stock" EntitySet="stock" />
             <End Role="level3Class" EntitySet="level3Class" />
           </AssociationSet>
-          <AssociationSet Name="FK_order_paymentClass" Association="Self.FK_order_paymentClass">
-            <End Role="paymentClass" EntitySet="paymentClass" />
-            <End Role="order" EntitySet="order" />
-          </AssociationSet>
           <AssociationSet Name="FK_order_shoppingCart" Association="Self.FK_order_shoppingCart">
             <End Role="shoppingCart" EntitySet="shoppingCart" />
             <End Role="order" EntitySet="order" />
@@ -505,7 +488,8 @@
             <End Role="stock" EntitySet="stock" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mineshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -579,7 +563,6 @@
           <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="total" Type="Int32" />
-          <Property Name="paymentClass" Type="Int32" />
           <Property Name="creditCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="sendOption" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="reci" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
@@ -587,7 +570,6 @@
           <Property Name="reciAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="ps" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="paymentClass1" Relationship="Self.FK_order_paymentClass" FromRole="order" ToRole="paymentClass" />
           <NavigationProperty Name="shoppingCart" Relationship="Self.FK_order_shoppingCart" FromRole="order" ToRole="shoppingCart" />
         </EntityType>
         <EntityType Name="paymentClass">
@@ -596,7 +578,6 @@
           </Key>
           <Property Name="paymentClass1" Type="Int32" Nullable="false" />
           <Property Name="method" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="order" Relationship="Self.FK_order_paymentClass" FromRole="paymentClass" ToRole="order" />
         </EntityType>
         <EntityType Name="pickingDetail">
           <Key>
@@ -813,18 +794,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_order_paymentClass">
-          <End Role="paymentClass" Type="Self.paymentClass" Multiplicity="0..1" />
-          <End Role="order" Type="Self.order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="paymentClass">
-              <PropertyRef Name="paymentClass1" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="paymentClass" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_order_shoppingCart">
           <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="0..1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
@@ -988,10 +957,6 @@
             <End Role="member" EntitySet="member" />
             <End Role="shoppingCart" EntitySet="shoppingCart" />
           </AssociationSet>
-          <AssociationSet Name="FK_order_paymentClass" Association="Self.FK_order_paymentClass">
-            <End Role="paymentClass" EntitySet="paymentClass" />
-            <End Role="order" EntitySet="order" />
-          </AssociationSet>
           <AssociationSet Name="FK_order_shoppingCart" Association="Self.FK_order_shoppingCart">
             <End Role="shoppingCart" EntitySet="shoppingCart" />
             <End Role="order" EntitySet="order" />
@@ -1101,7 +1066,6 @@
                 <ScalarProperty Name="memberId" ColumnName="memberId" />
                 <ScalarProperty Name="cartId" ColumnName="cartId" />
                 <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="paymentClass" ColumnName="paymentClass" />
                 <ScalarProperty Name="creditCard" ColumnName="creditCard" />
                 <ScalarProperty Name="sendOption" ColumnName="sendOption" />
                 <ScalarProperty Name="reci" ColumnName="reci" />

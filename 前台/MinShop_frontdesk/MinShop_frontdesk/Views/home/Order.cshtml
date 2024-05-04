@@ -1,4 +1,5 @@
-﻿<style>
+﻿@model IEnumerable<MinShop_frontdesk.Models.shoppingCart>
+<style>
     body {
         margin-top: 20px;
         padding: 0px;
@@ -49,9 +50,42 @@
         }
 </style>
 <div class="container">
+    <h1>訂單資訊</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">商品名稱</th>
+                <th scope="col">單件價格</th>
+                <th scope="col">數量</th>
+                <th scope="col">小計（每樣商品）</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.name</td>
+                        <td>@item.price</td>
+                        <td>@item.quantity</td>
+                        <td>@(item.price * item.quantity)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
     <!-- 寄送資訊 -->
     <h1>寄送資訊</h1>
-    <form class="infor" method="post">
+    <form class="infor" method="post" action="~/home/Order">
+        <p>
+            收件人:
+            <input type="text" placeholder="請輸入收件人姓名" name="name" id="name">
+        </p>
+        <p>
+            收件人電話:
+            <input type="text" placeholder="請輸入收件人電話" name="phone" id="phone">
+        </p>
         <p>
             請選擇配送方式:
             <select id="send" name="send">
@@ -59,7 +93,11 @@
                 <option value="send2">超商取貨</option>
             </select>
         </p>
-        <p>
+        <p id="add">
+            收件人地址:
+            <input type="text" placeholder="請輸入收件人地址" name="address" id="address">
+        </p>
+        <p id="store" style="display:none">
             請選擇收貨地點:
             <select id="take" name="take">
                 <option value="take1">7-11</option>
@@ -71,15 +109,107 @@
         <p>
             請選擇支付方式:
             <select id="pay" name="pay">
-                <option value="take1">匯款</option>
-                <option value="take2">貨到付款</option>
-                <option value="take3">信用卡支付</option>
+                <option value="pay1">匯款</option>
+                <option value="pay2">貨到付款</option>
+                <option value="pay3">信用卡支付</option>
             </select>
         </p>
-        <h1>訂單資訊</h1>
-        <p>小計:</p>
-        <p>運費:</p>
-        <p>合計:</p>
+        <fieldset id="credit" style="display:none">
+            <p>
+                信用卡卡號:
+                <input type="text" id="creditCard" name="creditCard" />
+            </p>
+            <p>
+                有效期限:
+                <select name="month">
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+                <select name="year" id="year"></select>
+            </p>
+            <p>
+                安全碼:
+                <input type="text" id="securitycode" name="securitycode" style="width:10%" />
+            </p>
+        </fieldset>
+        <p>
+            備註:
+            <textarea id="ps" name="ps" rows="6" cols="40"></textarea>
+        </p>
+        @if (Model != null && Model.Any())
+        {
+            var total = Model.Sum(item => item.price * item.quantity);
+            var shippingFeeRate = 0.1;
+            var shippingFee = total * shippingFeeRate;
+            <p>运费: @shippingFee</p>
+            <p>小计: @total</p>
+            <p>合计: @(total + shippingFee)</p>
+            <input type="hidden" id="totalAmount" name="totalAmount" value="@(total + shippingFee)">
+        }
         <input type="submit" value="下單">
     </form>
 </div>
+<script>
+var currentYear = new Date().getFullYear();
+var startYear = currentYear;
+var endYear = currentYear + 25;
+var yearDropdown = document.querySelector('#year');
+
+// 添加其他年份选项
+for (var year = startYear; year <= endYear; year++) {
+    var option = document.createElement('option');
+    option.value = year;
+    option.text = year;
+    yearDropdown.appendChild(option);
+}
+
+yearDropdown.value = currentYear;
+
+yearDropdown.addEventListener('change', function() {
+    var selectedYear = parseInt(yearDropdown.value);
+    console.log('Selected Year:', selectedYear);
+});
+
+    var paymentMethodSelect = document.querySelector('#pay');
+
+    var creditCardFieldset = document.querySelector('#credit');
+
+    paymentMethodSelect.addEventListener('change', function() {
+        var selectedPaymentMethod = paymentMethodSelect.value;
+        if (selectedPaymentMethod === 'pay3') {
+            creditCardFieldset.style.display = 'block';
+        } else {
+            creditCardFieldset.style.display = 'none';
+        }
+    });
+    var sedMethodSelect = document.querySelector('#send');
+
+    var address = document.querySelector('#add');
+    var convenience = document.querySelector('#store');
+
+    sedMethodSelect.addEventListener('change', function() {
+        var selectedsedMethodSelect = sedMethodSelect.value;
+        if (selectedsedMethodSelect === 'send1') {
+            address.style.display = 'block';
+            convenience.style.display = 'none';
+        } else {
+            convenience.style.display = 'block';
+            address.style.display = 'none';
+        }
+    });
+    var totalAmountField = document.querySelector('totalAmount');
+
+// 设置合计值
+totalAmountField.value = total + shippingFee;
+</script>
+
