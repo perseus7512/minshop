@@ -6,71 +6,47 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.orderId)
+            訂單編號
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.total)
+            購物車編號
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.date)
+            總金額
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.sendOption)
+            訂單狀態
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.reci)
+            收件人
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.reciPhone)
+            確認日期
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.reciAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ps)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.shoppingCart.memberId)
-        </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.memberId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.total)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.creditCard)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sendOption)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.reci)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.reciPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.reciAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ps)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.shoppingCart.memberId)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cartId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sendOption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+        </tr>
+    }
 
 </table>

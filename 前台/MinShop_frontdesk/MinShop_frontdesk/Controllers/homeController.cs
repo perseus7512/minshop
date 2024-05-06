@@ -118,7 +118,7 @@ namespace MinShop_frontdesk.Controllers
             return View("Order", "_Layout_Login", order);
         }
         [HttpPost]
-        public ActionResult Order(string name, int phone, string address, string send,string ps,int totalAmount)
+        public ActionResult Order(string name, int phone, string address,string ps,int totalAmount)
         {
             var memberId = ((member)Session["Member"]).memberId;
             order o = new order();
@@ -133,9 +133,10 @@ namespace MinShop_frontdesk.Controllers
             o.reciPhone = phone;
             o.reciAddress = address;
             o.total = totalAmount;
-            o.sendOption = send;
+            o.sendOption = "已下單";
             o.ps = ps;
             o.date = DateTime.Now;
+            
             db.order.Add(o);
             shopping.checkout = DateTime.Now;
             try
