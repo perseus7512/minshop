@@ -7,26 +7,6 @@
     <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="name" Type="nchar" MaxLength="10" />
   </EntityType>
-  <EntityType Name="level2Class">
-    <Key>
-      <PropertyRef Name="level1Class" />
-      <PropertyRef Name="level2Class" />
-    </Key>
-    <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="level2Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="name" Type="nchar" MaxLength="10" />
-  </EntityType>
-  <EntityType Name="level3Class">
-    <Key>
-      <PropertyRef Name="level1Class" />
-      <PropertyRef Name="level2Class" />
-      <PropertyRef Name="level3Class" />
-    </Key>
-    <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="level2Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="level3Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="name" Type="nchar" MaxLength="10" />
-  </EntityType>
   <EntityType Name="member">
     <Key>
       <PropertyRef Name="memberId" />
@@ -34,7 +14,7 @@
     <Property Name="memberId" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="name" Type="nchar" MaxLength="10" />
     <Property Name="password" Type="nchar" MaxLength="16" />
-    <Property Name="sex" Type="nchar" MaxLength="5" />
+    <Property Name="sex" Type="nchar" MaxLength="1" />
     <Property Name="date" Type="date" />
     <Property Name="birthday" Type="date" />
     <Property Name="phone" Type="nchar" MaxLength="10" />
@@ -170,14 +150,13 @@
     <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="name" Type="nchar" MaxLength="255" />
     <Property Name="price" Type="int" />
-    <Property Name="image" Type="nchar" MaxLength="10" />
+    <Property Name="specialoffer" Type="int" />
+    <Property Name="image" Type="nchar" MaxLength="50" />
     <Property Name="level1Class" Type="nchar" MaxLength="10" />
-    <Property Name="level2Class" Type="nchar" MaxLength="10" />
-    <Property Name="level3Class" Type="nchar" MaxLength="10" />
     <Property Name="releaseDate" Type="datetime" />
     <Property Name="removalDate" Type="datetime" />
     <Property Name="inventory" Type="int" />
-    <Property Name="remove" Type="int" />
+    <Property Name="detailed" Type="nchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="supplier">
     <Key>
@@ -199,42 +178,6 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK_level2Class_level1Class">
-    <End Role="level1Class" Type="Self.level1Class" Multiplicity="1" />
-    <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="level1Class">
-        <PropertyRef Name="level1Class" />
-      </Principal>
-      <Dependent Role="level2Class">
-        <PropertyRef Name="level1Class" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_level2Class_stock">
-    <End Role="stock" Type="Self.stock" Multiplicity="1" />
-    <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="stock">
-        <PropertyRef Name="productId" />
-      </Principal>
-      <Dependent Role="level2Class">
-        <PropertyRef Name="level2Class" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_level3Class_stock">
-    <End Role="stock" Type="Self.stock" Multiplicity="1" />
-    <End Role="level3Class" Type="Self.level3Class" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="stock">
-        <PropertyRef Name="productId" />
-      </Principal>
-      <Dependent Role="level3Class">
-        <PropertyRef Name="level3Class" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_order_shoppingCart">
     <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="0..1" />
     <End Role="order" Type="Self.order" Multiplicity="*" />
@@ -379,22 +322,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_stock_level1Class">
-    <End Role="level1Class" Type="Self.level1Class" Multiplicity="0..1" />
-    <End Role="stock" Type="Self.stock" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="level1Class">
-        <PropertyRef Name="level1Class" />
-      </Principal>
-      <Dependent Role="stock">
-        <PropertyRef Name="level1Class" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="mineshopModelStoreContainer">
     <EntitySet Name="level1Class" EntityType="Self.level1Class" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="level2Class" EntityType="Self.level2Class" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="level3Class" EntityType="Self.level3Class" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="message" EntityType="Self.message" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
@@ -418,18 +347,6 @@
     [status].[address] AS [address]
     FROM [dbo].[status] AS [status]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK_level2Class_level1Class" Association="Self.FK_level2Class_level1Class">
-      <End Role="level1Class" EntitySet="level1Class" />
-      <End Role="level2Class" EntitySet="level2Class" />
-    </AssociationSet>
-    <AssociationSet Name="FK_level2Class_stock" Association="Self.FK_level2Class_stock">
-      <End Role="stock" EntitySet="stock" />
-      <End Role="level2Class" EntitySet="level2Class" />
-    </AssociationSet>
-    <AssociationSet Name="FK_level3Class_stock" Association="Self.FK_level3Class_stock">
-      <End Role="stock" EntitySet="stock" />
-      <End Role="level3Class" EntitySet="level3Class" />
-    </AssociationSet>
     <AssociationSet Name="FK_order_shoppingCart" Association="Self.FK_order_shoppingCart">
       <End Role="shoppingCart" EntitySet="shoppingCart" />
       <End Role="order" EntitySet="order" />
@@ -477,10 +394,6 @@
     <AssociationSet Name="FK_status_ship" Association="Self.FK_status_ship">
       <End Role="ship" EntitySet="ship" />
       <End Role="status" EntitySet="status" />
-    </AssociationSet>
-    <AssociationSet Name="FK_stock_level1Class" Association="Self.FK_stock_level1Class">
-      <End Role="level1Class" EntitySet="level1Class" />
-      <End Role="stock" EntitySet="stock" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

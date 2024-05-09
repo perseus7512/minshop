@@ -78,6 +78,11 @@ namespace MinShop_frontdesk.Controllers
             db.SaveChanges();
             return RedirectToAction("ShoppingCar");
         }
+        public ActionResult product(string productId)
+        {
+            var product = db.stock.Where(m=>m.productId==productId).ToList();
+            return View(product);
+        }
         public ActionResult Users()
         {
             var memberId = ((member)Session["Member"]).memberId;

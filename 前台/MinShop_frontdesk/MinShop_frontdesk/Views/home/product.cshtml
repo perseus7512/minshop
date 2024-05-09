@@ -1,0 +1,112 @@
+﻿@model IEnumerable<MinShop_frontdesk.Models.stock>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .product {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    label {
+        width: 100%;
+        height: 40px;
+        text-align: left;
+        font-size: large;
+        font-weight: bolder;
+    }
+
+    .form-control {
+        width: 100%;
+        text-align: left;
+    }
+
+    fieldset {
+        width: auto;
+        background-color: rgb(217, 232, 194);
+    }
+
+    form {
+        width: 50%;
+        height: 50%;
+    }
+
+    input {
+        height: 40px;
+        font-size: larger;
+    }
+
+    .sex {
+        width: 20px;
+        height: 20px;
+    }
+
+    .a1 {
+        font-size: larger;
+        font-weight: normal;
+    }
+
+    legend {
+        background-color: rgb(41, 91, 93);
+        ;
+    }
+</style>
+@{
+    Random random = new Random();
+}
+@foreach (var item in Model)
+{
+    <div class="product">
+        <img src="~/images/product/@item.image" class="img-fluid w-100">
+        <h1>@item.name</h1>
+
+        <h2 class="text-danger">
+            <small class="text-secondary mr-2">
+                <del> $@item.price </del>
+            </small>
+            $@item.specialoffer
+        </h2>
+
+
+        <h3>詳細說明：</h3>
+
+
+        <p>
+            @item.detailed
+        </p>
+        @if (Session["Member"] != null)
+        {
+            <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+        }
+        @{
+            var recommendedProducts = Model.Where(x => x.productId != item.productId).OrderBy(x => random.Next()).Take(1); // 从除当前商品外的其他商品中随机选择1个推荐商品
+        }
+
+        @foreach (var x in recommendedProducts)
+        {
+            <div class="recommended-product">
+                <h3>推薦商品：@x.name</h3>
+            </div>
+        }
+
+    </div>
+}

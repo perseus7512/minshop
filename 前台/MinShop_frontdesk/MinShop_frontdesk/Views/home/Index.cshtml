@@ -242,22 +242,22 @@
     </div>
 </div>
 <div class="container mt-5 mb-5 row">
-    <div class="col-sm-3" id="a1">
+    <div class="col" id="a1">
         <!-- 頂層卡片 -->
         <div class="container">
             <div class="top-card">
                 @foreach (var item in Model)
                 {
-                    <img src="~/images/product/@item.image" alt="商品圖片">
-                    <div class="info">
-                        <a href="~/home/product" class="card-title mb-3" style="color:black;text-decoration:none">@item.name</a>
-                        <div class="rating">★★★★☆</div>
-                        <div class="price">$@item.price</div>
-                        @if (Session["Member"] != null)
+                <img src="~/images/product/@item.image" alt="商品圖片">
+                <div class="info">
+                    <a href="~/home/product?productId=@item.productId" class="card-title mb-3" style="color:black;text-decoration:none">@item.name</a>
+                    <div class="rating">★★★★☆</div>
+                    <div class="price">$@item.price</div>
+                    @if (Session["Member"] != null)
                         {
-                            <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                    <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
                         }
-                    </div>
+                </div>
                 }
             </div>
             <!-- 特價區 -->
@@ -547,7 +547,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-9">
+    <div class="col">
         <!-- ======================================= 新品上架 ======================================= -->
         <div>
             <!-- ================================ 標題及按鈕欄位 ================================ -->
@@ -564,13 +564,24 @@
             <!-- ================================ 商品陳列區域 ================================ -->
             <div class="product-container rounded-bottom">
                 <div class="products-inner py-3">
-                    @foreach (var item in Model)
+                    @{
+                        var oneMonthAgo = DateTime.Today.AddMonths(-1);
+                    }
+
+                    @foreach (var item in Model.Where(m => m.releaseDate >= oneMonthAgo))
                     {
                         <div class="card m-2" style="width: 13rem; height: 23rem;">
                             <img src="~/images/product/@item.image" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <a href="~/home/product" class="card-title" style="color:black;text-decoration:none">@item.name</a>
-                                <h5 class="card-text">@item.price</h5>
+                                <a href="~/home/product?productId=@item.productId" class="card-title" style="color:black;text-decoration:none">@item.name</a>
+                                @if (item.specialoffer != null)
+                                {
+                                    <del><h5 class="card-text">@item.price</h5></del><h5 class="card-text text-danger">@item.specialoffer</h5>
+                                }
+                                else
+                                {
+                                    <h5 class="card-text">@item.price</h5>
+                                }
                                 @if (Session["Member"] != null)
                                 {
                                     <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
@@ -578,6 +589,8 @@
                             </div>
                         </div>
                     }
+
+
                 </div>
             </div>
             <!-- =============================== 商品陳列區域 END =============================== -->
@@ -645,30 +658,31 @@
                              aria-labelledby="list-lipgloss-list">
                             <!-- =================== 商品卡片 =================== -->
                             <div class="products-inner py-3 row">
-                                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                                    <img src="~/images/lipgloss/1028_orange.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">商品名稱1</h5>
-                                        <p class="card-text">價錢: $100</p>
-                                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                                    </div>
-                                </div>
-                                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                                    <img src="~/images/lipgloss/2an_279707.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">商品名稱2</h5>
-                                        <p class="card-text">價錢: $100</p>
-                                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                                    </div>
-                                </div>
-                                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                                    <img src="~/images/lipgloss/babybright_bayberry.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">商品名稱1</h5>
-                                        <p class="card-text">價錢: $100</p>
-                                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                                    </div>
-                                </div>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.level1Class == "唇彩        ")
+                                    {
+                                        <div class="card m-2" style="width: 13rem; height: 23rem;">
+                                            <img src="~/images/product/@item.image" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <a href="~/home/product?productId=@item.productId" class="card-title" style="color:black;text-decoration:none">@item.name</a>
+                                                @if (item.specialoffer != null)
+                                                {
+                                                    <del><h5 class="card-text">@item.price</h5></del><h5 class="card-text text-danger">@item.specialoffer</h5>
+                                                }
+                                                else
+                                                {
+                                                    <h5 class="card-text">@item.price</h5>
+                                                }
+                                                @if (Session["Member"] != null)
+                                                {
+                                                    <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
                             </div>
                             <!-- ================= 商品卡片 END ================= -->
                         </div>
@@ -678,32 +692,31 @@
                              aria-labelledby="list-bedding-list">
                             <!-- =================== 商品卡片 =================== -->
                             <div class="products-inner py-3 row">
-                                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                                    <img src="~/images/bedding/bedding_autumn_migratory_bird.jpg" class="card-img-top"
-                                         alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">商品名稱1</h5>
-                                        <p class="card-text">價錢: $100</p>
-                                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                                    </div>
-                                </div>
-                                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                                    <img src="~/images/bedding/pillow_graphene_washable.jpg" class="card-img-top"
-                                         alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">商品名稱2</h5>
-                                        <p class="card-text">價錢: $100</p>
-                                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                                    </div>
-                                </div>
-                                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                                    <img src="~/images/bedding/bedding_moonlit_forest.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">商品名稱1</h5>
-                                        <p class="card-text">價錢: $100</p>
-                                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                                    </div>
-                                </div>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.level1Class == "寢具        ")
+                                    {
+                                        <div class="card m-2" style="width: 13rem; height: 23rem;">
+                                            <img src="~/images/product/@item.image" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <a href="~/home/product?productId=@item.productId" class="card-title" style="color:black;text-decoration:none">@item.name</a>
+                                                @if (item.specialoffer != null)
+                                                {
+                                                    <del><h5 class="card-text">@item.price</h5></del><h5 class="card-text text-danger">@item.specialoffer</h5>
+                                                }
+                                                else
+                                                {
+                                                    <h5 class="card-text">@item.price</h5>
+                                                }
+                                                @if (Session["Member"] != null)
+                                                {
+                                                    <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
                             </div>
                             <!-- ================= 商品卡片 END ================= -->
                         </div>
@@ -712,30 +725,31 @@
                         <div class="tab-pane fade" id="list-tent" role="tabpanel" aria-labelledby="list-tent-list">
                             <!-- =================== 商品卡片 =================== -->
                             <div class="products-inner py-3 row">
-                                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                                    <img src="~/images/tent/tentmark_16798.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">商品名稱1</h5>
-                                        <p class="card-text">價錢: $100</p>
-                                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                                    </div>
-                                </div>
-                                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                                    <img src="~/images/tent/kzm_16641.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">商品名稱2</h5>
-                                        <p class="card-text">價錢: $100</p>
-                                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                                    </div>
-                                </div>
-                                <div class="card m-2" style="width: 13rem; height: 23rem;">
-                                    <img src="~/images/tent/horizon_17044.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">商品名稱1</h5>
-                                        <p class="card-text">價錢: $100</p>
-                                        <a href="#" class="btn btn-outline-info">加入購物車</a>
-                                    </div>
-                                </div>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.level1Class == "帳篷        ")
+                                    {
+                                        <div class="card m-2" style="width: 13rem; height: 23rem;">
+                                            <img src="~/images/product/@item.image" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <a href="~/home/product?productId=@item.productId" class="card-title" style="color:black;text-decoration:none">@item.name</a>
+                                                @if (item.specialoffer != null)
+                                                {
+                                                    <del><h5 class="card-text">@item.price</h5></del><h5 class="card-text text-danger">@item.specialoffer</h5>
+                                                }
+                                                else
+                                                {
+                                                    <h5 class="card-text">@item.price</h5>
+                                                }
+                                                @if (Session["Member"] != null)
+                                                {
+                                                    <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
                             </div>
                             <!-- ================= 商品卡片 END ================= -->
                         </div>

@@ -166,6 +166,8 @@
     <Content Include="images\login.jpg" />
     <Content Include="images\next.png" />
     <Content Include="images\prev.png" />
+    <Content Include="images\product\1028_strawberry.jpg" />
+    <Content Include="images\product\bedding_nova_geo.jpg" />
     <Content Include="images\product\kzm_17096.jpg" />
     <Content Include="images\tent\banner1.jpg" />
     <Content Include="images\tent\banner2.jpg" />
@@ -237,12 +239,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\level1Class.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\level2Class.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\level3Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\member.cs">
@@ -328,6 +324,7 @@
     <Content Include="Views\Shared\_Layout_Login.cshtml" />
     <Content Include="Views\home\UpdateCar.cshtml" />
     <Content Include="Views\home\history.cshtml" />
+    <Content Include="Views\home\product.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

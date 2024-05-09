@@ -9,25 +9,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="level2Class">
-      <EntityTypeMapping TypeName="mineshopModel.level2Class">
-        <MappingFragment StoreEntitySet="level2Class">
-          <ScalarProperty Name="level1Class" ColumnName="level1Class" />
-          <ScalarProperty Name="level2Class1" ColumnName="level2Class" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="level3Class">
-      <EntityTypeMapping TypeName="mineshopModel.level3Class">
-        <MappingFragment StoreEntitySet="level3Class">
-          <ScalarProperty Name="level1Class" ColumnName="level1Class" />
-          <ScalarProperty Name="level2Class" ColumnName="level2Class" />
-          <ScalarProperty Name="level3Class1" ColumnName="level3Class" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="member">
       <EntityTypeMapping TypeName="mineshopModel.member">
         <MappingFragment StoreEntitySet="member">
@@ -164,14 +145,13 @@
           <ScalarProperty Name="productId" ColumnName="productId" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="specialoffer" ColumnName="specialoffer" />
           <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="level1Class" ColumnName="level1Class" />
-          <ScalarProperty Name="level2Class" ColumnName="level2Class" />
-          <ScalarProperty Name="level3Class" ColumnName="level3Class" />
           <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
           <ScalarProperty Name="removalDate" ColumnName="removalDate" />
           <ScalarProperty Name="inventory" ColumnName="inventory" />
-          <ScalarProperty Name="remove" ColumnName="remove" />
+          <ScalarProperty Name="detailed" ColumnName="detailed" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

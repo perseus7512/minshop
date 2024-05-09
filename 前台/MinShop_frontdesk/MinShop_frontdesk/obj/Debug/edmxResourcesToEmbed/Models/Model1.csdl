@@ -6,31 +6,6 @@
     </Key>
     <Property Name="level1Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="level2Class" Relationship="Self.FK_level2Class_level1Class" FromRole="level1Class" ToRole="level2Class" />
-    <NavigationProperty Name="stock" Relationship="Self.FK_stock_level1Class" FromRole="level1Class" ToRole="stock" />
-  </EntityType>
-  <EntityType Name="level2Class">
-    <Key>
-      <PropertyRef Name="level1Class" />
-      <PropertyRef Name="level2Class1" />
-    </Key>
-    <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="level2Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="level1Class1" Relationship="Self.FK_level2Class_level1Class" FromRole="level2Class" ToRole="level1Class" />
-    <NavigationProperty Name="stock" Relationship="Self.FK_level2Class_stock" FromRole="level2Class" ToRole="stock" />
-  </EntityType>
-  <EntityType Name="level3Class">
-    <Key>
-      <PropertyRef Name="level1Class" />
-      <PropertyRef Name="level2Class" />
-      <PropertyRef Name="level3Class1" />
-    </Key>
-    <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="level2Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="level3Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="stock" Relationship="Self.FK_level3Class_stock" FromRole="level3Class" ToRole="stock" />
   </EntityType>
   <EntityType Name="member">
     <Key>
@@ -39,7 +14,7 @@
     <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="password" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
-    <Property Name="sex" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="sex" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
     <Property Name="date" Type="DateTime" Precision="0" />
     <Property Name="birthday" Type="DateTime" Precision="0" />
     <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
@@ -182,17 +157,13 @@
     <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
     <Property Name="price" Type="Int32" />
-    <Property Name="image" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="specialoffer" Type="Int32" />
+    <Property Name="image" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="level2Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="level3Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="releaseDate" Type="DateTime" Precision="3" />
     <Property Name="removalDate" Type="DateTime" Precision="3" />
     <Property Name="inventory" Type="Int32" />
-    <Property Name="remove" Type="Int32" />
-    <NavigationProperty Name="level1Class1" Relationship="Self.FK_stock_level1Class" FromRole="stock" ToRole="level1Class" />
-    <NavigationProperty Name="level2Class1" Relationship="Self.FK_level2Class_stock" FromRole="stock" ToRole="level2Class" />
-    <NavigationProperty Name="level3Class1" Relationship="Self.FK_level3Class_stock" FromRole="stock" ToRole="level3Class" />
+    <Property Name="detailed" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="pickingDetail" Relationship="Self.FK_pickingDetail_stock" FromRole="stock" ToRole="pickingDetail" />
     <NavigationProperty Name="quotation" Relationship="Self.FK_quotation_stock" FromRole="stock" ToRole="quotation" />
     <NavigationProperty Name="shoppingDetail" Relationship="Self.FK_shoppingDetail_stock" FromRole="stock" ToRole="shoppingDetail" />
@@ -229,54 +200,6 @@
     <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="ship" Relationship="Self.FK_status_ship" FromRole="status" ToRole="ship" />
   </EntityType>
-  <Association Name="FK_level2Class_level1Class">
-    <End Role="level1Class" Type="Self.level1Class" Multiplicity="1" />
-    <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="level1Class">
-        <PropertyRef Name="level1Class1" />
-      </Principal>
-      <Dependent Role="level2Class">
-        <PropertyRef Name="level1Class" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_stock_level1Class">
-    <End Role="level1Class" Type="Self.level1Class" Multiplicity="0..1" />
-    <End Role="stock" Type="Self.stock" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="level1Class">
-        <PropertyRef Name="level1Class1" />
-      </Principal>
-      <Dependent Role="stock">
-        <PropertyRef Name="level1Class" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_level2Class_stock">
-    <End Role="stock" Type="Self.stock" Multiplicity="1" />
-    <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="stock">
-        <PropertyRef Name="productId" />
-      </Principal>
-      <Dependent Role="level2Class">
-        <PropertyRef Name="level2Class1" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_level3Class_stock">
-    <End Role="stock" Type="Self.stock" Multiplicity="1" />
-    <End Role="level3Class" Type="Self.level3Class" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="stock">
-        <PropertyRef Name="productId" />
-      </Principal>
-      <Dependent Role="level3Class">
-        <PropertyRef Name="level3Class1" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_saleInvoice_member">
     <End Role="member" Type="Self.member" Multiplicity="0..1" />
     <End Role="saleInvoice" Type="Self.saleInvoice" Multiplicity="*" />
@@ -423,8 +346,6 @@
   </Association>
   <EntityContainer Name="mineshopEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="level1Class" EntityType="Self.level1Class" />
-    <EntitySet Name="level2Class" EntityType="Self.level2Class" />
-    <EntitySet Name="level3Class" EntityType="Self.level3Class" />
     <EntitySet Name="member" EntityType="Self.member" />
     <EntitySet Name="message" EntityType="Self.message" />
     <EntitySet Name="order" EntityType="Self.order" />
@@ -440,22 +361,6 @@
     <EntitySet Name="supplier" EntityType="Self.supplier" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="status" EntityType="Self.status" />
-    <AssociationSet Name="FK_level2Class_level1Class" Association="Self.FK_level2Class_level1Class">
-      <End Role="level1Class" EntitySet="level1Class" />
-      <End Role="level2Class" EntitySet="level2Class" />
-    </AssociationSet>
-    <AssociationSet Name="FK_stock_level1Class" Association="Self.FK_stock_level1Class">
-      <End Role="level1Class" EntitySet="level1Class" />
-      <End Role="stock" EntitySet="stock" />
-    </AssociationSet>
-    <AssociationSet Name="FK_level2Class_stock" Association="Self.FK_level2Class_stock">
-      <End Role="stock" EntitySet="stock" />
-      <End Role="level2Class" EntitySet="level2Class" />
-    </AssociationSet>
-    <AssociationSet Name="FK_level3Class_stock" Association="Self.FK_level3Class_stock">
-      <End Role="stock" EntitySet="stock" />
-      <End Role="level3Class" EntitySet="level3Class" />
-    </AssociationSet>
     <AssociationSet Name="FK_saleInvoice_member" Association="Self.FK_saleInvoice_member">
       <End Role="member" EntitySet="member" />
       <End Role="saleInvoice" EntitySet="saleInvoice" />
