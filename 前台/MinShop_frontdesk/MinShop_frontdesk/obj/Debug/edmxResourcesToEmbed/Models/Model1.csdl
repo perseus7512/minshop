@@ -5,7 +5,6 @@
       <PropertyRef Name="level1Class1" />
     </Key>
     <Property Name="level1Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="member">
     <Key>
@@ -163,7 +162,8 @@
     <Property Name="releaseDate" Type="DateTime" Precision="3" />
     <Property Name="removalDate" Type="DateTime" Precision="3" />
     <Property Name="inventory" Type="Int32" />
-    <Property Name="detailed" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="detailed" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="click" Type="Int32" />
     <NavigationProperty Name="pickingDetail" Relationship="Self.FK_pickingDetail_stock" FromRole="stock" ToRole="pickingDetail" />
     <NavigationProperty Name="quotation" Relationship="Self.FK_quotation_stock" FromRole="stock" ToRole="quotation" />
     <NavigationProperty Name="shoppingDetail" Relationship="Self.FK_shoppingDetail_stock" FromRole="stock" ToRole="shoppingDetail" />

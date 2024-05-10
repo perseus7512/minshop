@@ -27,7 +27,7 @@ namespace MinShop_frontdesk.Controllers
         public ActionResult ShoppingCar()
         {
             var memberId = ((member)Session["Member"]).memberId;
-            var shopping = db.shoppingCart.Where(m => m.memberId == memberId&&m.checkout==null).ToList();
+            var shopping = db.shoppingCart.Where(m => m.memberId == memberId && m.checkout == null).ToList();
             return View("ShoppingCar", "_Layout_Login", shopping);
         }
         public ActionResult AddCar(string productId)
@@ -80,12 +80,22 @@ namespace MinShop_frontdesk.Controllers
         }
         public ActionResult product(string productId)
         {
-            var product = db.stock.Where(m=>m.productId==productId).ToList();
-            return View(product);
+            var product = db.stock.Where(m => m.productId == productId).ToList();
+            var pro = db.stock.Where(m => m.productId == productId).FirstOrDefault();
+            pro.click += 1;
+            db.SaveChanges();
+            if (Session["Member"] == null)
+            {
+                return View("product", "_Layout", product);
+            }
+            else
+            {
+                return View("product", "_Layout_Login", product);
+            }
+
         }
         public ActionResult Users()
         {
-            var memberId = ((member)Session["Member"]).memberId;
             string email = Session["MemberEmail"].ToString();
             var user = db.member.Where(m => m.email == email).FirstOrDefault();
             return View("Users", "_Layout_Login", user);
@@ -103,6 +113,19 @@ namespace MinShop_frontdesk.Controllers
             user.companyNumbers = companyNumbers;
             db.SaveChanges();
             return RedirectToAction("Users");
+        }
+        [HttpPost]
+        public ActionResult Search(string searchInput)
+        {
+            var search = db.stock.Where(m => m.level1Class.Contains(searchInput)).ToList();
+            if (Session["Member"] == null)
+            {
+                return View("Search", "_Layout", search);
+            }
+            else
+            {
+                return View("Search", "_Layout_Login", search);
+            }
         }
         public ActionResult Tent()
         {
@@ -123,7 +146,7 @@ namespace MinShop_frontdesk.Controllers
             return View("Order", "_Layout_Login", order);
         }
         [HttpPost]
-        public ActionResult Order(string name, int phone, string address,string ps,int totalAmount)
+        public ActionResult Order(string name, int phone, string address, string ps, int totalAmount)
         {
             var memberId = ((member)Session["Member"]).memberId;
             order o = new order();
@@ -141,7 +164,7 @@ namespace MinShop_frontdesk.Controllers
             o.sendOption = "已下單";
             o.ps = ps;
             o.date = DateTime.Now;
-            
+
             db.order.Add(o);
             shopping.checkout = DateTime.Now;
             try

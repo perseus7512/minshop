@@ -4,13 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="mineshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="mineshopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="level1Class">
           <Key>
             <PropertyRef Name="level1Class" />
           </Key>
           <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="member">
           <Key>
@@ -161,7 +160,8 @@
           <Property Name="releaseDate" Type="datetime" />
           <Property Name="removalDate" Type="datetime" />
           <Property Name="inventory" Type="int" />
-          <Property Name="detailed" Type="nchar" MaxLength="255" />
+          <Property Name="detailed" Type="nvarchar(max)" />
+          <Property Name="click" Type="int" />
         </EntityType>
         <EntityType Name="supplier">
           <Key>
@@ -401,7 +401,8 @@
             <End Role="status" EntitySet="status" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mineshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -410,7 +411,6 @@
             <PropertyRef Name="level1Class1" />
           </Key>
           <Property Name="level1Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="member">
           <Key>
@@ -568,7 +568,8 @@
           <Property Name="releaseDate" Type="DateTime" Precision="3" />
           <Property Name="removalDate" Type="DateTime" Precision="3" />
           <Property Name="inventory" Type="Int32" />
-          <Property Name="detailed" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="detailed" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="click" Type="Int32" />
           <NavigationProperty Name="pickingDetail" Relationship="Self.FK_pickingDetail_stock" FromRole="stock" ToRole="pickingDetail" />
           <NavigationProperty Name="quotation" Relationship="Self.FK_quotation_stock" FromRole="stock" ToRole="quotation" />
           <NavigationProperty Name="shoppingDetail" Relationship="Self.FK_shoppingDetail_stock" FromRole="stock" ToRole="shoppingDetail" />
@@ -825,7 +826,6 @@
             <EntityTypeMapping TypeName="mineshopModel.level1Class">
               <MappingFragment StoreEntitySet="level1Class">
                 <ScalarProperty Name="level1Class1" ColumnName="level1Class" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -972,6 +972,7 @@
                 <ScalarProperty Name="removalDate" ColumnName="removalDate" />
                 <ScalarProperty Name="inventory" ColumnName="inventory" />
                 <ScalarProperty Name="detailed" ColumnName="detailed" />
+                <ScalarProperty Name="click" ColumnName="click" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

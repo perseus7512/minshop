@@ -168,7 +168,26 @@
     <Content Include="images\prev.png" />
     <Content Include="images\product\1028_strawberry.jpg" />
     <Content Include="images\product\bedding_nova_geo.jpg" />
+    <Content Include="images\product\besthot_16983.jpg" />
+    <Content Include="images\product\coleman_16998.jpg" />
+    <Content Include="images\product\dido_16607-1.jpg" />
+    <Content Include="images\product\dido_16607.jpg" />
+    <Content Include="images\product\horizon_17044.jpg" />
+    <Content Include="images\product\kampa_17060.jpg" />
+    <Content Include="images\product\kazmi_16642.jpg" />
+    <Content Include="images\product\kazmi_17104.jpg" />
+    <Content Include="images\product\kzm_16641.jpg" />
     <Content Include="images\product\kzm_17096.jpg" />
+    <Content Include="images\product\mayshop _16546.jpg" />
+    <Content Include="images\product\mayshop_15586.jpg" />
+    <Content Include="images\product\mayshop_16546.jpg" />
+    <Content Include="images\product\mayshop_16775.jpg" />
+    <Content Include="images\product\mqqi_16880.jpg" />
+    <Content Include="images\product\naturehike _16994.jpg" />
+    <Content Include="images\product\push_15537.jpg" />
+    <Content Include="images\product\qiaosen_16707.jpg" />
+    <Content Include="images\product\suv_16833.jpg" />
+    <Content Include="images\product\tentmark_16798.jpg" />
     <Content Include="images\tent\banner1.jpg" />
     <Content Include="images\tent\banner2.jpg" />
     <Content Include="images\tent\banner3.jpg" />
@@ -315,16 +334,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\home\ShoppingCar.cshtml" />
     <Content Include="Views\home\Users.cshtml" />
-    <Content Include="Views\home\Tent.cshtml" />
     <Content Include="Views\home\Order.cshtml" />
-    <Content Include="Views\home\Bedding.cshtml" />
-    <Content Include="Views\home\LipGloss.cshtml" />
     <Content Include="Views\home\Login.cshtml" />
     <Content Include="Views\home\register.cshtml" />
     <Content Include="Views\Shared\_Layout_Login.cshtml" />
     <Content Include="Views\home\UpdateCar.cshtml" />
     <Content Include="Views\home\history.cshtml" />
     <Content Include="Views\home\product.cshtml" />
+    <Content Include="Views\home\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

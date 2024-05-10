@@ -5,7 +5,6 @@
       <EntityTypeMapping TypeName="mineshopModel.level1Class">
         <MappingFragment StoreEntitySet="level1Class">
           <ScalarProperty Name="level1Class1" ColumnName="level1Class" />
-          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -152,6 +151,7 @@
           <ScalarProperty Name="removalDate" ColumnName="removalDate" />
           <ScalarProperty Name="inventory" ColumnName="inventory" />
           <ScalarProperty Name="detailed" ColumnName="detailed" />
+          <ScalarProperty Name="click" ColumnName="click" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

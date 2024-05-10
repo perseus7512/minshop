@@ -32,6 +32,7 @@ namespace MinShop_frontdesk.Models
         public Nullable<System.DateTime> removalDate { get; set; }
         public Nullable<int> inventory { get; set; }
         public string detailed { get; set; }
+        public Nullable<int> click { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pickingDetail> pickingDetail { get; set; }

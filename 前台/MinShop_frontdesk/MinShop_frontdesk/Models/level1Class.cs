@@ -15,6 +15,5 @@ namespace MinShop_frontdesk.Models
     public partial class level1Class
     {
         public string level1Class1 { get; set; }
-        public string name { get; set; }
     }
 }

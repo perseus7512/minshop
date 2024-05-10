@@ -5,7 +5,6 @@
       <PropertyRef Name="level1Class" />
     </Key>
     <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="name" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="member">
     <Key>
@@ -156,7 +155,8 @@
     <Property Name="releaseDate" Type="datetime" />
     <Property Name="removalDate" Type="datetime" />
     <Property Name="inventory" Type="int" />
-    <Property Name="detailed" Type="nchar" MaxLength="255" />
+    <Property Name="detailed" Type="nvarchar(max)" />
+    <Property Name="click" Type="int" />
   </EntityType>
   <EntityType Name="supplier">
     <Key>
