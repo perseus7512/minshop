@@ -245,10 +245,11 @@
     <div class="col-sm-3 ml-0 mr-0 pl-0 pr-0" id="a1">
         <!-- 頂層卡片 -->
         <div>
+            <div class="special-deal">熱門商品</div>
             <div class="top-card">
                 @{
                     var maxClick = Model.Max(x => x.click);
-                    var itemsWithMaxClick = Model.Where(x => x.click == maxClick&&x.removalDate==null).ToList();
+                    var itemsWithMaxClick = Model.Where(x => x.click == maxClick && x.removalDate == null).ToList();
                     var displayedClickCounts = new HashSet<int>();
 
                     foreach (var item in itemsWithMaxClick)
@@ -260,23 +261,23 @@
                             continue;
                         }
 
-                <img src="~/images/product/@item.image" alt="商品圖片">
-                <div class="info">
-                    <a href="~/home/product?productId=@item.productId" class="card-title mb-3" style="color:black;text-decoration:none">@item.name</a>
-                    <div class="rating">★★★★☆</div>
-                    @if (item.specialoffer != null)
+                        <img src="~/images/product/@item.image" alt="商品圖片">
+                        <div class="info">
+                            <a href="~/home/product?productId=@item.productId" class="card-title mb-3" style="color:black;text-decoration:none">@item.name</a>
+                            <div class="rating">★★★★☆</div>
+                            @if (item.specialoffer != null)
                             {
-                            <del><h5 class="price">$@item.price</h5></del><h5 class="price text-danger">$@item.specialoffer</h5>
+                                <del><h5 class="price">$@item.price</h5></del><h5 class="price text-danger">$@item.specialoffer</h5>
                             }
                             else
                             {
-                            <h5 class="price">$@item.price</h5>
+                                <h5 class="price">$@item.price</h5>
                             }
-                    @if (Session["Member"] != null)
+                            @if (Session["Member"] != null)
                             {
-                            <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                                <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
                             }
-                </div>
+                        </div>
 
                         displayedClickCounts.Add(clickCount);
                     }
@@ -288,18 +289,18 @@
                 <div class="special-deal">特價</div>
                 @foreach (var item in Model.Where(m => m.specialoffer != null && m.removalDate == null))
                 {
-                <div class="product-card">
-                    <img src="~/images/product/@item.image">
-                    <div class="info">
-                        <a href="~/home/product?productId=@item.productId" style="color:black;text-decoration:none">@item.name</a>
-                        <div class="rating">★★★★★</div>
-                        <h5 class="price">$@item.specialoffer</h5>
-                        @if (Session["Member"] != null)
+                    <div class="product-card">
+                        <img src="~/images/product/@item.image">
+                        <div class="info">
+                            <a href="~/home/product?productId=@item.productId" style="color:black;text-decoration:none">@item.name</a>
+                            <div class="rating">★★★★★</div>
+                            <h5 class="price">$@item.specialoffer</h5>
+                            @if (Session["Member"] != null)
                             {
-                            <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                                <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
                             }
+                        </div>
                     </div>
-                </div>
                 }
             </div>
             <!-- 推薦區 -->
@@ -322,25 +323,25 @@
                     <!-- 相應的推薦商品卡片 -->
                     @foreach (var item in Model.Where(m => m.level1Class == "唇彩        " && m.removalDate == null))
                     {
-                    <div class="product-card">
-                        <img src="~/images/product/@item.image">
-                        <div class="info">
-                            <a href="~/home/product?productId=@item.productId" style="color:black;text-decoration:none">@item.name</a>
-                            <div class="rating">★★★★★</div>
-                            @if (item.specialoffer != null)
+                        <div class="product-card">
+                            <img src="~/images/product/@item.image">
+                            <div class="info">
+                                <a href="~/home/product?productId=@item.productId" style="color:black;text-decoration:none">@item.name</a>
+                                <div class="rating">★★★★★</div>
+                                @if (item.specialoffer != null)
                                 {
-                                <del><h5 class="price">$@item.price</h5></del><h5 class="price text-danger">$@item.specialoffer</h5>
+                                    <del><h5 class="price">$@item.price</h5></del><h5 class="price text-danger">$@item.specialoffer</h5>
                                 }
                                 else
                                 {
-                                <h5 class="price">$@item.price</h5>
+                                    <h5 class="price">$@item.price</h5>
                                 }
-                            @if (Session["Member"] != null)
+                                @if (Session["Member"] != null)
                                 {
-                                <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                                    <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
                                 }
+                            </div>
                         </div>
-                    </div>
                     }
                 </div>
                 <div id="recommendationContent2" class="recommendation-content">
@@ -348,25 +349,25 @@
                     <!-- 相應的推薦商品卡片 -->
                     @foreach (var item in Model.Where(m => m.level1Class == "寢具        " && m.removalDate == null))
                     {
-                    <div class="product-card">
-                        <img src="~/images/product/@item.image">
-                        <div class="info">
-                            <a href="~/home/product?productId=@item.productId" style="color:black;text-decoration:none">@item.name</a>
-                            <div class="rating">★★★★★</div>
-                            @if (item.specialoffer != null)
-                            {
-                            <del><h5 class="price">$@item.price</h5></del><h5 class="price text-danger">$@item.specialoffer</h5>
-                            }
-                            else
-                            {
-                            <h5 class="price">$@item.price</h5>
-                            }
-                            @if (Session["Member"] != null)
-                            {
-                            <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
-                            }
+                        <div class="product-card">
+                            <img src="~/images/product/@item.image">
+                            <div class="info">
+                                <a href="~/home/product?productId=@item.productId" style="color:black;text-decoration:none">@item.name</a>
+                                <div class="rating">★★★★★</div>
+                                @if (item.specialoffer != null)
+                                {
+                                    <del><h5 class="price">$@item.price</h5></del><h5 class="price text-danger">$@item.specialoffer</h5>
+                                }
+                                else
+                                {
+                                    <h5 class="price">$@item.price</h5>
+                                }
+                                @if (Session["Member"] != null)
+                                {
+                                    <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                                }
+                            </div>
                         </div>
-                    </div>
                     }
                 </div>
                 <div id="recommendationContent3" class="recommendation-content">
@@ -374,25 +375,25 @@
                     <!-- 相應的推薦商品卡片 -->
                     @foreach (var item in Model.Where(m => m.level1Class == "帳篷        " && m.removalDate == null))
                     {
-                    <div class="product-card">
-                        <img src="~/images/product/@item.image">
-                        <div class="info">
-                            <a href="~/home/product?productId=@item.productId" style="color:black;text-decoration:none">@item.name</a>
-                            <div class="rating">★★★★★</div>
-                            @if (item.specialoffer != null)
+                        <div class="product-card">
+                            <img src="~/images/product/@item.image">
+                            <div class="info">
+                                <a href="~/home/product?productId=@item.productId" style="color:black;text-decoration:none">@item.name</a>
+                                <div class="rating">★★★★★</div>
+                                @if (item.specialoffer != null)
                                 {
-                                <del><h5 class="price">$@item.price</h5></del><h5 class="price text-danger">$@item.specialoffer</h5>
+                                    <del><h5 class="price">$@item.price</h5></del><h5 class="price text-danger">$@item.specialoffer</h5>
                                 }
                                 else
                                 {
-                                <h5 class="price">$@item.price</h5>
+                                    <h5 class="price">$@item.price</h5>
                                 }
-                            @if (Session["Member"] != null)
+                                @if (Session["Member"] != null)
                                 {
-                                <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                                    <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
                                 }
+                            </div>
                         </div>
-                    </div>
                     }
                 </div>
                 <div id="recommendationContent4" class="recommendation-content">
@@ -637,7 +638,7 @@
                              aria-labelledby="list-lipgloss-list">
                             <!-- =================== 商品卡片 =================== -->
                             <div class="products-inner py-3 row">
-                                @foreach (var item in Model.Where(m => m.removalDate == null))
+                                @foreach (var item in Model.Where(m => m.removalDate == null).OrderByDescending(m => m.click).Take(2))
                                 {
                                     if (item.level1Class == "唇彩        ")
                                     {
@@ -671,7 +672,7 @@
                              aria-labelledby="list-bedding-list">
                             <!-- =================== 商品卡片 =================== -->
                             <div class="products-inner py-3 row">
-                                @foreach (var item in Model.Where(m => m.removalDate == null))
+                                @foreach (var item in Model.Where(m => m.removalDate == null).OrderByDescending(m => m.click).Take(2))
                                 {
                                     if (item.level1Class == "寢具        ")
                                     {
@@ -704,7 +705,7 @@
                         <div class="product-container rounded-bottom tab-pane fade" id="list-tent" role="tabpanel" aria-labelledby="list-tent-list">
                             <!-- =================== 商品卡片 =================== -->
                             <div class="products-inner py-3 row">
-                                @foreach (var item in Model.Where(m => m.removalDate == null))
+                                @foreach (var item in Model.Where(m => m.removalDate == null).OrderByDescending(m => m.click).Take(2))
                                 {
                                     if (item.level1Class == "帳篷        ")
                                     {
@@ -756,6 +757,29 @@
             </div>
         </div>
         <!-- ===================================== 廣告區域 END ===================================== -->
+        <div class="product-container mt-4 p-3 rounded" style="display: flex;flex-wrap: wrap;justify-content: center;background-color: white;">
+            @foreach (var item in Model.Where(m => m.removalDate == null).OrderBy(m => m.level1Class))
+            {
+                <div class="card m-2" style="width: 13rem; height: 23rem;">
+                    <img src="~/images/product/@item.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a href="~/home/product?productId=@item.productId" class="card-title" style="color:black;text-decoration:none">@item.name</a>
+                        @if (item.specialoffer != null)
+                {
+                            <del><h5 class="card-text">$@item.price</h5></del><h5 class="card-text text-danger">$@item.specialoffer</h5>
+                        }
+                        else
+                        {
+                            <h5 class="card-text">$@item.price</h5>
+                        }
+                        @if (Session["Member"] != null)
+                {
+                            <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
 <script>
