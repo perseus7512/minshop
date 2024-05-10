@@ -1,0 +1,112 @@
+<!--頁首-->
+
+.w {
+	width : 1200px;
+	margin: 0 auto;
+}
+.header {
+    position: relative;
+    height: 90px;
+    background-color: #17646b;
+}
+
+.header h1 {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 250px;
+    height: 70px;
+    background-color: aqua;
+}
+
+.header h1 a {
+    display: block;
+    width: 250px;
+    height: 70px;
+    background: url(../images/logo.jpg) no-repeat;
+    background-size: 250px 70px;
+    font-size: 0;
+}
+
+.search {
+    position: absolute;
+    top: 16px;
+    left: 400px;
+    width: 490px;
+    height: 36px;
+    border: 2px solid #ed3947;
+    border-radius: 5px;
+}
+
+.search input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 32px;
+    padding-left: 12px;
+}
+
+.search button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 90px;
+    height: 34px;
+    background-color: #ed3947;
+    font-size: 16px;
+    color: #fff;
+}
+
+.hotwords {
+    position: absolute;
+    top: 57px;
+    left: 400px;
+    width: 490px;
+    height: 36px;
+}
+
+.hotwords a {
+    margin: 0 10px;
+}
+
+.shopcart {
+    position: absolute;
+top: 15px;
+    right: 20px;
+    width: 60px;
+    height: 50px;
+    text-align: center;
+}
+
+.shopcart a {
+    display: block;
+    width: 60px;
+    height: 50px;
+    background-color: #ed3947;
+    font-size: 28px;
+    color: #fff;
+}
+
+.icons {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 60px;
+    height: 50px;
+    text-align: center;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 20px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    background-color: #f10;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 12px;
+}

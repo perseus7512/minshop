@@ -5,26 +5,6 @@
       <EntityTypeMapping TypeName="mineshopModel.level1Class">
         <MappingFragment StoreEntitySet="level1Class">
           <ScalarProperty Name="level1Class1" ColumnName="level1Class" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="level2Class">
-      <EntityTypeMapping TypeName="mineshopModel.level2Class">
-        <MappingFragment StoreEntitySet="level2Class">
-          <ScalarProperty Name="level1Class" ColumnName="level1Class" />
-          <ScalarProperty Name="level2Class1" ColumnName="level2Class" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="level3Class">
-      <EntityTypeMapping TypeName="mineshopModel.level3Class">
-        <MappingFragment StoreEntitySet="level3Class">
-          <ScalarProperty Name="level1Class" ColumnName="level1Class" />
-          <ScalarProperty Name="level2Class" ColumnName="level2Class" />
-          <ScalarProperty Name="level3Class1" ColumnName="level3Class" />
-          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -33,7 +13,6 @@
         <MappingFragment StoreEntitySet="member">
           <ScalarProperty Name="memberId" ColumnName="memberId" />
           <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="account" ColumnName="account" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="sex" ColumnName="sex" />
           <ScalarProperty Name="date" ColumnName="date" />
@@ -42,7 +21,6 @@
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="companyNumbers" ColumnName="companyNumbers" />
-          <ScalarProperty Name="company" ColumnName="company" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -65,7 +43,6 @@
           <ScalarProperty Name="memberId" ColumnName="memberId" />
           <ScalarProperty Name="cartId" ColumnName="cartId" />
           <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="paymentClass" ColumnName="paymentClass" />
           <ScalarProperty Name="creditCard" ColumnName="creditCard" />
           <ScalarProperty Name="sendOption" ColumnName="sendOption" />
           <ScalarProperty Name="reci" ColumnName="reci" />
@@ -140,6 +117,10 @@
         <MappingFragment StoreEntitySet="shoppingCart">
           <ScalarProperty Name="cartId" ColumnName="cartId" />
           <ScalarProperty Name="memberId" ColumnName="memberId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="checkout" ColumnName="checkout" />
         </MappingFragment>
@@ -150,6 +131,7 @@
         <MappingFragment StoreEntitySet="shoppingDetail">
           <ScalarProperty Name="cartId" ColumnName="cartId" />
           <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
           <ScalarProperty Name="putDate" ColumnName="putDate" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
@@ -162,13 +144,14 @@
           <ScalarProperty Name="productId" ColumnName="productId" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="specialoffer" ColumnName="specialoffer" />
           <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="level1Class" ColumnName="level1Class" />
-          <ScalarProperty Name="level2Class" ColumnName="level2Class" />
-          <ScalarProperty Name="level3Class" ColumnName="level3Class" />
           <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
           <ScalarProperty Name="removalDate" ColumnName="removalDate" />
           <ScalarProperty Name="inventory" ColumnName="inventory" />
+          <ScalarProperty Name="detailed" ColumnName="detailed" />
+          <ScalarProperty Name="click" ColumnName="click" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

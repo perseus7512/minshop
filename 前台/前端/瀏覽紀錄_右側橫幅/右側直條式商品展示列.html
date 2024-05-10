@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>網頁設計</title>
+  <style>
+    /* CSS樣式 */
+    .container {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .top-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+    }
+    .top-card img {
+      width: 80px;
+      height: 80px;
+      margin-right: 10px;
+    }
+    .top-card .info {
+      flex-grow: 1;
+    }
+    .top-card .info h3 {
+      margin: 0;
+    }
+    .top-card .info .rating {
+      color: gold;
+    }
+    .top-card .info .price {
+      font-weight: bold;
+    }
+    .bottom-section,
+    .recommendation-section {
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+    .special-deal,
+    .recommendation-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .product-card {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f9f9f9;
+    }
+    .product-card img {
+      width: 80px;
+      height: 80px;
+      margin-right: 10px;
+    }
+    .product-card .info {
+      flex-grow: 1;
+    }
+    .product-card .info .rating {
+      color: gold;
+    }
+    .recommendation-buttons {
+        display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .recommendation-buttons button {
+        padding: 10px;
+      background-color: #ccc;
+      border: none;
+      cursor: pointer;
+    }
+    .recommendation-content {
+      display: none;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 頂層卡片 -->
+    <div class="container">
+        <div class="top-card">
+          <img src="product1.jpg" alt="商品圖片">
+          <div class="info">
+            <h3>商品名稱</h3>
+            <div class="rating">★★★★☆</div>
+            <div class="price">$100</div>
+            <button><img src="shopping-cart.png" alt="購物車"></button>
+          </div>
+        </div>
+    <!-- 特價區 -->
+    <div class="bottom-section">
+      <div class="special-deal">特價</div>
+      <div class="product-card">
+        <img src="product2.jpg" alt="商品圖片">
+        <div class="info">
+          <h3>商品名稱</h3>
+          <div class="rating">★★★★★</div>
+          <div class="price">$80</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product2.jpg" alt="商品圖片">
+        <div class="info">
+          <h3>商品名稱</h3>
+          <div class="rating">★★★★★</div>
+          <div class="price">$80</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product2.jpg" alt="商品圖片">
+        <div class="info">
+          <h3>商品名稱</h3>
+          <div class="rating">★★★★★</div>
+          <div class="price">$80</div>
+        </div>
+      </div>
+      <!-- 連續三個特價商品卡片 -->
+    </div>
+    <!-- 推薦區 -->
+    <div class="recommendation-section">
+      <div class="recommendation-title">推薦</div>
+      <div class="recommendation-buttons">
+        <button onclick="showRecommendation(1)">羽絨外套</button>
+        <button onclick="showRecommendation(2)">靴子</button>
+        <button onclick="showRecommendation(3)">被套</button>
+        <button onclick="showRecommendation(4)">保溫杯</button>
+        <button onclick="showRecommendation(5)">暖暖包</button>
+        <button onclick="showRecommendation(6)">圍巾</button>
+        <button onclick="showRecommendation(7)">電暖器</button>
+        <button onclick="showRecommendation(8)">護唇膏</button>
+        <button onclick="showRecommendation(9)">電毯</button>
+        <!-- 依此類推，共9個按鈕 -->
+      </div>
+      <!-- 以下為推薦內容區塊 -->
+      <div id="recommendationContent1" class="recommendation-content">
+        <h3>羽絨外套</h3>
+        <!-- 相應的推薦商品卡片 -->
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+      </div>
+      <div id="recommendationContent2" class="recommendation-content">
+        <h3>靴子</h3>
+        <!-- 相應的推薦商品卡片 -->
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+      </div>
+      <div id="recommendationContent3" class="recommendation-content">
+        <h3>被套</h3>
+        <!-- 相應的推薦商品卡片 -->
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+      </div>
+      <div id="recommendationContent4" class="recommendation-content">
+        <h3>保溫杯</h3>
+        <!-- 相應的推薦商品卡片 -->
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+      </div>
+      <div id="recommendationContent5" class="recommendation-content">
+        <h3>暖暖包</h3>
+        <!-- 相應的推薦商品卡片 -->
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+      </div>
+      <div id="recommendationContent6" class="recommendation-content">
+        <h3>圍巾</h3>
+        <!-- 相應的推薦商品卡片 -->
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+      </div>
+      <div id="recommendationContent7" class="recommendation-content">
+        <h3>電暖器</h3>
+        <!-- 相應的推薦商品卡片 -->
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+      </div>
+      <div id="recommendationContent8" class="recommendation-content">
+        <h3>護唇膏</h3>
+        <!-- 相應的推薦商品卡片 -->
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+      </div>
+      <div id="recommendationContent9" class="recommendation-content">
+        <h3>電毯</h3>
+        <!-- 相應的推薦商品卡片 -->
+        <div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div><div class="product-card">
+            <img src="product2.jpg" alt="商品圖片">
+            <div class="info">
+              <h3>商品名稱</h3>
+              <div class="rating">★★★★★</div>
+              <div class="price">$80</div>
+            </div>
+        </div>
+      </div>
+      <!--共9個內容區塊 -->
+    </div>
+  </div>
+
+  <script>
+    function showRecommendation(id) {
+      // 隱藏所有推薦內容
+      var recommendationContents = document.querySelectorAll('.recommendation-content');
+      recommendationContents.forEach(function(content) {
+        content.style.display = 'none';
+      });
+
+      // 顯示選中的推薦內容
+      var selectedContent = document.getElementById('recommendationContent' + id);
+      if (selectedContent) {
+        selectedContent.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

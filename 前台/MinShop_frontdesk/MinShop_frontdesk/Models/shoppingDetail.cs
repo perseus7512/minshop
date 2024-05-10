@@ -16,9 +16,10 @@ namespace MinShop_frontdesk.Models
     {
         public string cartId { get; set; }
         public string productId { get; set; }
-        public System.DateTime putDate { get; set; }
-        public int price { get; set; }
-        public int quantity { get; set; }
+        public string memberId { get; set; }
+        public Nullable<System.DateTime> putDate { get; set; }
+        public Nullable<int> price { get; set; }
+        public Nullable<int> quantity { get; set; }
     
         public virtual shoppingCart shoppingCart { get; set; }
         public virtual stock stock { get; set; }

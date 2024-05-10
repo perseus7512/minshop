@@ -1,0 +1,144 @@
+﻿@model IEnumerable<MinShop_frontdesk.Models.stock>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 頁數欄位 */
+    .menu {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: white;
+    }
+
+        .menu a {
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            background-color: white;
+            color: #333;
+            border-radius: 5px;
+        }
+
+            .menu a:hover {
+                background-color: #ccc;
+            }
+
+        .menu img {
+            width: 20px;
+            height: 20px;
+        }
+
+    /* 商品陳列區 */
+    .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: white;
+    }
+</style>
+    <div class="product-container mt-4 p-3 rounded">
+@foreach (var item in Model.Where(m => m.removalDate == null))
+{
+        <div class="card m-2 my-4" style="width: 13rem; height: 23rem;">
+            <img src="~/images/product/@item.image" style="width:auto;height:auto" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><a href="~/home/product?productId=@item.productId" style="color:black;text-decoration:none">@item.name</a></h5>
+                @if (item.specialoffer != null)
+                {
+                    <del><h5 class="card-text">$@item.price</h5></del><h5 class="card-text text-danger">$@item.specialoffer</h5>
+                }
+                else
+                {
+                    <h5 class="card-text">$@item.price</h5>
+                }
+                @if (Session["Member"] != null)
+                {
+                    <a href="~/home/AddCar?productId=@item.productId" class="btn btn-success btn-block">加入購物車</a>
+                }
+            </div>
+        </div>
+}
+    </div>
+<div class="menu pb-5 mb-4 rounded-bottom">
+    <a href="#" id="prev"><img src="~/images/prev.png" alt="Previous"></a>
+    <!-- 动态生成页数链接 -->
+    <div id="page-links"></div>
+    <a href="#" id="next"><img src="~/images/next.png" alt="Next"></a>
+</div>
+@{
+    var totalProducts = Model.Count();
+}
+<script>
+    /* 頁數欄位 */
+    document.addEventListener("DOMContentLoaded", function() {
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const pageLinks = document.getElementById('page-links');
+        let currentPage = 0;
+
+        // 模拟的商品数量
+        var totalProducts = @totalProducts;
+        const productsPerPage = 5;
+
+        // 动态生成页数链接
+        function generatePageLinks() {
+            const totalPages = Math.ceil(totalProducts / productsPerPage);
+            pageLinks.innerHTML = '';
+            for (let i = 0; i < totalPages; i++) {
+                const pageLink = document.createElement('a');
+                pageLink.href = '#';
+                pageLink.classList.add('page');
+                pageLink.textContent = i + 1;
+                pageLink.addEventListener('click', () => {
+                    currentPage = i;
+                    showPage(currentPage);
+                });
+                pageLinks.appendChild(pageLink);
+            }
+        }
+
+        function showPage(pageIndex) {
+            // 在这里添加逻辑来显示指定页数的商品，例如显示第 pageIndex 页的商品
+            console.log('显示第 ' + (pageIndex + 1) + ' 页的商品');
+
+            // 更新页数链接样式
+            const pages = document.querySelectorAll('.page');
+            pages.forEach((page, index) => {
+                if (index === pageIndex) {
+                    page.style.backgroundColor = '#17A2B8';
+                    page.style.color = '#ffffff';
+                } else {
+                    page.style.backgroundColor = '#f0f0f0';
+                    page.style.color = '#333';
+                }
+            });
+        }
+
+        function goToPrevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        function goToNextPage() {
+            if (currentPage < pageLinks.children.length - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        prevBtn.addEventListener('click', goToPrevPage);
+        nextBtn.addEventListener('click', goToNextPage);
+
+        // 显示第一页并生成页数链接
+        showPage(currentPage);
+        generatePageLinks();
+    });
+</script>
+

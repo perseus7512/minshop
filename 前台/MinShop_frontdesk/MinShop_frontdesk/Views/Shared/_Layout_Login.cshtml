@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title MinShop 分分購物</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        .header {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand img {
+            max-height: 40px;
+            width: auto;
+        }
+
+        .form-inline input[type="search"] {
+            width: 500px;
+        }
+
+        .d-flex {
+            background-color: #ffffff;
+            margin-top: 20px;
+            padding: 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            color: #343a40;
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+            .content li {
+                margin-bottom: 10px;
+            }
+
+        .footer a {
+            color: #343a40;
+        }
+
+            .footer a:hover {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+        .text-muted {
+            color: #6c757d;
+        }
+        img{
+            width:50px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto">
+        <!-- 頁首 -->
+        <header class="header">
+            <div class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="~/home/index">
+                    <button class="btn btn-link nav-link" type="button">
+                        <img src="~/images/Layout/logo01.png" alt="logo">
+                    </button>
+                </a>
+                <form class="form-inline justify-content-center"  method="post" action="~/home/Search">
+                    <input class="form-control mr-2" type="text" placeholder="尋找商品" aria-label="Search"
+                           style="width: 300px;" id="searchInput" name="searchInput">
+                    <button class="btn btn-outline-success" type="submit"id="searchButton" onclick="addRecord()">&nbsp搜尋</button>
+                </form>
+                <ul id="recordList">
+                    <!-- 這裡將顯示新增的紀錄 -->
+                </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="~/home/ShoppingCar" class="btn btn-link nav-link">
+                                <img src="~/images/Layout/icon_cart.png" alt="icon_cart" style="width:50px">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/home/history" class="btn btn-link nav-link">
+                                <img src="~/images/Layout/icon_history.png" alt="icon_history" style="width:50px">
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="dropdown">
+                        <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="~/images/Layout/icon_user.png" alt="icon_user" style="width:50px">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                            <a class="dropdown-item" href="~/home/Users">我的帳戶</a>
+                            <a class="dropdown-item" href="~/home/Logout">登出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 商品分類 -->
+            <div class="d-flex">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        美妝用品-唇彩
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                        @foreach (var item in Model.Where(m => m.level1Class == "唇彩        "))
+                        {
+                            <a class="dropdown-item" href="~/home/product?productId=@item.productId">@item.name</a>
+                        }
+                        @*<a class="dropdown-item" href="#">1028 唇迷心竅絲絨唇霧 (703 熟成草莓)</a>
+                    <a class="dropdown-item" href="#">1028 唇迷心竅絲絨唇霧 (704 日曬丹橙)</a>
+                    <a class="dropdown-item" href="#">Baby Bright 持久粉霧莓果唇釉#05 Bayberry</a>
+                    <a class="dropdown-item" href="#">Baby Bright甜蜜下午茶持久顯色水光潤唇釉2.8g #04</a>
+                    <a class="dropdown-item" href="#">Baby Bright 持久霧面絲絨唇釉 #01 Yuzu Tea</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">media 媚點 滋潤持久型唇膏 RD-13</a>
+                    <a class="dropdown-item" href="#">media 媚點 水灩光唇膏 RS-03 (3.1g)</a>
+                    <a class="dropdown-item" href="#">BBIA 不掉色水光玻璃唇釉 #02 3.2g</a>
+                    <a class="dropdown-item" href="#">BBIA LEAU超持久水潤光保濕唇釉 #04 4.5g</a>
+                    <a class="dropdown-item" href="#">BBIA LEAU超持久水潤光保濕唇釉 #01 4.5g</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">BBIA LEAU超持久水潤光保濕唇釉 #07 4.5g</a>
+                    <a class="dropdown-item" href="#">BBIA LEAU超持久水潤光保濕唇釉 #06 4.5g</a>
+                    <a class="dropdown-item" href="#">BBIA LEAU超持久水潤光保濕唇釉 #05 4.5G</a>
+                    <a class="dropdown-item" href="#">BBIA 水花瓣輕盈保濕豐潤唇膏 #04 3g</a>
+                    <a class="dropdown-item" href="#">BBIA 花曜薔薇絲柔粉霧唇釉 #03 3g</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">BOM 碧波曼 絲絨啞光鎖色唇釉 #03桃粉色</a>
+                    <a class="dropdown-item" href="#">BOM 碧波曼 絲滑霧面唇釉 #301 豆沙粉色</a>
+                    <a class="dropdown-item" href="#">BOM 碧波曼 輕霧啞光口紅 #809辣椒红</a>
+                    <a class="dropdown-item" href="#">2aN高雅清透唇釉#04淺蓮紅 3.4g</a>
+                    <a class="dropdown-item" href="#">2aN高雅清透唇釉#10古銅色 3.4g</a>*@
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink2"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        居家生活-寢具
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                        @foreach (var item in Model.Where(m => m.level1Class == "寢具        "))
+                        {
+                            <a class="dropdown-item" href="~/home/product?productId=@item.productId">@item.name</a>
+                        }
+                        @*<a class="dropdown-item" href="#">針織印花雙人床包兩用被組-諾瓦幾何</a>
+                    <a class="dropdown-item" href="#">針織印花雙人床包兩用被組-長島冰茶</a>
+                    <a class="dropdown-item" href="#">針織印花雙人床包兩用被組-月光森林</a>
+                    <a class="dropdown-item" href="#">印花雙人床包兩用被組-藍海</a>
+                    <a class="dropdown-item" href="#">吸濕排汗天絲全鋪棉床包兩用被四件組/雙人/沙漠駱駝</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">純棉素色床包枕套組單人-灰</a>
+                    <a class="dropdown-item" href="#">純棉床包枕套組 單人 條紋風格 藍色款</a>
+                    <a class="dropdown-item" href="#">純棉床包枕套組 單人 條紋風格 白色款</a>
+                    <a class="dropdown-item" href="#">飛航模飾精梳純棉床包組/秋日候鳥</a>
+                    <a class="dropdown-item" href="#">吸濕排汗天絲枕頭套 兩入 灰色款</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">台灣製舒柔好眠可水洗枕</a>
+                    <a class="dropdown-item" href="#">石墨烯天絲可水洗止鼾枕</a>
+                    <a class="dropdown-item" href="#">石墨烯天絲可水洗獨立筒枕</a>
+                    <a class="dropdown-item" href="#">竹炭抗菌雙面記憶枕-標準型</a>
+                    <a class="dropdown-item" href="#">印花石墨烯毛毯 150x200cm-小樹</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">印花厚被豆毯抱枕 110×150cm-大象</a>
+                    <a class="dropdown-item" href="#">印花厚被豆毯抱枕 110×150cm-花朵</a>
+                    <a class="dropdown-item" href="#">印花涼感紗薄被 涼被 150x200-草原動物-奶茶</a>
+                    <a class="dropdown-item" href="#">雙面涼感薄被 涼被 180X210-星星</a>
+                    <a class="dropdown-item" href="#">雙面涼感薄被 180x210cm-企鵝</a>*@
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink3"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        戶外休閒-帳篷
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
+                        @foreach (var item in Model.Where(m => m.level1Class == "帳篷        "))
+                        {
+                            <a class="dropdown-item" href="~/home/product?productId=@item.productId">@item.name</a>
+                        }
+                        @*<a class="dropdown-item" href="#">【KZM】NEW X5別墅帳 K221T3T11</a>
+                    <a class="dropdown-item" href="#">KAZMI KZM TIER 提爾4人帳.露營帳篷 圓頂帳 野餐家庭帳 遮光帳篷 四季透氣帳</a>
+                    <a class="dropdown-item" href="#">May shop小家庭最適合 免搭建速開</a>
+                    <a class="dropdown-item" href="#">【日本tent-Mark DESIGNS】PEPO帳篷/小山屋 (TM-1803) 復古老屋帳篷 屋式帳 TC棉帳</a>
+                    <a class="dropdown-item" href="#">May shop 輕便好攜帶 免安裝 車泊必備</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">納海 雙層雙開門帳篷 超輕量化全鋁合金 3-4人適用</a>
+                    <a class="dropdown-item" href="#">【DIDO Camping】兩門兩窗自動休閒露營帳篷 大款(DC079)</a>
+                    <a class="dropdown-item" href="#">戶外 車尾帳 車後帳 簡易帳篷 車尾 延伸 遮陽 防雨 汽車帳</a>
+                    <a class="dropdown-item" href="#">【Coleman】氣候達人2-ROOM COCOON Ⅲ / CM-36431M</a>
+                    <a class="dropdown-item" href="#">【Horizon 天際線】BaseCamp 黑化野營球形雙層帳 買就送戰術收納包四件組</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">MOQI 兩房一廳帳篷</a>
+                    <a class="dropdown-item" href="#">【DIDO Camping】兩門兩窗自動休閒露營帳篷 小款(DC078)</a>
+                    <a class="dropdown-item" href="#">【KZM】TIER DOME GT 提爾四人帳 K221T3T02</a>
+                    <a class="dropdown-item" href="#">KAZMI 韓國 KZM OSCAR 奧斯卡小屋4人帳K221T3T03</a>
+                    <a class="dropdown-item" href="#">QIAOSEN 送防潮墊 六角速開帳篷 適用5-8人露營帳篷 遊戲帳篷戶外野營便攜野餐帳篷防風防曬防蚊帳篷</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">戶外延伸suv車尾帳篷 野外露營車尾帳篷 車載帳篷後備箱汽車尾箱帳篷</a>
+                    <a class="dropdown-item" href="#">Besthot 全自動速開天幕多人帳-贈防潮墊 240x240cm</a>
+                    <a class="dropdown-item" href="#">PUSH!戶外休閒用品1秒丟自動免搭拋帳露營帳篷家庭野餐帳篷四季帳篷P118</a>
+                    <a class="dropdown-item" href="#">Kampa 最新一代Hayling 4 AIR 充氣帳篷</a>
+                    <a class="dropdown-item" href="#">Naturehike 客廳款 Village13 屋脊自動帳篷 3-4人 ZP12003</a>*@
+                    </div>
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+        <hr />
+        <div class="container body-content">
+
+            <div class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+                <a class="navbar-brand" href="#">合作廠商</a>
+                <a class="navbar-brand" href="#">合作廠商</a>
+                <a class="navbar-brand" href="#">合作廠商</a>
+            </div>
+            <div class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+                <h3>一站式時尚體驗</h3>
+                <a class="navbar-brand" href="#">分分來購物</a>
+                <a class="navbar-brand" href="#">七天退款保證</a>
+            </div>
+            <!-- 頁尾 -->
+            <footer class="footer justify-content-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>聯絡我們</h5>
+                            <ul class="content">
+                                <li><a href="https://maps.app.goo.gl/JUij8VPMv8wCB7Eg8">台北市內湖區環山路一段56號</a></li>
+                                <li><a href="mailto:MinShop@gmail.com">MinShop@gmail.com</a></li>
+                                <li><a href="#">@@590khrhm</a></li>
+                                <li><img src="~/images/Layout/line_bot.png" alt="logo" class="logo-img"></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>客戶服務</h5>
+                            <ul class="content">
+                                <li><a href="#">會員中心</a></li>
+                                <li><a href="#">訂單配送進度查詢</a></li>
+                                <li><a href="#">常見問題</a></li>
+                                <li><a href="#">售後服務</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>企業合作</h5>
+                            <ul class="content">
+                                <li><a href="#">招商專區</a></li>
+                                <li><a href="#">媒體聯繫</a></li>
+                                <li><a href="#">企業/大型採購</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p class="text-muted">© 2024 MinShop。保留所有權利</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+        <script>
+            $('.dropdown').mouseover(function () {
+                $(this).find('.dropdown-toggle').addClass('show');
+                $(this).find('.dropdown-menu').addClass('show');
+            });
+
+            $('.dropdown').mouseout(function () {
+                $(this).find('.dropdown-toggle').removeClass('show');
+                $(this).find('.dropdown-menu').removeClass('show');
+            });
+            function addRecord() {
+  var input = document.getElementById('searchInput').value;
+  if (input.trim() === '') {
+    alert('請輸入文字！');
+    return;
+  }
+
+  var recordList = document.getElementById('recordList');
+  var li = document.createElement('li');
+  li.className = 'recordItem';
+
+  var textNode = document.createTextNode(input);
+  li.appendChild(textNode);
+
+  var deleteButton = document.createElement('button');
+  deleteButton.className = 'deleteButton';
+  deleteButton.textContent = 'X';
+  deleteButton.onclick = function() {
+    li.remove();
+  };
+  li.appendChild(deleteButton);
+
+  recordList.appendChild(li);
+
+  // 清空輸入框
+
+}
+
+
+        </script>
+
+
+</body>
+</html>

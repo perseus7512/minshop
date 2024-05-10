@@ -1,0 +1,60 @@
+﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .login {
+        background: rgba(0,0,0, 0.5);
+        text-align: center;
+        color: #fff;
+        font-family: "微軟正黑體",sans-serif;
+        border-radius: 10px;
+        padding: 30px;
+        width: 60%;
+    }
+
+        .login i {
+            font-size: 100px;
+            margin: 20px auto;
+        }
+
+    input {
+        font-size: 16px;
+        font-family: "微軟正黑體",sans-serif;
+        padding: 5px;
+        border-radius: 4px;
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+    }
+
+    button {
+        border: 0;
+        padding: 6px 12px;
+        margin: 20px auto;
+        font-size: 18px;
+        font-family: "微軟正黑體",sans-serif;
+        background: #fff;
+        color: #000;
+    }
+
+    @@media (max-width:450px) {
+        .login {
+            width: 70%;
+        }
+    }
+</style>
+<div class="container d-flex justify-content-center align-items-center">
+    <form method="post" action="~/home/Login" class="login">
+        <h1><b>登入</b></h1>
+        <i class="fa fa-user-circle-o"></i>
+        <h2>電子郵件</h2>
+        <input type="text" placeholder="請輸入電子郵件" name="email" id="email">
+        <h2>密碼</h2>
+        <input type="password" placeholder="請輸入密碼" name="pass" id="pass">
+        <a href="~/home/register" class="btn btn-light">註冊</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <button type="submit">登入</button>
+    </form>
+</div>

@@ -18,11 +18,10 @@ namespace MinShop_frontdesk.Models
         public ship()
         {
             this.saleInvoice = new HashSet<saleInvoice>();
-            this.status = new HashSet<status>();
         }
     
         public string shipId { get; set; }
-        public System.DateTime date { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
         public string name { get; set; }
         public string pickingListId { get; set; }
         public string memberId { get; set; }
@@ -30,7 +29,6 @@ namespace MinShop_frontdesk.Models
         public virtual pickingList pickingList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saleInvoice> saleInvoice { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<status> status { get; set; }
+        public virtual status status { get; set; }
     }
 }

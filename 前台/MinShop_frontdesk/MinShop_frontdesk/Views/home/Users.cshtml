@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 <style>
     body {
@@ -213,3 +214,103 @@
             });
     });
 </script>
+=======
+﻿@model MinShop_frontdesk.Models.member
+<style>
+    body {
+        font-family: Roboto;
+        background-color: azure;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    form {
+        width: 70%;
+        margin: 0;
+        padding: 0;
+    }
+
+    fieldset {
+        border: 1px solid rgb(0, 0, 0);
+        padding: 10px;
+        margin: 0;
+        background-color: rgb(217, 232, 194);
+    }
+
+    legend {
+        background-color: rgb(41, 91, 93);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        width: 40%;
+    }
+
+    label {
+        width: 100%;
+        display: block;
+    }
+
+    input {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+
+    .sex {
+        width: auto;
+        height: 15px;
+    }
+
+    h2 {
+        margin-top: 5px;
+    }
+
+    .radio-button {
+        transform: scale(0.5); /* 調整大小，2 為放大倍數 */
+    }
+</style>
+
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend><h2>編輯個人檔案</h2></legend>
+            <label for="memberId">會員編號:@Model.memberId</label>
+            <label for="memberId">電子郵件:</label>
+            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            <label for="memberId">領貨人姓名:</label>
+            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            <label for="memberId">性別:</label>
+            <div class="custom-radio custom-radio-label col-sm-3">
+                @Html.RadioButtonFor(model => model.sex, "男", Model.sex == "男" ? new { @checked = "checked" } : null)
+                <label for="male">男</label>
+            </div>
+            <div class="custom-radio custom-radio-label col-sm-3">
+                @Html.RadioButtonFor(model => model.sex, "女", Model.sex == "女" ? new { @checked = "checked" } : null)
+                <label for="female">女</label>
+            </div>
+
+
+            <label for="memberId">生日:</label>
+            @Html.EditorFor(model => model.birthday, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+            @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
+            <label for="memberId">電話:</label>
+            @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+            <label for="memberId">地址</label>
+            @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+            <button type="submit" class="btn btn-primary" id="btn">提交</button>
+        </fieldset>
+    }
+</body>
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+>>>>>>> index

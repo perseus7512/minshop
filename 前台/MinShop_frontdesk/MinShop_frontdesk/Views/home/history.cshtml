@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MinShop_frontdesk.Models.order>
+
+
+<h2>歷史訂單</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            訂單編號
+        </th>
+        <th>
+            購物車編號
+        </th>
+        <th>
+            總金額
+        </th>
+        <th>
+            訂單狀態
+        </th>
+        <th>
+            收件人
+        </th>
+        <th>
+            確認日期
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cartId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sendOption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>瀏覽紀錄</title>
+<style>
+  #searchInput {
+    width: 300px;
+    margin-bottom: 10px;
+  }
+  #searchButton {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  #searchButton:hover {
+    background-color: #0056b3;
+  }
+  #recordList {
+    list-style-type: none;
+    padding: 0;
+  }
+  .recordItem {
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+    padding: 5px;
+  }
+  .deleteButton {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    float: right;
+  }
+</style>
+</head>
+<body>
+
+<h2>瀏覽紀錄</h2>
+
+<input type="text" id="searchInput" placeholder="請輸入文字">
+<button id="searchButton" onclick="addRecord()">新增</button>
+
+<ul id="recordList">
+  <!-- 這裡將顯示新增的紀錄 -->
+</ul>
+
+<script>
+function addRecord() {
+  var input = document.getElementById('searchInput').value;
+  if (input.trim() === '') {
+    alert('請輸入文字！');
+    return;
+  }
+  
+  var recordList = document.getElementById('recordList');
+  var li = document.createElement('li');
+  li.className = 'recordItem';
+  
+  var textNode = document.createTextNode(input);
+  li.appendChild(textNode);
+  
+  var deleteButton = document.createElement('button');
+  deleteButton.className = 'deleteButton';
+  deleteButton.textContent = 'X';
+  deleteButton.onclick = function() {
+    li.remove();
+  };
+  li.appendChild(deleteButton);
+  
+  recordList.appendChild(li);
+  
+  // 清空輸入框
+  document.getElementById('searchInput').value = '';
+}
+</script>
+
+</body>
+</html>

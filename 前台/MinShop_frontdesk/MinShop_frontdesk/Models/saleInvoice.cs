@@ -16,7 +16,7 @@ namespace MinShop_frontdesk.Models
     {
         public string invoiceId { get; set; }
         public string shipId { get; set; }
-        public System.DateTime date { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
         public string memberId { get; set; }
     
         public virtual member member { get; set; }

@@ -106,6 +106,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\banner\home-banner1.jpg" />
+    <Content Include="images\banner\home-banner2.jpg" />
+    <Content Include="images\banner\home-banner3.jpg" />
+    <Content Include="images\banner\home-banner4.jpg" />
+    <Content Include="images\banner\home-banner5.jpg" />
     <Content Include="images\bedding\banner1.jpg" />
     <Content Include="images\bedding\banner2.jpg" />
     <Content Include="images\bedding\banner3.jpg" />
@@ -132,6 +137,7 @@
     <Content Include="images\Layout\icon_cart.png" />
     <Content Include="images\Layout\icon_history.png" />
     <Content Include="images\Layout\icon_user.png" />
+    <Content Include="images\Layout\line_bot.png" />
     <Content Include="images\Layout\logo01.png" />
     <Content Include="images\Layout\logo02.png" />
     <Content Include="images\lipgloss\1028_orange.jpg" />
@@ -157,8 +163,31 @@
     <Content Include="images\lipgloss\bom_252405.jpg" />
     <Content Include="images\lipgloss\media_rd13.jpg" />
     <Content Include="images\lipgloss\media_rs03.jpg" />
+    <Content Include="images\login.jpg" />
     <Content Include="images\next.png" />
     <Content Include="images\prev.png" />
+    <Content Include="images\product\1028_strawberry.jpg" />
+    <Content Include="images\product\bedding_nova_geo.jpg" />
+    <Content Include="images\product\besthot_16983.jpg" />
+    <Content Include="images\product\coleman_16998.jpg" />
+    <Content Include="images\product\dido_16607-1.jpg" />
+    <Content Include="images\product\dido_16607.jpg" />
+    <Content Include="images\product\horizon_17044.jpg" />
+    <Content Include="images\product\kampa_17060.jpg" />
+    <Content Include="images\product\kazmi_16642.jpg" />
+    <Content Include="images\product\kazmi_17104.jpg" />
+    <Content Include="images\product\kzm_16641.jpg" />
+    <Content Include="images\product\kzm_17096.jpg" />
+    <Content Include="images\product\mayshop _16546.jpg" />
+    <Content Include="images\product\mayshop_15586.jpg" />
+    <Content Include="images\product\mayshop_16546.jpg" />
+    <Content Include="images\product\mayshop_16775.jpg" />
+    <Content Include="images\product\mqqi_16880.jpg" />
+    <Content Include="images\product\naturehike _16994.jpg" />
+    <Content Include="images\product\push_15537.jpg" />
+    <Content Include="images\product\qiaosen_16707.jpg" />
+    <Content Include="images\product\suv_16833.jpg" />
+    <Content Include="images\product\tentmark_16798.jpg" />
     <Content Include="images\tent\banner1.jpg" />
     <Content Include="images\tent\banner2.jpg" />
     <Content Include="images\tent\banner3.jpg" />
@@ -184,8 +213,8 @@
     <Content Include="images\tent\tentmark_16798.jpg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -206,6 +235,13 @@
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -222,12 +258,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\level1Class.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\level2Class.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\level3Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\member.cs">
@@ -295,13 +325,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\home\Index.cshtml" />
@@ -311,10 +334,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\home\ShoppingCar.cshtml" />
     <Content Include="Views\home\Users.cshtml" />
-    <Content Include="Views\home\Tent.cshtml" />
     <Content Include="Views\home\Order.cshtml" />
-    <Content Include="Views\home\Bedding.cshtml" />
-    <Content Include="Views\home\LipGloss.cshtml" />
+    <Content Include="Views\home\Login.cshtml" />
+    <Content Include="Views\home\register.cshtml" />
+    <Content Include="Views\Shared\_Layout_Login.cshtml" />
+    <Content Include="Views\home\UpdateCar.cshtml" />
+    <Content Include="Views\home\history.cshtml" />
+    <Content Include="Views\home\product.cshtml" />
+    <Content Include="Views\home\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

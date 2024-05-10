@@ -17,8 +17,8 @@ namespace MinShop_frontdesk.Models
         public string supplierId { get; set; }
         public string productId { get; set; }
         public string unit { get; set; }
-        public System.DateTime date { get; set; }
-        public int cost { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+        public Nullable<int> cost { get; set; }
     
         public virtual stock stock { get; set; }
         public virtual supplier supplier { get; set; }

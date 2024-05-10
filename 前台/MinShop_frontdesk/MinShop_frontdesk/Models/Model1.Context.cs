@@ -26,8 +26,6 @@ namespace MinShop_frontdesk.Models
         }
     
         public virtual DbSet<level1Class> level1Class { get; set; }
-        public virtual DbSet<level2Class> level2Class { get; set; }
-        public virtual DbSet<level3Class> level3Class { get; set; }
         public virtual DbSet<member> member { get; set; }
         public virtual DbSet<message> message { get; set; }
         public virtual DbSet<order> order { get; set; }

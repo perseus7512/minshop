@@ -10,44 +10,21 @@
             <PropertyRef Name="level1Class" />
           </Key>
           <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <EntityType Name="level2Class">
-          <Key>
-            <PropertyRef Name="level1Class" />
-            <PropertyRef Name="level2Class" />
-          </Key>
-          <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="level2Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <EntityType Name="level3Class">
-          <Key>
-            <PropertyRef Name="level1Class" />
-            <PropertyRef Name="level2Class" />
-            <PropertyRef Name="level3Class" />
-          </Key>
-          <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="level2Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="level3Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="member">
           <Key>
             <PropertyRef Name="memberId" />
           </Key>
           <Property Name="memberId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="account" Type="nchar" MaxLength="16" Nullable="false" />
-          <Property Name="password" Type="nchar" MaxLength="16" Nullable="false" />
-          <Property Name="sex" Type="nchar" MaxLength="5" Nullable="false" />
-          <Property Name="date" Type="date" Nullable="false" />
-          <Property Name="birthday" Type="date" Nullable="false" />
-          <Property Name="phone" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="address" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="email" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="password" Type="nchar" MaxLength="16" />
+          <Property Name="sex" Type="nchar" MaxLength="1" />
+          <Property Name="date" Type="date" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="phone" Type="nchar" MaxLength="10" />
+          <Property Name="address" Type="nchar" MaxLength="50" />
+          <Property Name="email" Type="nchar" MaxLength="50" />
           <Property Name="companyNumbers" Type="nchar" MaxLength="16" />
-          <Property Name="company" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="message">
           <Key>
@@ -58,8 +35,8 @@
           <Property Name="orderId" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="memberId" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="messageId" Type="int" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="responder" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="responder" Type="int" />
           <Property Name="messageContent" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="order">
@@ -67,16 +44,15 @@
             <PropertyRef Name="orderId" />
           </Key>
           <Property Name="orderId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="memberId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="cartId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="total" Type="int" Nullable="false" />
-          <Property Name="paymentClass" Type="int" Nullable="false" />
-          <Property Name="creditCard" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="sendOption" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="reci" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="reciPhone" Type="int" Nullable="false" />
-          <Property Name="reciAddress" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="memberId" Type="nchar" MaxLength="10" />
+          <Property Name="cartId" Type="nchar" MaxLength="10" />
+          <Property Name="total" Type="int" />
+          <Property Name="creditCard" Type="nchar" MaxLength="10" />
+          <Property Name="sendOption" Type="nchar" MaxLength="10" />
+          <Property Name="reci" Type="nchar" MaxLength="10" />
+          <Property Name="reciPhone" Type="int" />
+          <Property Name="reciAddress" Type="nchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" />
           <Property Name="ps" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="paymentClass">
@@ -84,7 +60,7 @@
             <PropertyRef Name="paymentClass" />
           </Key>
           <Property Name="paymentClass" Type="int" Nullable="false" />
-          <Property Name="method" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="method" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="pickingDetail">
           <Key>
@@ -93,16 +69,16 @@
           </Key>
           <Property Name="pickingListId" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="orderQuantity" Type="int" Nullable="false" />
+          <Property Name="orderQuantity" Type="int" />
         </EntityType>
         <EntityType Name="pickingList">
           <Key>
             <PropertyRef Name="pickingListId" />
           </Key>
           <Property Name="pickingListId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="orderId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="orderId" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="quotation">
           <Key>
@@ -111,37 +87,41 @@
           </Key>
           <Property Name="supplierId" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="unit" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="cost" Type="int" Nullable="false" />
+          <Property Name="unit" Type="nchar" MaxLength="10" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="cost" Type="int" />
         </EntityType>
         <EntityType Name="saleInvoice">
           <Key>
             <PropertyRef Name="invoiceId" />
           </Key>
           <Property Name="invoiceId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="shipId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="memberId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="shipId" Type="nchar" MaxLength="10" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="memberId" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="ship">
           <Key>
             <PropertyRef Name="shipId" />
           </Key>
           <Property Name="shipId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="pickingListId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="memberId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="pickingListId" Type="nchar" MaxLength="10" />
+          <Property Name="memberId" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="shoppingCart">
           <Key>
             <PropertyRef Name="cartId" />
           </Key>
           <Property Name="cartId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="memberId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="checkout" Type="datetime" Nullable="false" />
+          <Property Name="memberId" Type="nchar" MaxLength="10" />
+          <Property Name="productId" Type="nchar" MaxLength="10" />
+          <Property Name="name" Type="nchar" MaxLength="255" />
+          <Property Name="price" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="checkout" Type="datetime" />
         </EntityType>
         <EntityType Name="shoppingDetail">
           <Key>
@@ -150,50 +130,48 @@
           </Key>
           <Property Name="cartId" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="putDate" Type="datetime" Nullable="false" />
-          <Property Name="price" Type="int" Nullable="false" />
-          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="memberId" Type="nchar" MaxLength="10" />
+          <Property Name="putDate" Type="datetime" />
+          <Property Name="price" Type="int" />
+          <Property Name="quantity" Type="int" />
         </EntityType>
         <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'mineshop.dbo.status' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="status">
           <Key>
             <PropertyRef Name="shipId" />
-            <PropertyRef Name="orderId" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="address" />
           </Key>
           <Property Name="shipId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="orderId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="status" Type="int" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="address" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="orderId" Type="nchar" MaxLength="10" />
+          <Property Name="status" Type="int" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="address" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="stock">
           <Key>
             <PropertyRef Name="productId" />
           </Key>
           <Property Name="productId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="price" Type="int" Nullable="false" />
-          <Property Name="image" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="level1Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="level2Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="level3Class" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="releaseDate" Type="datetime" Nullable="false" />
-          <Property Name="removalDate" Type="datetime" Nullable="false" />
-          <Property Name="inventory" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="255" />
+          <Property Name="price" Type="int" />
+          <Property Name="specialoffer" Type="int" />
+          <Property Name="image" Type="nchar" MaxLength="50" />
+          <Property Name="level1Class" Type="nchar" MaxLength="10" />
+          <Property Name="releaseDate" Type="datetime" />
+          <Property Name="removalDate" Type="datetime" />
+          <Property Name="inventory" Type="int" />
+          <Property Name="detailed" Type="nvarchar(max)" />
+          <Property Name="click" Type="int" />
         </EntityType>
         <EntityType Name="supplier">
           <Key>
             <PropertyRef Name="supplierId" />
           </Key>
           <Property Name="supplierId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="company" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="phone" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="address" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="company" Type="nchar" MaxLength="50" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="phone" Type="nchar" MaxLength="10" />
+          <Property Name="address" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -205,56 +183,8 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_level2Class_level1Class">
-          <End Role="level1Class" Type="Self.level1Class" Multiplicity="1" />
-          <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="level1Class">
-              <PropertyRef Name="level1Class" />
-            </Principal>
-            <Dependent Role="level2Class">
-              <PropertyRef Name="level1Class" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_level2Class_stock">
-          <End Role="stock" Type="Self.stock" Multiplicity="1" />
-          <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="stock">
-              <PropertyRef Name="productId" />
-            </Principal>
-            <Dependent Role="level2Class">
-              <PropertyRef Name="level2Class" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_level3Class_stock">
-          <End Role="stock" Type="Self.stock" Multiplicity="1" />
-          <End Role="level3Class" Type="Self.level3Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="stock">
-              <PropertyRef Name="productId" />
-            </Principal>
-            <Dependent Role="level3Class">
-              <PropertyRef Name="level3Class" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_order_paymentClass">
-          <End Role="paymentClass" Type="Self.paymentClass" Multiplicity="1" />
-          <End Role="order" Type="Self.order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="paymentClass">
-              <PropertyRef Name="paymentClass" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="paymentClass" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_order_shoppingCart">
-          <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="1" />
+          <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="0..1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="shoppingCart">
@@ -314,7 +244,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_saleInvoice_member">
-          <End Role="member" Type="Self.member" Multiplicity="1" />
+          <End Role="member" Type="Self.member" Multiplicity="0..1" />
           <End Role="saleInvoice" Type="Self.saleInvoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="member">
@@ -326,7 +256,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_saleInvoice_ship">
-          <End Role="ship" Type="Self.ship" Multiplicity="1" />
+          <End Role="ship" Type="Self.ship" Multiplicity="0..1" />
           <End Role="saleInvoice" Type="Self.saleInvoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ship">
@@ -338,7 +268,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ship_pickingList">
-          <End Role="pickingList" Type="Self.pickingList" Multiplicity="1" />
+          <End Role="pickingList" Type="Self.pickingList" Multiplicity="0..1" />
           <End Role="ship" Type="Self.ship" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="pickingList">
@@ -350,7 +280,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_shoppingCart_member">
-          <End Role="member" Type="Self.member" Multiplicity="1" />
+          <End Role="member" Type="Self.member" Multiplicity="0..1" />
           <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="member">
@@ -387,7 +317,7 @@
         </Association>
         <Association Name="FK_status_ship">
           <End Role="ship" Type="Self.ship" Multiplicity="1" />
-          <End Role="status" Type="Self.status" Multiplicity="*" />
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="ship">
               <PropertyRef Name="shipId" />
@@ -397,22 +327,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_stock_level1Class">
-          <End Role="level1Class" Type="Self.level1Class" Multiplicity="1" />
-          <End Role="stock" Type="Self.stock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="level1Class">
-              <PropertyRef Name="level1Class" />
-            </Principal>
-            <Dependent Role="stock">
-              <PropertyRef Name="level1Class" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="mineshopModelStoreContainer">
           <EntitySet Name="level1Class" EntityType="Self.level1Class" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="level2Class" EntityType="Self.level2Class" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="level3Class" EntityType="Self.level3Class" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="message" EntityType="Self.message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
@@ -436,22 +352,6 @@
     [status].[address] AS [address]
     FROM [dbo].[status] AS [status]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_level2Class_level1Class" Association="Self.FK_level2Class_level1Class">
-            <End Role="level1Class" EntitySet="level1Class" />
-            <End Role="level2Class" EntitySet="level2Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_level2Class_stock" Association="Self.FK_level2Class_stock">
-            <End Role="stock" EntitySet="stock" />
-            <End Role="level2Class" EntitySet="level2Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_level3Class_stock" Association="Self.FK_level3Class_stock">
-            <End Role="stock" EntitySet="stock" />
-            <End Role="level3Class" EntitySet="level3Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_order_paymentClass" Association="Self.FK_order_paymentClass">
-            <End Role="paymentClass" EntitySet="paymentClass" />
-            <End Role="order" EntitySet="order" />
-          </AssociationSet>
           <AssociationSet Name="FK_order_shoppingCart" Association="Self.FK_order_shoppingCart">
             <End Role="shoppingCart" EntitySet="shoppingCart" />
             <End Role="order" EntitySet="order" />
@@ -500,10 +400,6 @@
             <End Role="ship" EntitySet="ship" />
             <End Role="status" EntitySet="status" />
           </AssociationSet>
-          <AssociationSet Name="FK_stock_level1Class" Association="Self.FK_stock_level1Class">
-            <End Role="level1Class" EntitySet="level1Class" />
-            <End Role="stock" EntitySet="stock" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -515,49 +411,21 @@
             <PropertyRef Name="level1Class1" />
           </Key>
           <Property Name="level1Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="level2Class" Relationship="Self.FK_level2Class_level1Class" FromRole="level1Class" ToRole="level2Class" />
-          <NavigationProperty Name="stock" Relationship="Self.FK_stock_level1Class" FromRole="level1Class" ToRole="stock" />
-        </EntityType>
-        <EntityType Name="level2Class">
-          <Key>
-            <PropertyRef Name="level1Class" />
-            <PropertyRef Name="level2Class1" />
-          </Key>
-          <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="level2Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="level1Class1" Relationship="Self.FK_level2Class_level1Class" FromRole="level2Class" ToRole="level1Class" />
-          <NavigationProperty Name="stock" Relationship="Self.FK_level2Class_stock" FromRole="level2Class" ToRole="stock" />
-        </EntityType>
-        <EntityType Name="level3Class">
-          <Key>
-            <PropertyRef Name="level1Class" />
-            <PropertyRef Name="level2Class" />
-            <PropertyRef Name="level3Class1" />
-          </Key>
-          <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="level2Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="level3Class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="stock" Relationship="Self.FK_level3Class_stock" FromRole="level3Class" ToRole="stock" />
         </EntityType>
         <EntityType Name="member">
           <Key>
             <PropertyRef Name="memberId" />
           </Key>
           <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="account" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="sex" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="sex" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="companyNumbers" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
-          <Property Name="company" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="saleInvoice" Relationship="Self.FK_saleInvoice_member" FromRole="member" ToRole="saleInvoice" />
           <NavigationProperty Name="shoppingCart" Relationship="Self.FK_shoppingCart_member" FromRole="member" ToRole="shoppingCart" />
         </EntityType>
@@ -570,8 +438,8 @@
           <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="messageId" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="responder" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="responder" Type="Int32" />
           <Property Name="messageContent" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="order">
@@ -579,18 +447,16 @@
             <PropertyRef Name="orderId" />
           </Key>
           <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="total" Type="Int32" Nullable="false" />
-          <Property Name="paymentClass" Type="Int32" Nullable="false" />
-          <Property Name="creditCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="sendOption" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="reci" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="reciPhone" Type="Int32" Nullable="false" />
-          <Property Name="reciAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="creditCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="sendOption" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="reci" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="reciPhone" Type="Int32" />
+          <Property Name="reciAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="ps" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="paymentClass1" Relationship="Self.FK_order_paymentClass" FromRole="order" ToRole="paymentClass" />
           <NavigationProperty Name="shoppingCart" Relationship="Self.FK_order_shoppingCart" FromRole="order" ToRole="shoppingCart" />
         </EntityType>
         <EntityType Name="paymentClass">
@@ -598,8 +464,7 @@
             <PropertyRef Name="paymentClass1" />
           </Key>
           <Property Name="paymentClass1" Type="Int32" Nullable="false" />
-          <Property Name="method" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="order" Relationship="Self.FK_order_paymentClass" FromRole="paymentClass" ToRole="order" />
+          <Property Name="method" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="pickingDetail">
           <Key>
@@ -608,7 +473,7 @@
           </Key>
           <Property Name="pickingListId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="orderQuantity" Type="Int32" Nullable="false" />
+          <Property Name="orderQuantity" Type="Int32" />
           <NavigationProperty Name="pickingList" Relationship="Self.FK_pickingDetail_pickingList" FromRole="pickingDetail" ToRole="pickingList" />
           <NavigationProperty Name="stock" Relationship="Self.FK_pickingDetail_stock" FromRole="pickingDetail" ToRole="stock" />
         </EntityType>
@@ -617,9 +482,9 @@
             <PropertyRef Name="pickingListId" />
           </Key>
           <Property Name="pickingListId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="pickingDetail" Relationship="Self.FK_pickingDetail_pickingList" FromRole="pickingList" ToRole="pickingDetail" />
           <NavigationProperty Name="ship" Relationship="Self.FK_ship_pickingList" FromRole="pickingList" ToRole="ship" />
         </EntityType>
@@ -630,9 +495,9 @@
           </Key>
           <Property Name="supplierId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="unit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="cost" Type="Int32" Nullable="false" />
+          <Property Name="unit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="cost" Type="Int32" />
           <NavigationProperty Name="stock" Relationship="Self.FK_quotation_stock" FromRole="quotation" ToRole="stock" />
           <NavigationProperty Name="supplier" Relationship="Self.FK_quotation_supplier" FromRole="quotation" ToRole="supplier" />
         </EntityType>
@@ -641,9 +506,9 @@
             <PropertyRef Name="invoiceId" />
           </Key>
           <Property Name="invoiceId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="shipId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="shipId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="member" Relationship="Self.FK_saleInvoice_member" FromRole="saleInvoice" ToRole="member" />
           <NavigationProperty Name="ship" Relationship="Self.FK_saleInvoice_ship" FromRole="saleInvoice" ToRole="ship" />
         </EntityType>
@@ -652,10 +517,10 @@
             <PropertyRef Name="shipId" />
           </Key>
           <Property Name="shipId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="pickingListId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pickingListId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="pickingList" Relationship="Self.FK_ship_pickingList" FromRole="ship" ToRole="pickingList" />
           <NavigationProperty Name="saleInvoice" Relationship="Self.FK_saleInvoice_ship" FromRole="ship" ToRole="saleInvoice" />
           <NavigationProperty Name="status" Relationship="Self.FK_status_ship" FromRole="ship" ToRole="status" />
@@ -665,9 +530,13 @@
             <PropertyRef Name="cartId" />
           </Key>
           <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="checkout" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="checkout" Type="DateTime" Precision="3" />
           <NavigationProperty Name="member" Relationship="Self.FK_shoppingCart_member" FromRole="shoppingCart" ToRole="member" />
           <NavigationProperty Name="order" Relationship="Self.FK_order_shoppingCart" FromRole="shoppingCart" ToRole="order" />
           <NavigationProperty Name="shoppingDetail" Relationship="Self.FK_shoppingDetail_shoppingCart" FromRole="shoppingCart" ToRole="shoppingDetail" />
@@ -679,9 +548,10 @@
           </Key>
           <Property Name="cartId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="putDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="price" Type="Int32" Nullable="false" />
-          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="memberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="putDate" Type="DateTime" Precision="3" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
           <NavigationProperty Name="shoppingCart" Relationship="Self.FK_shoppingDetail_shoppingCart" FromRole="shoppingDetail" ToRole="shoppingCart" />
           <NavigationProperty Name="stock" Relationship="Self.FK_shoppingDetail_stock" FromRole="shoppingDetail" ToRole="stock" />
         </EntityType>
@@ -690,18 +560,16 @@
             <PropertyRef Name="productId" />
           </Key>
           <Property Name="productId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="price" Type="Int32" Nullable="false" />
-          <Property Name="image" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="level2Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="level3Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="releaseDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="removalDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="inventory" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="level1Class1" Relationship="Self.FK_stock_level1Class" FromRole="stock" ToRole="level1Class" />
-          <NavigationProperty Name="level2Class1" Relationship="Self.FK_level2Class_stock" FromRole="stock" ToRole="level2Class" />
-          <NavigationProperty Name="level3Class1" Relationship="Self.FK_level3Class_stock" FromRole="stock" ToRole="level3Class" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="specialoffer" Type="Int32" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="level1Class" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="releaseDate" Type="DateTime" Precision="3" />
+          <Property Name="removalDate" Type="DateTime" Precision="3" />
+          <Property Name="inventory" Type="Int32" />
+          <Property Name="detailed" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="click" Type="Int32" />
           <NavigationProperty Name="pickingDetail" Relationship="Self.FK_pickingDetail_stock" FromRole="stock" ToRole="pickingDetail" />
           <NavigationProperty Name="quotation" Relationship="Self.FK_quotation_stock" FromRole="stock" ToRole="quotation" />
           <NavigationProperty Name="shoppingDetail" Relationship="Self.FK_shoppingDetail_stock" FromRole="stock" ToRole="shoppingDetail" />
@@ -711,10 +579,10 @@
             <PropertyRef Name="supplierId" />
           </Key>
           <Property Name="supplierId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="company" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="quotation" Relationship="Self.FK_quotation_supplier" FromRole="supplier" ToRole="quotation" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -730,68 +598,16 @@
         <EntityType Name="status">
           <Key>
             <PropertyRef Name="shipId" />
-            <PropertyRef Name="orderId" />
-            <PropertyRef Name="status1" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="address" />
           </Key>
           <Property Name="shipId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="status1" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="orderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="status1" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="ship" Relationship="Self.FK_status_ship" FromRole="status" ToRole="ship" />
         </EntityType>
-        <Association Name="FK_level2Class_level1Class">
-          <End Role="level1Class" Type="Self.level1Class" Multiplicity="1" />
-          <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="level1Class">
-              <PropertyRef Name="level1Class1" />
-            </Principal>
-            <Dependent Role="level2Class">
-              <PropertyRef Name="level1Class" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_stock_level1Class">
-          <End Role="level1Class" Type="Self.level1Class" Multiplicity="1" />
-          <End Role="stock" Type="Self.stock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="level1Class">
-              <PropertyRef Name="level1Class1" />
-            </Principal>
-            <Dependent Role="stock">
-              <PropertyRef Name="level1Class" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_level2Class_stock">
-          <End Role="stock" Type="Self.stock" Multiplicity="1" />
-          <End Role="level2Class" Type="Self.level2Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="stock">
-              <PropertyRef Name="productId" />
-            </Principal>
-            <Dependent Role="level2Class">
-              <PropertyRef Name="level2Class1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_level3Class_stock">
-          <End Role="stock" Type="Self.stock" Multiplicity="1" />
-          <End Role="level3Class" Type="Self.level3Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="stock">
-              <PropertyRef Name="productId" />
-            </Principal>
-            <Dependent Role="level3Class">
-              <PropertyRef Name="level3Class1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_saleInvoice_member">
-          <End Role="member" Type="Self.member" Multiplicity="1" />
+          <End Role="member" Type="Self.member" Multiplicity="0..1" />
           <End Role="saleInvoice" Type="Self.saleInvoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="member">
@@ -803,7 +619,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_shoppingCart_member">
-          <End Role="member" Type="Self.member" Multiplicity="1" />
+          <End Role="member" Type="Self.member" Multiplicity="0..1" />
           <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="member">
@@ -814,20 +630,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_order_paymentClass">
-          <End Role="paymentClass" Type="Self.paymentClass" Multiplicity="1" />
-          <End Role="order" Type="Self.order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="paymentClass">
-              <PropertyRef Name="paymentClass1" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="paymentClass" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_order_shoppingCart">
-          <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="1" />
+          <End Role="shoppingCart" Type="Self.shoppingCart" Multiplicity="0..1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="shoppingCart">
@@ -863,7 +667,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ship_pickingList">
-          <End Role="pickingList" Type="Self.pickingList" Multiplicity="1" />
+          <End Role="pickingList" Type="Self.pickingList" Multiplicity="0..1" />
           <End Role="ship" Type="Self.ship" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="pickingList">
@@ -899,7 +703,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_saleInvoice_ship">
-          <End Role="ship" Type="Self.ship" Multiplicity="1" />
+          <End Role="ship" Type="Self.ship" Multiplicity="0..1" />
           <End Role="saleInvoice" Type="Self.saleInvoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ship">
@@ -912,7 +716,7 @@
         </Association>
         <Association Name="FK_status_ship">
           <End Role="ship" Type="Self.ship" Multiplicity="1" />
-          <End Role="status" Type="Self.status" Multiplicity="*" />
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="ship">
               <PropertyRef Name="shipId" />
@@ -948,8 +752,6 @@
         </Association>
         <EntityContainer Name="mineshopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="level1Class" EntityType="Self.level1Class" />
-          <EntitySet Name="level2Class" EntityType="Self.level2Class" />
-          <EntitySet Name="level3Class" EntityType="Self.level3Class" />
           <EntitySet Name="member" EntityType="Self.member" />
           <EntitySet Name="message" EntityType="Self.message" />
           <EntitySet Name="order" EntityType="Self.order" />
@@ -965,22 +767,6 @@
           <EntitySet Name="supplier" EntityType="Self.supplier" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="status" EntityType="Self.status" />
-          <AssociationSet Name="FK_level2Class_level1Class" Association="Self.FK_level2Class_level1Class">
-            <End Role="level1Class" EntitySet="level1Class" />
-            <End Role="level2Class" EntitySet="level2Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_stock_level1Class" Association="Self.FK_stock_level1Class">
-            <End Role="level1Class" EntitySet="level1Class" />
-            <End Role="stock" EntitySet="stock" />
-          </AssociationSet>
-          <AssociationSet Name="FK_level2Class_stock" Association="Self.FK_level2Class_stock">
-            <End Role="stock" EntitySet="stock" />
-            <End Role="level2Class" EntitySet="level2Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_level3Class_stock" Association="Self.FK_level3Class_stock">
-            <End Role="stock" EntitySet="stock" />
-            <End Role="level3Class" EntitySet="level3Class" />
-          </AssociationSet>
           <AssociationSet Name="FK_saleInvoice_member" Association="Self.FK_saleInvoice_member">
             <End Role="member" EntitySet="member" />
             <End Role="saleInvoice" EntitySet="saleInvoice" />
@@ -988,10 +774,6 @@
           <AssociationSet Name="FK_shoppingCart_member" Association="Self.FK_shoppingCart_member">
             <End Role="member" EntitySet="member" />
             <End Role="shoppingCart" EntitySet="shoppingCart" />
-          </AssociationSet>
-          <AssociationSet Name="FK_order_paymentClass" Association="Self.FK_order_paymentClass">
-            <End Role="paymentClass" EntitySet="paymentClass" />
-            <End Role="order" EntitySet="order" />
           </AssociationSet>
           <AssociationSet Name="FK_order_shoppingCart" Association="Self.FK_order_shoppingCart">
             <End Role="shoppingCart" EntitySet="shoppingCart" />
@@ -1044,26 +826,6 @@
             <EntityTypeMapping TypeName="mineshopModel.level1Class">
               <MappingFragment StoreEntitySet="level1Class">
                 <ScalarProperty Name="level1Class1" ColumnName="level1Class" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="level2Class">
-            <EntityTypeMapping TypeName="mineshopModel.level2Class">
-              <MappingFragment StoreEntitySet="level2Class">
-                <ScalarProperty Name="level1Class" ColumnName="level1Class" />
-                <ScalarProperty Name="level2Class1" ColumnName="level2Class" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="level3Class">
-            <EntityTypeMapping TypeName="mineshopModel.level3Class">
-              <MappingFragment StoreEntitySet="level3Class">
-                <ScalarProperty Name="level1Class" ColumnName="level1Class" />
-                <ScalarProperty Name="level2Class" ColumnName="level2Class" />
-                <ScalarProperty Name="level3Class1" ColumnName="level3Class" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1072,7 +834,6 @@
               <MappingFragment StoreEntitySet="member">
                 <ScalarProperty Name="memberId" ColumnName="memberId" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="account" ColumnName="account" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="sex" ColumnName="sex" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -1081,7 +842,6 @@
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="companyNumbers" ColumnName="companyNumbers" />
-                <ScalarProperty Name="company" ColumnName="company" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1104,7 +864,6 @@
                 <ScalarProperty Name="memberId" ColumnName="memberId" />
                 <ScalarProperty Name="cartId" ColumnName="cartId" />
                 <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="paymentClass" ColumnName="paymentClass" />
                 <ScalarProperty Name="creditCard" ColumnName="creditCard" />
                 <ScalarProperty Name="sendOption" ColumnName="sendOption" />
                 <ScalarProperty Name="reci" ColumnName="reci" />
@@ -1179,6 +938,10 @@
               <MappingFragment StoreEntitySet="shoppingCart">
                 <ScalarProperty Name="cartId" ColumnName="cartId" />
                 <ScalarProperty Name="memberId" ColumnName="memberId" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="checkout" ColumnName="checkout" />
               </MappingFragment>
@@ -1189,6 +952,7 @@
               <MappingFragment StoreEntitySet="shoppingDetail">
                 <ScalarProperty Name="cartId" ColumnName="cartId" />
                 <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="memberId" ColumnName="memberId" />
                 <ScalarProperty Name="putDate" ColumnName="putDate" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
@@ -1201,13 +965,14 @@
                 <ScalarProperty Name="productId" ColumnName="productId" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="specialoffer" ColumnName="specialoffer" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="level1Class" ColumnName="level1Class" />
-                <ScalarProperty Name="level2Class" ColumnName="level2Class" />
-                <ScalarProperty Name="level3Class" ColumnName="level3Class" />
                 <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
                 <ScalarProperty Name="removalDate" ColumnName="removalDate" />
                 <ScalarProperty Name="inventory" ColumnName="inventory" />
+                <ScalarProperty Name="detailed" ColumnName="detailed" />
+                <ScalarProperty Name="click" ColumnName="click" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

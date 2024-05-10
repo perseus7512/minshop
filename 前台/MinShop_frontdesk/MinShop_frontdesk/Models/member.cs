@@ -11,7 +11,8 @@ namespace MinShop_frontdesk.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class member
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,16 +24,15 @@ namespace MinShop_frontdesk.Models
     
         public string memberId { get; set; }
         public string name { get; set; }
-        public string account { get; set; }
         public string password { get; set; }
         public string sex { get; set; }
-        public System.DateTime date { get; set; }
-        public System.DateTime birthday { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public Nullable<System.DateTime> birthday { get; set; }
         public string phone { get; set; }
         public string address { get; set; }
         public string email { get; set; }
         public string companyNumbers { get; set; }
-        public string company { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saleInvoice> saleInvoice { get; set; }

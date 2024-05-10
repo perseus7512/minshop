@@ -14,19 +14,6 @@ namespace MinShop_frontdesk.Models
     
     public partial class level1Class
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public level1Class()
-        {
-            this.level2Class = new HashSet<level2Class>();
-            this.stock = new HashSet<stock>();
-        }
-    
         public string level1Class1 { get; set; }
-        public string name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<level2Class> level2Class { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<stock> stock { get; set; }
     }
 }

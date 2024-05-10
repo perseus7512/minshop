@@ -11,23 +11,23 @@ namespace MinShop_frontdesk.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class order
     {
         public string orderId { get; set; }
         public string memberId { get; set; }
         public string cartId { get; set; }
-        public int total { get; set; }
-        public int paymentClass { get; set; }
+        public Nullable<int> total { get; set; }
         public string creditCard { get; set; }
         public string sendOption { get; set; }
         public string reci { get; set; }
-        public int reciPhone { get; set; }
+        public Nullable<int> reciPhone { get; set; }
         public string reciAddress { get; set; }
-        public System.DateTime date { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public Nullable<System.DateTime> date { get; set; }
         public string ps { get; set; }
     
-        public virtual paymentClass paymentClass1 { get; set; }
         public virtual shoppingCart shoppingCart { get; set; }
     }
 }

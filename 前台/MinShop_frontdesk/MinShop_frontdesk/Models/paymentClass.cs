@@ -14,16 +14,7 @@ namespace MinShop_frontdesk.Models
     
     public partial class paymentClass
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public paymentClass()
-        {
-            this.order = new HashSet<order>();
-        }
-    
         public int paymentClass1 { get; set; }
         public string method { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> order { get; set; }
     }
 }
