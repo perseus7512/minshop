@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MinShop_frontdesk.Models.stock>
+﻿@*@model IEnumerable<MinShop_frontdesk.Models.stock>*@
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,11 +132,11 @@
                         美妝用品-唇彩
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                        @foreach (var item in Model.Where(m => m.level1Class == "唇彩        "))
+                        @*@foreach (var item in Model.Where(m => m.level1Class == "唇彩        "))
                         {
                             <a class="dropdown-item" href="~/home/product?productId=@item.productId">@item.name</a>
-                        }
-                        @*<a class="dropdown-item" href="#">1028 唇迷心竅絲絨唇霧 (703 熟成草莓)</a>
+                        }*@
+                        <a class="dropdown-item" href="#">1028 唇迷心竅絲絨唇霧 (703 熟成草莓)</a>
                         <a class="dropdown-item" href="#">1028 唇迷心竅絲絨唇霧 (704 日曬丹橙)</a>
                         <a class="dropdown-item" href="#">Baby Bright 持久粉霧莓果唇釉#05 Bayberry</a>
                         <a class="dropdown-item" href="#">Baby Bright甜蜜下午茶持久顯色水光潤唇釉2.8g #04</a>
@@ -158,7 +158,7 @@
                         <a class="dropdown-item" href="#">BOM 碧波曼 絲滑霧面唇釉 #301 豆沙粉色</a>
                         <a class="dropdown-item" href="#">BOM 碧波曼 輕霧啞光口紅 #809辣椒红</a>
                         <a class="dropdown-item" href="#">2aN高雅清透唇釉#04淺蓮紅 3.4g</a>
-                        <a class="dropdown-item" href="#">2aN高雅清透唇釉#10古銅色 3.4g</a>*@
+                        <a class="dropdown-item" href="#">2aN高雅清透唇釉#10古銅色 3.4g</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -167,11 +167,11 @@
                         居家生活-寢具
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
-                        @foreach (var item in Model.Where(m => m.level1Class == "寢具        "))
+                        @*@foreach (var item in Model.Where(m => m.level1Class == "寢具        "))
                         {
                             <a class="dropdown-item" href="~/home/product?productId=@item.productId">@item.name</a>
-                        }
-                        @*<a class="dropdown-item" href="#">針織印花雙人床包兩用被組-諾瓦幾何</a>
+                        }*@
+                        <a class="dropdown-item" href="#">針織印花雙人床包兩用被組-諾瓦幾何</a>
                         <a class="dropdown-item" href="#">針織印花雙人床包兩用被組-長島冰茶</a>
                         <a class="dropdown-item" href="#">針織印花雙人床包兩用被組-月光森林</a>
                         <a class="dropdown-item" href="#">印花雙人床包兩用被組-藍海</a>
@@ -193,7 +193,7 @@
                         <a class="dropdown-item" href="#">印花厚被豆毯抱枕 110×150cm-花朵</a>
                         <a class="dropdown-item" href="#">印花涼感紗薄被 涼被 150x200-草原動物-奶茶</a>
                         <a class="dropdown-item" href="#">雙面涼感薄被 涼被 180X210-星星</a>
-                        <a class="dropdown-item" href="#">雙面涼感薄被 180x210cm-企鵝</a>*@
+                        <a class="dropdown-item" href="#">雙面涼感薄被 180x210cm-企鵝</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -202,11 +202,11 @@
                         戶外休閒-帳篷
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
-                        @foreach (var item in Model.Where(m => m.level1Class == "帳篷        "))
+                        @*@foreach (var item in Model.Where(m => m.level1Class == "帳篷        "))
                         {
                             <a class="dropdown-item" href="~/home/product?productId=@item.productId">@item.name</a>
-                        }
-                        @*<a class="dropdown-item" href="#">【KZM】NEW X5別墅帳 K221T3T11</a>
+                        }*@
+                        <a class="dropdown-item" href="#">【KZM】NEW X5別墅帳 K221T3T11</a>
                         <a class="dropdown-item" href="#">KAZMI KZM TIER 提爾4人帳.露營帳篷 圓頂帳 野餐家庭帳 遮光帳篷 四季透氣帳</a>
                         <a class="dropdown-item" href="#">May shop小家庭最適合 免搭建速開</a>
                         <a class="dropdown-item" href="#">【日本tent-Mark DESIGNS】PEPO帳篷/小山屋 (TM-1803) 復古老屋帳篷 屋式帳 TC棉帳</a>
@@ -228,7 +228,7 @@
                         <a class="dropdown-item" href="#">Besthot 全自動速開天幕多人帳-贈防潮墊 240x240cm</a>
                         <a class="dropdown-item" href="#">PUSH!戶外休閒用品1秒丟自動免搭拋帳露營帳篷家庭野餐帳篷四季帳篷P118</a>
                         <a class="dropdown-item" href="#">Kampa 最新一代Hayling 4 AIR 充氣帳篷</a>
-                        <a class="dropdown-item" href="#">Naturehike 客廳款 Village13 屋脊自動帳篷 3-4人 ZP12003</a>*@
+                        <a class="dropdown-item" href="#">Naturehike 客廳款 Village13 屋脊自動帳篷 3-4人 ZP12003</a>
                     </div>
                 </div>
             </div>
