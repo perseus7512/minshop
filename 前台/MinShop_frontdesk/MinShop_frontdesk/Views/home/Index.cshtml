@@ -550,7 +550,7 @@
                     @{
                         var oneMonthAgo = DateTime.Today.AddMonths(-1);
                     }
-                    @foreach (var item in Model.Where(m => m.releaseDate >= oneMonthAgo && m.removalDate == null))
+                    @foreach (var item in Model.Where(m => m.releaseDate >= oneMonthAgo && m.removalDate == null).OrderByDescending(m=>m.releaseDate))
                     {
                         <div class="card m-2" style="width: 13rem; height: 23rem;">
                             <img src="~/images/product/@item.image" class="card-img-top" alt="...">
