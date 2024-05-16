@@ -148,15 +148,23 @@
         </p>
         @if (Model != null && Model.Any())
         {
-            var total = Model.Sum(item => item.price * item.quantity);
-            var shippingFeeRate = 0.1;
+            var total = Model.Sum(item => (decimal)(item.price ?? 0) * (decimal)(item.quantity ?? 0));
+            var shippingFeeRate = 0.1m;
             var shippingFee = total * shippingFeeRate;
-            <p>运费: @shippingFee</p>
-            <p>小计: @total</p>
-            <p>合计: @(total + shippingFee)</p>
-            <input type="hidden" id="totalAmount" name="totalAmount" value="@(total + shippingFee)">
+            var totalAmount = total + shippingFee;
+
+            // 去掉小数点
+            total = Math.Floor(total); // 向下取整
+            shippingFee = Math.Floor(shippingFee);
+            totalAmount = Math.Floor(totalAmount);
+
+            <p>運費: @shippingFee</p>
+            <p>小計: @total</p>
+            <p>合計: @totalAmount</p>
+            <input type="hidden" id="totalAmount" name="totalAmount" value="@totalAmount">
         }
         <input type="submit" value="下單">
+
     </form>
 </div>
 <script>
@@ -207,9 +215,12 @@ yearDropdown.addEventListener('change', function() {
             address.style.display = 'none';
         }
     });
-    var totalAmountField = document.querySelector('totalAmount');
-
-// 设置合计值
-totalAmountField.value = total + shippingFee;
+    document.querySelector('form').addEventListener('submit', function() {
+    var totalAmount = parseFloat(document.getElementById('totalAmount').value);
+    if (isNaN(totalAmount)) {
+        totalAmount = 0;
+    }
+    document.getElementById('totalAmount').value = totalAmount;
+});
 </script>
 
